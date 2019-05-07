@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			函数, 由事件驱动或当它被调用时可重复使用的代码块
+				函数有一个 关键字function
+				
+				函数定义方式:
+					1. 函数声明式
+						function 函数名(){
+							
+						}
+						
+					2. 函数表达式
+						var 变量名 = function(){
+							
+						}
+				
+				函数调用:
+					1.函数声明式: 函数名();
+					2.函数表达式: 变量名();
+					3.事件驱动
+		-->
+		<button>点我</button>
+		<button>再点我</button>
+		<script>
+			
+			var oBtn1 = document.getElementsByTagName("button")[0];
+			var oBtn2 = document.getElementsByTagName("button")[1];
+			
+//			点击事件驱动的函数
+			oBtn1.onclick = function(){
+				alert(666);
+			}
+			
+//			点击事件驱动调用函数
+			oBtn2.onclick = show;
+			
+//			函数声明式
+			function show(){
+				console.log(777);
+			}
+			
+			show();	//函数的调用
+			
+			
+//			函数表达式
+			var myFunc = function(){
+				console.log(999);
+			}
+			myFunc();
+		</script>
+	</body>
+</html>

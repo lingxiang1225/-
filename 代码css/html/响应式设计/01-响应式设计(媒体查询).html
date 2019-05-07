@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100%;
+				height: 60px;
+				background-color: lightblue;
+			}
+			
+			/*设备屏幕宽度在1000以上*/
+			@media only screen and (min-width: 1000px) {	
+				div{
+					background-color: pink;
+					color: #fff;
+				}
+				body{
+					background-color: #ccc;
+				}
+			}
+			
+			@media only screen and (min-width: 700px) and (max-width: 800px) {
+				div{
+					background-color: yellow;
+				}
+			}
+			
+			/*设备屏幕宽度在640~1000*/
+			@media only screen and (min-width: 640px) and (max-width: 1000px) {
+				div{
+					background-color: lightgreen;
+				}
+			}
+			
+			/*设备屏幕宽度在640以下*/
+			@media only screen and (max-width: 640px) {
+				
+				body{
+					background-color: lightseagreen;
+				}
+				
+			}
+		</style>
+		
+	</head>
+	<body>
+		<!--
+			响应式设计:
+				一个多终端自适应的解决方案
+				根据浏览器或不同设备屏幕宽度进行自适应内容
+			
+				1.媒体查询(查询不同设备宽度进行响应)--多个样式,作用于同一个元素时,后面的样式会覆盖前面的
+					@media only screen and (min-width: px) and (max-width: px){
+						
+						同CSS样式写法
+						
+					}
+					
+					媒体查询的优缺点:
+						优点: 可以适应不同的设备大小
+						缺点: 代码累赘
+					
+					
+				视口(移动端需要设置)--viewport
+			
+				移动设备的浏览器宽度默认是大于设备宽度
+				<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+				
+					width=device-width: 设置浏览器宽度等于设备宽度
+					initial-scale=1:	初始缩放比例为1(没缩放)
+					user-scalable=no:	用户是否可缩放-不可以
+			
+		-->
+		<div>欢迎进入前端</div>
+	</body>
+</html>

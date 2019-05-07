@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			shift
+			unshift
+			pop
+			push
+			reverse
+			concat
+			slice
+			splice
+			join
+			sort
+			
+			forEach		遍历
+			filter		过滤
+			every		每一个
+			some		存在一个
+			reduce		累积
+			indexOf		判断是否存在
+			find		查找
+			Includes	包含(与indexOf区别在于强化了NaN)
+			flat		扁平化(参数接收深度)
+
+		-->
+		<script type="text/javascript">
+			
+			let arr1 = [12,21,43,24,4,31,41,21,41,12];
+			
+			// 遍历
+			arr1.forEach((val,index,myArr)=>{
+				// console.log(val,index,myArr);	//分别对应值,下标,原数组
+			})
+			
+			// 过滤
+			let arr2 = arr1.filter((a,b,c)=>{
+				console.log(a);	//值
+				console.log(b);	//下标
+				console.log(c);	//原数组
+				return a>30;
+			})
+			console.log(arr2);
+			// 相当于以下写法
+			// for(var i=0; i<arr1.length; i++){
+			// 	if(arr1[i]%2){
+			// 		arr2.push(arr1[i]);
+			// 	}
+			// }
+			
+			// 过滤去重(indexOf--查找返回对应值的下标,如果查到存在有多个值,则返回第一个值的下标)
+			let arr3 = arr1.filter((val,ind,arr)=>{
+				return arr.indexOf(val)===ind;
+			})
+			console.log(arr3);
+			
+			// let arr1 = [12,21,43,24,4,31,41,21,41,12];
+			// for(var j=0; j<arr1.length; j++){
+			// 	if(arr1.indexOf(arr1[j])===j){
+			// 		arr3.push(arr1[j]);
+			// 	}
+			// }
+			/*arr1[j]=12 j=0 	arr3=[12]
+			*arr1[j]= 21 j=1	arr3=[12,21]
+			* ...
+			* arr1[j]=21 j=7	不满足条件,不会push进arr3
+			*/
+		   
+			// 判断每一个元素是否都满足条件(返回布尔值)
+			let isTrue = arr1.every((b)=>{
+			   return b>2;	//判断条件
+			})
+			console.log(isTrue);	//true
+		   
+			// 判断元素里面至少有一个满足条件
+			let leastOne = arr1.some((c)=>{
+				return c>41;
+			})
+			console.log(leastOne);	//只要有一个满足条件即为true
+		   
+		   // 累积取到前后值
+			let myResult = [1,2,3,4,5,6,7,8,9,10].reduce((j,k)=>{
+				return j+k;
+			})
+			console.log(myResult);
+			
+			// 查找是否存在,存在即返回对应值
+			let findOne = arr1.find((d)=>{
+				return d>30;
+			})
+			console.log(findOne);
+			
+			// 判断是否包含某个值(includes返回布尔值[强化了对NaN的判断],indexOf返回对应下标)
+			let arr10 = [12,32,21,NaN];
+			let isHasOne = arr10.indexOf(NaN);
+			console.log(isHasOne);		//-1
+			let isHasNaN = arr10.includes(NaN);
+			console.log(isHasNaN);	//true
+			
+			// 数组扁平化
+			let arr8 = [1,2,3,[4,5,6,[7,8,9,[10,11,12,[13,14,15,[16,17,18]]]]]];
+			console.log(arr8);
+			let flatArr = arr8.flat(Infinity);	//参数默认是1,如果需要展开所有的深度,则使用Infinity
+			console.log(flatArr);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			时间戳: 从格林尼治时间1970年1月1日 0时计起的距离当前的毫秒数
+				getTime()	获取时间戳
+			
+		-->
+		<script>
+			
+			var myDate = new Date();
+			
+//			console.log(myDate.getTime());	//1970年1月1日 0时距离2019年4月9日 10:09分 的毫秒数
+			var millSecond = myDate.getTime();	//毫秒数
+			var totalSecond = millSecond/1000;	//秒数
+//			console.log(totalSecond);
+			
+			var restSecond = Math.round(totalSecond%60);	//剩余秒数
+			
+			var restMinute = Math.round(totalSecond/60%60); //剩余分钟数
+			
+			var restHour = Math.round(totalSecond/60/60%24);//剩余小时数
+			
+			var restYear = Math.round(totalSecond/60/60/24/365);	//距今年数
+			
+			console.log(restYear);
+			
+		</script>
+	</body>
+</html>

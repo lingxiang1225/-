@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/ajax.js"></script>
+	</head>
+	<body>
+		<script>
+			ajax("get","https://www.easy-mock.com/mock/5ba06ec82ee5a7654dc13dd7/example/watson","",function(res){
+				console.log(res);
+			},function(err){
+				console.log(err);
+			});
+			
+			ajax("post","http://192.168.2.114:3000/api/user","",function(res){
+				console.log(res);
+			},function(err){
+				console.log(err);
+			});
+		</script>
+	</body>
+</html>

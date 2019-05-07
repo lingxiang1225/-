@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 2000px;
+				background: linear-gradient(red,orange,yellow,green,blue,purple);
+			}
+			div{
+				background-color: rgba(0,0,0,.8);
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			定位
+				相对定位 position: relative
+					参考自身原有位置定位,偏移后原有位置仍占有
+					
+					偏移量:
+						top: 与上边的距离
+						right: 与右边的距离
+						bottom: 与下边的距离
+						left: 与左边的距离
+					
+				绝对定位 position: absolute;
+					参考离它最近的具有相对定位的父元素,如果父元素都没有定位,则参考浏览器可视区域
+					[一旦设置绝对定位,则脱离文档流,原有位置会被占有]
+					
+					偏移量:
+						top: 与上边的距离
+						right: 与右边的距离
+						bottom: 与下边的距离
+						left: 与左边的距离
+					
+				固定定位 position: fixed;
+					参考浏览器可视区域定位
+					
+					偏移量:
+							top: 与上边的距离
+							right: 与右边的距离
+							bottom: 与下边的距离
+							left: 与左边的距离
+					
+				默认定位
+			
+			
+		-->
+		<div></div>
+	</body>
+</html>

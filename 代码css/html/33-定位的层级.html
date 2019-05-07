@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box>div{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+			}
+			.box>div:nth-child(1){
+				background-color: red;
+				top: 10px;
+				left: 10px;
+				z-index: 2;
+			}
+			.box>div:nth-child(2){
+				background-color: orange;
+				top: 30px;
+				left: 30px;
+				z-index: -1;
+			}
+			.box>div:nth-child(3){
+				background-color: yellow;
+				top: 50px;
+				left: 50px;
+				z-index: 1;
+			}
+			.box>div:nth-child(4){
+				background-color: green;
+				top: 70px;
+				left: 70px;
+			}
+			.box>div:nth-child(5){
+				background-color: blue;
+				top: 90px;
+				left: 90px;
+				z-index: 0;
+			}
+			span{
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				background-color: lightblue;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			定位的层级 z-index
+				默认为0, 允许负数, 值越大在越上层
+			
+		-->
+		<div class="box">
+			<div>1
+				<span>span</span>
+			</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+		</div>
+	</body>
+</html>

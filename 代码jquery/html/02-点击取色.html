@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 1.引入jquery.js -->
+		<script type="text/javascript" src="../js/jquery3.4.0.js"></script>
+		<style>
+			span{
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+			}
+			span:nth-of-type(1){
+				background-color: red;
+			}
+			span:nth-of-type(2){
+				background-color: yellow;
+			}
+			span:nth-of-type(3){
+				background-color: blue;
+			}
+			div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			.css()	设置或获取样式
+			.css("css属性名")	--获取css属性值
+			.css("css属性名","css属性值")	--设置css样式
+			.css({"css属性名":"css属性值","css属性名":"css属性值"})--设置多个css样式
+		-->
+		<span></span>
+		<span></span>
+		<span></span>
+		
+		<div></div>
+		<div></div>
+		<div></div>
+		
+		<script type="text/javascript">
+			
+			// 1.页面加载后执行
+// 			window.onload = function(){
+// 				// 2.获取元素
+// 				var aSpan = document.getElementsByTagName("span");
+// 				var aDiv = document.getElementsByTagName("div");
+// 				// 3.循环绑定点击事件
+// 				for(var i=0; i<aSpan.length; i++){
+// 					aSpan[i].onclick = function(){
+// 						var color = getComputedStyle(this)["background-color"];
+// 						for(var j=0; j<aDiv.length; j++){
+// 							aDiv[j].onclick = function(){
+// 								this.style.backgroundColor = color;
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+			
+			// 2.文档加载后执行
+			$(function(){
+				$("span").click(function(){
+					var color = $(this).css("background-color");
+					$("div").click(function(){
+						$(this).css("background-color",color);
+					})
+				})
+			})
+			
+		</script>
+	</body>
+</html>

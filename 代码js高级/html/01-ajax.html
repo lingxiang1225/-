@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			ajax: Asynchronous JavaScript and XML(异步js和xml通讯技术)--用于数据交互
+			
+			优势:
+				可以在不刷新页面的前提下,进行数据更新
+				
+			缺点: 
+				无法进行历史记录回退
+				无法存储书签
+				SEO问题
+				网络延迟问题
+				旧设备支持问题
+				
+			ajax步骤:
+				1.创建对象
+				2.捕获异常(兼容IE低版本)
+				3.打开请求xhr.open(method,url)
+					method: post,get
+						post: 传递数据
+							安全性更高,请求的数据放在requestBody,隐私信息适用,传输数据量较大
+						get: 获取数据
+							安全性低,请求的数据放在url,传输数据量较小
+				4.发送请求
+				5.监听响应状态onreadystatechange
+				6.判断响应状态及http状态码
+					响应状态:0.未初始化	1.open 2.sent 3.receiving接受中 4.loaded加载完成
+					http状态码: 200请求成功
+						1xx: 指示信息--表示请求已接收，继续处理
+						2xx: 成功--表示请求已被成功接收、理解、接受
+						3xx: 重定向--要完成请求必须进行更进一步的操作
+						4xx: 客户端错误--请求有语法错误或请求无法实现
+						5xx: 服务器端错误--服务器未能实现合法的请求
+		-->
+		<button>获取数据</button>
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oBtn = document.getElementsByTagName("button")[0];
+				
+//				3.绑定点击事件(获取数据)
+				oBtn.onclick = function(){
+					
+//					1.创建对象
+					var xhr;
+					try{						
+						xhr = new XMLHttpRequest();	//正常浏览器下
+					}catch(err){
+						xhr= new ActiveXObject('Microsoft.XMLHTTP');
+					}
+					
+//					2.打开对应网址(url,method)
+//					xhr.open("get","http://192.168.2.114:3000/api/xishiqu");
+					xhr.open("get","https://www.easy-mock.com/mock/5ba06ec82ee5a7654dc13dd7/example/watson");
+					
+//					3.发送请求
+					xhr.send();
+					
+//					4.监听响应
+					xhr.onreadystatechange = function(){
+						
+//						5.判断是否响应成功
+						if(xhr.readyState == 4 && xhr.status == 200){
+							
+							var data = JSON.parse(xhr.responseText);
+							console.log(data);
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+		</script>
+	</body>
+</html>

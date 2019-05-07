@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/jquery3.4.0.js"></script>
+	</head>
+	<body>
+		<!--
+		
+			jquery是对js进行封装的库
+			
+			理念: "write less, do more!"
+			
+			暴露出一个$符,使用$进行操作
+			
+			1.页面加载后执行
+			可以执行多次
+			$(function(){
+				
+			})
+			
+			2.获取元素
+			$("#id")
+			$(".class")
+			$("tagName")
+			$("p.op")	--同css选择器
+			
+			3.获取值
+			.html()
+			.val()
+		
+		-->
+		<div>我是div</div>
+		<p class="op">第一个p</p>
+		<span>我是span</span>
+		<p class="op">第二个p</p>
+		<input type="text" name="" id="oInput" value="我是XXX" />
+		
+		<script type="text/javascript">
+			
+			// 1.页面加载后执行
+// 			window.onload = function(){
+// 				console.log(111);
+// 			}
+// 			window.onload = function(){
+// 				console.log(222);
+// 			}
+			
+// 			$(window).load(function(){
+// 				
+// 			})
+			
+// 			$(document).ready(function(){
+// 				
+// 			})
+			// 是上面document.ready的缩写
+			$(function(){
+				console.log(333);
+			})
+			$(function(){
+				
+				// 2.获取元素
+				// var oDiv = document.getElementsByTagName("div")[0];
+				// console.log(oDiv.innerHTML);
+				
+				var oDiv = $("div");
+				var aP = $(".op");
+				var oInput = $("#oInput");
+				console.log(oDiv.html());
+				console.log(oInput.val());
+				
+			})
+			
+		</script>
+	</body>
+</html>

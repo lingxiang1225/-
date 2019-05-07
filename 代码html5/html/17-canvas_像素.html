@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: #F0F0F0;
+			}
+			canvas{
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			ctx.createImageData(w,h)
+			
+			ctx.getImageData(x,y,w,h)
+				width:
+				height:
+				data: 一个数组，包含每个像素的rgba四个值, 注意每个值都在0~255之间的整数
+					red,green,blue,alpha透明度
+			
+			ctx.putImageData(data,x,y)
+		
+		-->
+		<canvas width="500" height="500">
+			您的浏览器不支持canvas
+		</canvas>
+		<button type="button">copy</button>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var myCanvas = document.getElementsByTagName("canvas")[0];
+				var oCopy = document.getElementsByTagName("button")[0];
+				
+				// 1.创建画布
+				var ctx = myCanvas.getContext("2d");
+				
+				// 2.设置样式
+				ctx.fillStyle = "rgba(255,0,0,.5)";
+				
+				// 绘制矩形
+				ctx.fillRect(100,100,100,100);
+				
+				var data = ctx.getImageData(100,100,100,100);	//获取像素数据(x,y,w,h)
+				console.log(data);
+				// 绑定点击事件
+				oCopy.onclick = function(){
+					
+					ctx.putImageData(data,300,300);	//复制像素数据(像素数据,x,y)
+					
+					// 创建像素数据(newData里面的数据默认都为0,for循环是为了重新赋值)
+					var newData = ctx.createImageData(50,50);
+					console.log(newData);
+					for(var i=0; i<newData.data.length; i+=4){
+						newData.data[i+0] = 255;
+						newData.data[i+1] = 255;
+						newData.data[i+2] = 0;
+						newData.data[i+3] = 255;
+					}
+					
+					ctx.putImageData(newData, 100,300);
+					
+				}
+				
+			}
+		</script>
+	</body>
+</html>

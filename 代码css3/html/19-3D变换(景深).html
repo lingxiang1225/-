@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#wrap1,#wrap2,#wrap3{
+				width: 250px;
+				height: 250px;
+				border: 1px solid blue;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.box1,.box2,.box3{
+				width: 100px;
+				height: 100px;
+				background: yellow;
+				transition: 2s;
+			}
+			
+			/* 第一个盒子 */
+			#wrap1{
+				transform-style: preserve-3d;
+				perspective: 100px;		/*设置景深(默认基点是中心点)*/
+			}
+			#wrap1:hover .box1{
+				transform: rotateX(180deg);
+			}
+			
+			/* 第二个盒子 */
+			#wrap2{
+				transform-style: preserve-3d;
+				perspective: 100px;
+				perspective-origin: left bottom; 
+			}
+			#wrap2:hover .box2{
+				transform: rotateX(180deg);
+			}
+			
+			/* 第三个盒子 */
+			#wrap3{
+				transform-style: preserve-3d;
+				perspective: 100px;
+			}
+			#wrap3:hover .box3{
+				transform: translateZ(80px);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap1">
+			<div class="box1"></div>
+		</div>
+		<div id="wrap2">
+			<div class="box2"></div>
+		</div>
+		<div id="wrap3">
+			<div class="box3"></div>
+		</div>
+	</body>
+</html>

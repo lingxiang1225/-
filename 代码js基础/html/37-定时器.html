@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			定时器:(每隔多次时间执行一次)
+				设置定时器: setInterval(a,b)
+					参数
+						a: 定时执行的函数
+						b: 间隔时间(默认单位为毫秒[1秒=1000毫秒])
+					
+				清除定时器: 为避免定时器叠加,设置定时器之前先清除定时器
+					clearInterval(定时器名称)
+		-->
+		
+		<button>点击触发定时器</button>
+		<script>
+//			var timer = null;
+//			var num = 0;
+//			
+//			timer = setInterval(count,1000);
+//			
+//			function count(){
+//				console.log(num++);
+//			}
+
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oBtn = document.getElementsByTagName("button")[0];
+				var timer = null;
+				var num = 0;
+				
+//				3.绑定点击事件
+				oBtn.onclick = function(){
+					
+//					4.清除定时器
+					clearInterval(timer);
+					
+//					5.设置定时器
+					timer = setInterval(function(){
+						console.log(num++);
+					},1000);
+					
+				}
+				
+			}
+		</script>
+	</body>
+</html>

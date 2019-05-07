@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/jquery3.4.0.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				border: 1px solid #ccc;
+				background-color: lightblue;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			animate(params,speed,swing,fn)
+				params: 使用对象的形式写动画的效果参数
+				speed: 动画时长
+				swing: 动画效果
+				fn: 动画完成后的执行语句
+				
+				(ps: 可以写多个自定义动画,加入到动画队列里面按序执行)
+				
+			stop()	--停止动画
+				参数为true时,清空动画队列,立即停止动画
+				
+			delay()	--延迟动画(毫秒数)
+			
+			finish()	--完成动画(结束动画)
+				
+		-->
+		<button>动起来</button>
+		<button>停下来</button>
+		<button>完成动画</button>
+		<div></div>
+		<script type="text/javascript">
+			
+			$(function(){
+				
+				$("button").eq(0).click(function(){
+					
+					$("div").animate({width: "600px", height: "600px", borderRadius: "50%", left: "300px", opacity: "0.3"}, 2000);
+					$("div").animate({width: "100px", height: "100px", left: "20px", opacity: "1"}, 2000).delay(2000).animate({width: "500px", borderRadius: "0", left: 0}, 2000).delay(3000).fadeOut();
+				
+				})		
+						
+				$("button").eq(1).click(function(){
+					$("div").stop(true);
+					
+				})				
+				$("button").eq(2).click(function(){
+					$("div").finish();
+				})		
+			})
+			
+		</script>
+	</body>
+</html>

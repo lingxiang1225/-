@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+		
+			new Worker("../js/worker1.js")	请工人(参数接收的是工人的js文件地址)
+			
+			onmessage: 监听新消息事件(有消息过来时即触发)
+			
+			postMessage: 传递消息
+			
+			terminate: 终止(解雇worker)
+		
+		-->
+		<input type="text" />
+		<button>开始计数</button>
+		<button>停止</button>
+		<p></p>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var startCount = document.querySelectorAll("button")[0];
+				var endCount = document.querySelectorAll("button")[1];
+				var oResult = document.querySelector("p");
+				var myWorker;
+				
+				startCount.onclick = function(){
+						
+					var num = Number(document.querySelector("input").value);
+					// 1.请工人
+					myWorker = new Worker("../js/worker1.js");
+					
+					// 2.分配任务
+					myWorker.postMessage(num);
+					
+					// 3.验收成果
+					myWorker.onmessage = function(ev){
+						
+						oResult.innerHTML = ev.data;
+						
+					}
+					
+					function count(){
+						
+						num++;
+						
+						console.log(num);
+						
+						setTimeout(count,1000);
+						
+					}
+					count();
+				
+				}
+				
+				//绑定停止(解雇工人)
+				endCount.onclick = function(){
+					
+					myWorker.terminate();	//(解雇工人)
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

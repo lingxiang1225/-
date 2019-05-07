@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body,div{margin: 0; padding: 0;}
+			.bigBox{
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				left: 50%;
+				margin-left: -100px;
+				top: 50%;
+				margin-top: -100px;
+				background-color: #ccc;
+			}
+			.smallBox{
+				width: 100px;
+				height: 100px;
+				background-color: lightblue;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bigBox">食物</div>
+		<div class="smallBox">蛇</div>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oBigBox = document.getElementsByClassName("bigBox")[0];
+				var oSmallBox = document.getElementsByClassName("smallBox")[0];
+				
+//				3.方块移动
+				document.onkeydown = function(ev){
+					
+					var ev = ev || window.event;
+					
+					var oTop = parseInt(css(oSmallBox, "top"));
+					var oLeft = parseInt(css(oSmallBox, "left"));
+					
+//					6.判断当前按下的键码
+					switch(ev.keyCode){
+						case 37: 	//左
+							oLeft -= 10;
+							oSmallBox.style.left = oLeft+"px";
+							break;
+						case 38: 	//上
+							oTop -= 10;
+							oSmallBox.style.top = oTop+"px";
+							break;
+						case 39: 	//右
+							oLeft += 10;
+							oSmallBox.style.left = oLeft+"px";
+							break;
+						
+						case 40: 	//下
+							oTop += 10;
+							oSmallBox.style.top = oTop+"px";
+							break;
+						
+					}
+					
+//					7.判断是否碰撞(1指的是大盒子,2指的是小盒子)
+					var L1 = oBigBox.offsetLeft;	//左
+					var R1 = oBigBox.offsetLeft + oBigBox.offsetWidth;	//大盒子的右边距离
+					var T1 = oBigBox.offsetTop;	//上
+					var B1 = oBigBox.offsetTop + oBigBox.offsetHeight;	//大盒子的下边距离
+					
+					var L2 = oSmallBox.offsetLeft;	//左
+					var R2 = oSmallBox.offsetLeft + oSmallBox.offsetWidth;	//小盒子的右边距离
+					var T2 = oSmallBox.offsetTop;	//上
+					var B2 = oSmallBox.offsetTop + oSmallBox.offsetHeight;	//小盒子的下边距离
+					
+					if(R2<L1 || B2<T1 || L2>R1 || T2>B1){	//不会碰撞
+						
+						oBigBox.style.backgroundColor = "#ccc";
+						
+					}else{	//碰上了
+						
+						oBigBox.style.backgroundColor = "red";
+						
+					}
+					
+				}
+				
+				
+//				设置或获取样式兼容函数
+				function css(obj, attr, val){
+					
+//					判断是设置样式还是获取样式
+					if(!val){	//获取样式
+						if(window.getComputedStyle){	//判断浏览器是否支持getComputedStyle
+			               return getComputedStyle(obj)[attr];
+				       	}else{
+			               return obj.currentStyle[attr];
+				        }	
+					}else{	//设置样式
+						return obj.style[attr] = val;
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

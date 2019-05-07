@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body><!--
+			节点:
+				nodeType	节点类型
+				nodeValue	节点值
+				nodeName	节点名字
+			
+			节点类型
+				元素          1
+				属性          2
+				文本          3
+				注释          8
+				文档          9
+		-->
+		<div id="box"> 1</div>
+		<script>
+			var oBox = document.getElementById("box");
+			
+			console.log(document.nodeType);	//9
+			console.log(document.nodeName);	//#document
+			console.log(document.nodeValue);//null
+			
+			console.log(document.body.nodeType);	//1
+			console.log(document.body.nodeName);	//BODY
+			console.log(document.body.nodeValue);	//null
+			
+			console.log(document.body.firstChild.nodeType);	//8
+			console.log(document.body.firstChild.nodeValue);//注释内容
+			console.log(document.body.firstChild.nodeName);	//#comment
+			
+			console.log(oBox.getAttributeNode("id").nodeType);	//2
+			console.log(oBox.getAttributeNode("id").nodeName);	//id
+			console.log(oBox.getAttributeNode("id").nodeValue);	//box
+			
+			console.log(oBox.firstChild.nodeType); //3
+			console.log(oBox.firstChild.nodeName); //#text
+			console.log(oBox.firstChild.nodeValue); // 1
+		</script>
+	</body>
+</html>

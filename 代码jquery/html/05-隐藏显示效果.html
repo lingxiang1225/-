@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/jquery3.4.0.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				border: 1px solid #ccc;
+				display: none;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			show(speed)
+				speed: 单位为毫秒,可能的值: 毫秒数,slow,fast
+				fn: 效果完成之后执行的语句
+		
+		-->
+		<button>显示</button>
+		<button>隐藏</button>
+		<button>切换</button>
+		<div></div>
+		
+		<script type="text/javascript">
+			
+			$(function(){
+				// 显示
+				$("button").eq(0).click(function(){
+					$("div").show(2000,function(){
+						alert("我出现了");
+					});
+				})
+				// 隐藏
+				$("button").eq(1).click(function(){
+					$("div").hide();
+				})
+				// 切换
+				$("button").eq(2).click(function(){
+					$("div").toggle();
+				})
+			})
+			
+		</script>
+	</body>
+</html>

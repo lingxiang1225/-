@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: #F0F0F0;
+			}
+			canvas{
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			设置全局合成操作(红色是目标,蓝色是源)
+				globalCompositeOperation
+					destination-over: 	目标对象在上方
+					source-over:		源对象在上方
+					source-atop:		将与目标重合部分的源对象保留在顶上
+					destination-atop:	将与源对象重合部分的目标对象保留在顶上
+					source-in:			将源对象与目标对象重合部分保留(保留源对象)
+					destination-in:		将目标对象与源对象重合部分保留(保留目标对象)
+					source-out:			保留源对象非重合部分
+					destination-out:	保留目标对象非重合部分
+					lighter:			将重合部分显示(标识出来)
+					copy:				保留源对象
+					xor:				用异或操作截掉重合部分
+				
+				globalAlpha: 全局阿尔法值(给源对象设置透明度)
+		-->
+		<canvas width="500" height="500">
+			您的浏览器不支持canvas
+		</canvas>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var myCanvas = document.getElementsByTagName("canvas")[0];
+				
+				// 1.创建画布
+				var ctx = myCanvas.getContext("2d");
+				
+				// 2.绘制矩形
+				ctx.fillStyle = "red";
+				
+				ctx.fillRect(100,100,150,150);
+				
+				// 全局alpha值
+				ctx.globalAlpha = 0.5;
+				
+				// 3.设置全局合成操作
+				ctx.globalCompositeOperation = "destination-over";
+				
+				ctx.fillStyle = "blue";
+				
+				ctx.fillRect(220,220,150,150);
+				
+			}
+		</script>
+	</body>
+</html>

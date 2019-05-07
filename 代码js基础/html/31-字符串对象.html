@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			字符串对象的方法
+				charAt()	取字符串对应下标的字符
+				toUpperCase()	转大写
+				toLowerCase()	转小写
+				indexOf()		查找某字符是否存在于字符串中,若存在返回对应下标,若不存在则返回-1
+				split()			分割符
+				substring(startIndex,endIndex)		截取(通过开始和结束下标截取字符)
+				substr(startIndex,length)		截取(通过起始下标和截取个数进行截取字符)
+				replace(reg,new)				替换字符(要被替换掉的字符,新字符)
+				slice(startIndex,behindIndex)	截取(从前面数的下标截取到从后面数的下标)
+				
+			属性:
+				length	字符串的长度
+		-->
+		<script>
+			var str1 = "英烈是民族之根，是国家之魂，他们让我们傲立于世界民族之林。";
+			
+			console.log(str1.length);	//13
+			
+			console.log(str1.charAt(7));	//班(下标为7的字符)
+			
+			console.log(str1.toUpperCase());	//转全大写
+			
+			console.log(str1.toLowerCase());	//转全小写
+			
+			console.log(str1.indexOf("你"));		//-1找不到
+			console.log(str1.indexOf("小"));		//9
+			console.log(str1.indexOf("是"));		//1
+			
+			console.log(str1.split("，"));	//以逗号分割成数组
+			console.log(str1.split(""));	//通过空字符串可以将每个字符分割开
+			
+			var str2 = "1,2,3,4,5,6,7,8";
+			var arr = str2.split(",");	//array(通过字符串的split方法,用,进行分割成数组)
+			console.log(arr);
+			console.log(arr.join("-"));	//数组方法的拼接(使用-将数组的多个元素拼接成字符串)
+		
+			console.log(str1.substring(8,13));	//截取8~13下标的字符
+			console.log(str1.substring(3));		//截取从3下标开始到最后的字符
+		
+			console.log(str1.substr(2,9));		//从某下标开始截取对应个数(从下标2开始截取9位)
+		
+			console.log(str1.replace("英烈","英雄"));
+			
+			console.log(str1.slice(1,-5));	//截取(从前数下标,从后数个数)
+			
+		</script>
+	</body>
+</html>

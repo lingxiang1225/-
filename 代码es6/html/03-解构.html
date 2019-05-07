@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			let obj = {name: '小明', age: 18};
+			// let name = obj.name;
+			// let age = obj.age;
+			// console.log(name, age);
+			
+			let {name, age} = obj;
+			console.log(name, age);	//小明 18
+			
+			let arr = [1,2,4,5,21,4,23,56];
+			let [a,b,c,,d] = arr;
+			console.log(a,b,c,d);	//1,2,4,21
+		</script>
+	</body>
+</html>

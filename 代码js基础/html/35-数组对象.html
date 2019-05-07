@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			数组的元素可以是任意数据类型
+			
+			数组对象的方法:
+				concat()	连接多个数组
+				join()		将数组元素拼接成字符串
+				reverse()	数组元素反转
+				slice()		数组元素的截取(返回新数组,不改变原数组)
+				sort()		数组元素的排序(参数接收一个排序函数)
+				push()		从数组的最后面添加元素(后插)
+				pop()		从数组的最后面删除元素(后删)
+				unshift()	从数组的最前面插入元素(前插)
+				shift()		从数组的最前面删除元素(前删)
+				splice(a,b,c)	数组元素的增删改
+					参数
+						a: 操作的对应下标
+						b: 删除个数
+						c: 添加元素(多个用逗号隔开)--可省略
+		-->
+		<script>
+//			数组的定义(array): 
+			var arr = [1,2,3,4,5];
+			console.log(arr);	
+			
+			var arr1 = new Array(1,"string",undefined,null,true,{age:18, name: "小姐姐"});
+			console.log(arr1);
+			
+//			数组对象的方法:
+			var myArr1 = [1,2,3];
+			var myArr2 = [4,5,6];
+			var myArr3 = [7,8,9];
+			
+//			连接
+			console.log(myArr1.concat(myArr2,myArr3));	//[1, 2, 3, 4, 5, 6, 7, 8, 9]
+			
+//			数组元素拼接成字符串
+			console.log(myArr1.join("到"));	//"1到2到3" 以"到"对myArr1数组的元素进行拼接
+			
+//			数组元素反转
+			console.log(myArr2.reverse());	//[6, 5, 4]
+			
+//			数组元素的截取
+			console.log([1,2,33,4,4,35,3,46,9].slice(1,-1)); //[2,33,4,4,35,3,46]
+			
+//			数组元素的排序
+			var myArr4 = [11,99,33,4,4,35,3,46,9];
+			console.log(myArr4.sort(sortNum));
+			
+//			排序函数
+			function sortNum(a,b){	
+				return a-b;	//升序(b-a时是降序)
+			}
+			
+//			数组元素的后面添加(push)--会改变原数组
+			var myArr5 = myArr1.push(9,10,11);
+			console.log(myArr5);	//6(返回数组长度)
+			console.log(myArr1);	//[1, 2, 3, 9,10,11]
+			
+//			数组元素的后面删除--返回被删除的元素,会改变原数组
+			var myArr6 = myArr1.pop();
+			console.log(myArr6);	//11(返回被删除的元素)
+			console.log(myArr1);	//[1, 2, 3, 9, 10]
+			
+//			数组元素前面插入--会改变原数组
+			var myArr7 = myArr1.unshift(0,001,002);
+			console.log(myArr7);	//8(返回数组长度)
+			console.log(myArr1);	//[0, 1, 2, 1, 2, 3, 9, 10]
+			
+//			数组元素的前面删除--返回被删除的元素,会改变原数组
+			var myArr8 = myArr1.shift();
+			console.log(myArr8);    //0(返回被删除的元素)
+			console.log(myArr1);    //[1, 2, 1, 2, 3, 9, 10]
+			
+			console.log(myArr2);   //[6,5,4]
+			var myArr9 = myArr2.splice(2,0,8,9,10);	//第二个参数为0时, 不删除元素(增)
+			console.log(myArr9);	//[]
+			console.log(myArr2);	//[6, 5, 8, 9, 10, 4]
+			
+			var myArr10 = myArr2.splice(2,1);	//第二个参数不为0时,删除元素(删)
+			console.log(myArr10);   //[8](返回被删除的元素)
+			console.log(myArr2);	//[6, 5, 9, 10, 4]
+			
+			var myArr11 = myArr2.splice(4,1,666);	//第二个参数不为0,且第三个参数有值时,为改(改)
+			console.log(myArr11);	//[4]
+			console.log(myArr2);	//[6, 5, 9, 10, 666]
+		</script>
+	</body>
+</html>

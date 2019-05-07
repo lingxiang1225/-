@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			
+			var myWorker = new Worker("../js/worker.js");	//招工人
+			
+			myWorker.postMessage("hello");	//分配任务
+			
+			myWorker.onmessage = function(ev){	//验收成果
+				document.getElementsByTagName("div")[0].innerHTML += ev.data;
+			}
+			
+		</script>
+	</body>
+</html>

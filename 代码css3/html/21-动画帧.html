@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/animate.css"/>
+		<style>
+			#box1{
+				height: 100px;
+				animation: changeWidth 2s infinite ease-out;
+			}
+			#box2{
+				width: 200px;
+				height: 200px;
+				background: yellow;
+				animation: changeBGcolor 2s 1 linear;
+			}
+			#box3{
+				width: 200px;
+				height: 200px;
+				background: lightblue;
+				transform-origin: right top;				
+				animation: myAnimate 5s infinite linear;
+			}
+			#box4{
+				width: 500px;
+				height: 400px;
+				background: lightblue;
+				transform-origin: right top;				
+				animation: changeBGImg 5s infinite linear;
+			}
+			#box4:hover{
+				animation-play-state: paused;	/*动画状态暂停*/
+			}
+			
+			#box5{
+				width: 100px;
+				height: 40px;
+				background: red;
+				animation: shake 1s infinite linear;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			animation: 动画名 动画持续时长 执行次数 运动形式
+		
+		-->
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div id="box3"></div>
+		<div id="box4"></div>
+		<div id="box5"></div>
+		
+		<script type="text/javascript">
+			
+			var oBox = document.getElementsByTagName("div");
+			
+			for(var i=0; i<oBox.length; i++){
+				
+				oBox[i].index = i;
+				
+				// 监听动画完成效果
+				oBox[i].addEventListener("webkitAnimationEnd", function(){
+					
+					console.log("第"+(this.index+1)+"个div的动画执行完成了");
+					
+				})
+				
+			}
+			
+		</script>
+	</body>
+</html>

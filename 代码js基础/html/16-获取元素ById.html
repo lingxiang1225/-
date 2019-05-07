@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--已知有甲乙丙三辆车，甲车与乙车速度都是50km/h，丙车速度是甲乙两车的速度之和，求丙车速度-->
+		<input type="text" id="jia" value="50" />
+		<input type="text" id="yi" value="50" />
+		
+		<script>
+//			获取元素(通过id从文档获取元素)
+			var oInput1 = document.getElementById("jia");
+			var oInput2 = document.getElementById("yi");
+			console.log(oInput1);
+			console.log(oInput2);
+			
+//			获取属性里面的值
+			var jiaSpeed = oInput1.value;
+			var yiSpeed = oInput2.value;
+			
+//			求丙车速度= 甲车速度+乙车速度
+			var bingSpeed = Number(jiaSpeed) + Number(yiSpeed);
+			console.log(bingSpeed);
+		</script>
+	</body>
+</html>

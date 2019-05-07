@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			运算符:
+				算术运算:	
+					+	(如果+号两边其中有一个是string,则进行字符串拼接)
+					-	减法(隐式转换为数字)
+					*	乘法法(隐式转换为数字)
+					/	除法(隐式转换为数字)
+					%	取余
+					++	自增1
+						前自增[先计算后获得值]; 
+						后自增[先获得值，后计算]
+					--	自减1
+						前自减[先计算后获得值]; 
+						后自减[先获得值，后计算]
+				
+				赋值运算符:
+					=	赋值
+					+=	x+=y相当于x=x+y
+					-=	x-=y相当于x=x-y
+					*=	x*=y相当于x=x*y
+					/=	x/=y相当于x=x/y
+					%=	x%=y相当于x=x%y
+					
+				比较运算符:(返回值是布尔类型)
+					== 判断值是否相等(将数据类型隐式转换)
+					===	判断值和数据类型是否都相等
+					>
+					<
+					>=
+					<=
+					!=	不等于
+					!==	不全等于
+					
+				逻辑运算符:(短路求值)
+					逻辑与: &&	(两者都为真即为真)
+					逻辑或: || 	(只要有一者为真即为真)
+					逻辑非: !	(非真即假,非假即真)
+		-->
+		<script>
+			
+//			var num1 = prompt("请输入第一个数字");
+//			var num2 = prompt("请输入第二个数字");
+//			alert(num1%num2);
+			
+//			if(num1 % num2 != 0){
+//				alert("第一个数不能被第二个数整除")
+//			}
+
+			var a = 10;
+			console.log(a++);	//10
+			console.log(a);		//11
+			console.log(a++);   //11
+			console.log(a++ + a++);   //25(12+13)
+			console.log(a);		//14
+			console.log(++a);   //15
+			console.log(a++ + ++a);   //32(15+17)
+			console.log(a); //17
+			console.log(--a + a++ - a--);	//15
+			
+			var sum = 0;
+			sum += 10;
+			console.log(sum); //10 (sum = sum + 10)
+			
+//			sum = sum % 3;
+			sum %= 3;
+			console.log(sum);
+			
+			console.log(123 == "123");	//true(转换为同样的数据类型)
+			console.log(123 == "456");	//false
+			console.log(123 === "123");	//false
+			console.log(123 != "123");	//false
+			console.log(123 !== "123");	//true
+			
+			var i = 10, j = 20, k = 30;
+//			if(i>k && k>j){
+//				alert(i+"最大");
+//			}else if(k>j && j>i){
+//				alert(k+"最大")
+//			}else if(j>k && k>i){
+//				alert(j+"最大")
+//			}
+			console.log(10>20 && 20>9); //假 && 真==>false
+			console.log(10<20 && 20>9); //真 && 真==>true
+			console.log(10>20 && 20<9); //假 && 假==>false
+			console.log(10<20 && 20<9 && 10>5); //真 && 假 && 真==>false
+			
+			
+			console.log(10>20 || 20>9);	//假 || 真==>true
+			console.log(10<20 || 20>9 && 20<10);	//真 || 真 && 假==>true
+			console.log(10>20 || 20<9);	//假 || 假==>false
+			console.log(10<20 || 20<9);	//真 || 假==>true
+			
+			console.log(!true); //false
+			console.log(!(10>2)); //false
+			console.log(!"我"); //false
+			console.log(!""); //true
+		</script>
+	</body>
+</html>

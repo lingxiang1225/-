@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			对象:
+				特点: 
+					封装,继承,抽象
+				
+				属性和方法
+				
+			创建对象的几种方式:	
+				1.字面量对象
+				2.new对象
+				3.工厂方式
+				4.构造函数
+				5.原型继承(方法是同一个)
+				6.call和apply继承
+		-->
+		
+		<script>
+			
+//			1.字面量对象
+			var obj1 = {
+				name: "小龙女",
+				age: 18,
+				say: function(){
+					console.log(this.name+"say: 你好!");
+				}
+			}
+			obj1.name = "杨过";
+			console.log(obj1);
+			obj1.say();
+			
+//			2.通过new一个对象
+			var obj2 = new Object();
+			console.log(obj2);
+			
+//			3.工厂方式创建对象
+			function createObj(name,age,say){
+				
+//				投入原料
+				var obj = new Object();
+//				进行加工
+				obj.name = name;
+				obj.age = age;
+				obj.say = function(){
+					console.log(this.name+"say:"+say);
+				}
+//				产出产品
+				return obj;
+			}
+			var person1 = createObj("第一人",20,"你好吗?");
+			var person2 = createObj("第二人",20,"你好吗?");
+			var person3 = createObj("第三人",20,"你好吗?");
+			var person4 = createObj("第四人",20,"你好吗?");
+			var person5 = createObj("第五人",20,"你好吗?");
+			console.log(person1);
+			console.log(person2);
+			console.log(person3);
+			console.log(person4);
+			console.log(person5);
+			person1.say();
+			console.log(person1.say == person2.say);
+			
+//			4.构造函数创建对象(通过new的方式调用的函数叫构造函数)
+			function Animal(name,age,say){
+//				假想构造函数内部自动new Object
+//				var obj = new Object();
+
+				this.name = name;
+				this.age = age;
+				this.say = function(){
+					console.log(this.name+" say:"+say);
+				}
+				
+				return this;
+			}
+			var cat = new Animal("kate",3,"miao");
+			var dog = new Animal("旺财",5,"汪汪汪");
+			console.log(cat);
+			console.log(dog);
+			cat.say();
+			console.log(cat.say == dog.say);
+			
+//			5.原型继承
+			function BirdClass(name,age,say){
+//				假想构造函数内部自动new Object
+//				var obj = new Object();
+
+				this.name = name;
+				this.age = age;
+				return this;
+			}
+			BirdClass.prototype.say = function(say){
+				return this.name+" say: "+say;
+			}
+			var bird1 = new BirdClass("八哥",3,"我会说好话");
+			var bird2 = new BirdClass("麻雀",3,"在电线杆上多嘴");
+			console.log(bird1);
+			console.log(bird2);
+			console.log(bird2.say("你好"));
+//			bird1.say = function(){
+//				return "hello";
+//			}
+			
+			console.log(bird1.say == bird2.say);	//true
+			
+			
+//			6.call和apply继承
+			function Animal(name,age,say){
+//				假想构造函数内部自动new Object
+//				var obj = new Object();
+
+				this.name = name;
+				this.age = age;
+				this.say = function(){
+					console.log(this.name+" say:"+say);
+				}
+				
+				return this;
+			}
+			function animal1(){
+				
+				var ani1 = new Object();
+				
+				Animal.call(ani1,"我是xxx",18,"你饿了么?");	//call改变this指向(在Animal这个构造函数里面,将this指向ani1)
+				
+				return ani1;
+				
+			}
+			function animal2(){
+				
+				var ani2 = new Object();
+				
+//				Animal.call(ani2,"我是谁",28,"我饿了");	//call改变this指向(在Animal这个构造函数里面,将this指向ani1)
+				Animal.apply(ani2,["我是谁",28,"我饿了"]);	//apply改变this指向(在Animal这个构造函数里面,将this指向ani1)
+				
+				return ani2;
+				
+			}
+			console.log(animal1());
+			console.log(animal2());
+			animal1().say();
+			animal2().say();
+			console.log(animal1().say == animal2().say);	//false
+		</script>
+	</body>
+</html>

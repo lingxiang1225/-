@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			p{
+				height: 60px;
+				text-align: left;
+				text-indent: 2em;		/*首行缩进*/
+				/*line-height: 60px;		/*行与行之间的距离*/*/
+				letter-spacing: 1em;	/*字与字之间的距离*/
+				text-transform: capitalize;
+				text-decoration: underline;	
+				word-break: keep-all;
+				/*font-size: 20px;
+				font-weight: bold;	
+				font-family: "仿宋";
+				font-style: italic;*/
+				font: italic bold 20px "仿宋";
+				color: rgb(200,200,200);
+				color: #f00;
+				color: transparent;	/*透明色*/
+				color: rgba(255,0,0,.05);
+			}
+			div{
+				width: 100%;
+				height: 100px;
+				/*background-color: lightgreen;
+				background-image: url("../../../HTML部分/代码/img/xiaomi.jpg");
+				background-repeat: no-repeat;
+				background-position: 20% 100px;*/
+				background: lightgreen url("../../../HTML部分/代码/img/xiaomi.jpg") no-repeat 20% top;
+				background-size: 200px 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			常用属性:
+				文本属性
+					text-align:		水平对齐方式(left左对齐|right右对齐|center居中对齐)
+					text-indent:	文本首行缩进
+					line-height:	行高(单行文本时,高度与行高一致可以实现垂直方向居中)
+					letter-spacing:	字符间距
+					text-transform:	文本转换(lowercase全小写,uppercase全大写,capitalize首字母大写)
+					text-decoration:文本修饰(underline下划线,overline上划线,line-through删除线,none去掉文本修饰)
+					word-break:		单词换行(keep-all保持整个单词换行; breal-all单词内可换行)
+		
+				字体属性:
+					font-size:		字体大小(浏览器默认字体大小为16px,最小为12px)
+					font-weight:	字体粗细(bold加粗,normal不加粗)
+					font-family: 	字体类型
+					font-style:		字体风格(italic斜体)
+					font:	以上四个的合写方式(风格 粗细 大小 类型)
+					color			字体颜色
+				
+				表示颜色的方式:
+					1.英文单词
+						transparent透明色 red红色	green绿色 black黑色 white白色 orange橙色 pink粉色 blue蓝色 yellow黄色 gold金色 gray灰色 brown棕色 purple紫色
+					
+					2.rgb(red,green,blue)--取值范围是0~255
+						颜色的三原色red green blue(三原色一致时,是不同程度的灰色,越靠近0颜色越深)
+		
+					3.十六进制--取值范围0~9a~f
+						#ff0000	(六位中,前两位对应red,中间两位对应绿色,后两位对应蓝色)--两位一致时,可以简写为1位
+					
+					4.rgba(red,green,blue,a)--带有透明度的颜色
+						a的取值范围是0~1(0为全透明,1为不透明)
+						
+				背景属性:
+					background-color: 	背景色
+					background-image: url("");	背景图
+					background-repeat: 	背景是否重复(no-repeat 不重复;repeat-x X轴重复;repeat-y Y轴重复; repeat 重复)
+					background-position: X轴 Y轴;(X轴:left|center|right|数值; Y轴:top|center|bottom|数值)
+					background: 以上四个属性的合写方式
+					background-size:	背景尺寸(宽度 高度)
+						cover图片不变形的前提下,宽高撑满,图片可能会超过隐藏
+						contain	图片不变形的前提下,将其中的宽或高撑满
+		-->
+		<p>
+			Rain is falling all around, 雨儿在到处降落.Never give up, Never lose hope. Always have faith, It allows you to cope. Trying times will pass, As they always do. Just have patience, Your dreams will come true. So put on a smile, You'll live through your pain. Know it will pass, And strength you will gain.
+		</p>
+		<div></div>
+	</body>
+</html>

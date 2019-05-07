@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body,ul,li{margin: 0; padding: 0;}
+			ul,li{list-style: none;}
+			ul{
+				background-color: lightgray;
+			 	display: flex; 
+			 	height: 200px;
+			 	align-items: center;
+			 }
+			li{
+				/*width: 199px; 看flex-grow时取消注释*/
+				width: 399px;
+				height: 100px;
+				background-color: lightpink;
+				border-right: 1px solid yellow;
+				flex-shrink: 0;
+			}
+			ul li:nth-child(1){
+				order: 1;
+				align-self: flex-end;
+			}
+			ul li:nth-child(2){
+				order: -1;
+				flex-grow: 1;
+				flex-shrink: 1;
+			}
+			ul li:nth-child(3){
+				order: 0;
+				flex-grow: 2;
+				flex-basis: 299px;
+				max-width: 199px;
+				/*flex: 2 0 299px;*/
+			}
+			ul li:nth-child(5){
+				order: 2;
+				flex-grow: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			flex布局的项目属性
+				order:	顺序(默认是0,数值越大越靠后)
+				
+				flex-grow: 放大比例(将剩余空间按比例平均分配)--默认值为0
+					剩余空间: 1600-200*5 = 600
+					放大总份数: 1+2+1 = 4
+					平均每份分配空间: 600/4 = 150
+					li2: 200 + 150*1 = 350
+					li3: 200 + 150*2 = 500
+					li5: 200 + 150*1 = 350
+				
+				flex-shrink: 缩小比例(将不足空间按比例平均分配)--默认为1[默认缩小]
+					不足空间: 1600 - 400*5 = -400
+					缩小总份数: 1*5+1 = 6
+					平均每份分配空间: 400/6 = 66.666
+					li: 400 - 66.66 = 333.33
+					li2: 400 - 66.66*2 = 266.68
+					
+				flex-basis: 伸缩基准值
+					给某个项目一个特殊的基准
+					会受到max-width和min-width的限制
+					
+				flex: 以上三个的合写方式
+					默认值: 0 1 auto(当值为1位时,是flex-grow;后两位可省略)
+					
+				align-self: 单个项目的交叉轴对齐方式
+					会覆盖父容器的align-items
+					center			居中
+					flex-start		从起点开始
+					flex-end		从终点开始
+					stretch			撑满容器
+					baseline 		基线对齐
+		-->
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</body>
+</html>

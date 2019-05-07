@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			html4获取元素的方式:
+				getElementById()
+				getElementsByTagName()
+				getElementsByName()
+			
+			html5获取元素的方式:
+				getElementsByClassName()	--获取相同的class名的元素(数组形式)
+				querySelector()	--单个元素(多个时只能获取到第一个)--参数同css选择器
+				querySelectorAll()	--可获取多个元素(数组)--参数同css选择器
+		
+		-->
+		<div>
+			<p>我不是你想要的标签</p>
+			<div>
+				<p class="youNeedMe">我是div里面的div里面的p标签</p>
+			</div>
+			<span></span>
+		</div>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var oP = document.querySelector("p");
+				var aP = document.querySelectorAll("p");
+				var needP = document.getElementsByClassName("youNeedMe");
+				
+				// 获取div里面的div里面的p标签
+				var weNeedP1 = document.querySelector(".youNeedMe");
+				var weNeedP2 = document.querySelector("div>div>p");
+				
+				console.log(oP);
+				console.log(aP);
+				console.log(needP);
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				background-color: #f1f1f1;
+			}
+			canvas{
+				background-color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			toDataURL()	生成base64的图片路径
+			clearRect()	清除矩形(参数分别为: X轴坐标, Y轴坐标, 宽度, 高度)
+		
+		-->
+		<canvas width="600" height="500">
+			您的浏览器不支持canvas
+		</canvas>
+		<button>清除</button>
+		<img src="" />
+		
+		<script>
+			
+			window.onload = function(){
+				
+				var myCanvas = document.getElementsByTagName("canvas")[0];
+				var oImg = document.getElementsByTagName("img")[0];
+				var oBtn = document.getElementsByTagName("button")[0];
+				
+				// 1.创建画布
+				var ctx = myCanvas.getContext("2d");
+				
+				// 2.绑定鼠标按下事件
+				myCanvas.onmousedown = function(ev){
+					
+					var ev = ev || window.event;
+					
+					// 3.获取鼠标按下的坐标
+					var oMouseX = ev.pageX - myCanvas.offsetLeft;
+					var oMouseY = ev.pageY - myCanvas.offsetTop;
+					
+					// 4.开始路径绘制
+					ctx.beginPath();
+					
+					// 5.将该坐标设置为起始坐标
+					ctx.moveTo(oMouseX,oMouseY);
+					
+					// 6.绑定鼠标移动事件
+					document.onmousemove = function(ev){
+						
+						var ev = ev || window.event;
+						
+						// 7.获取鼠标移动到的坐标
+						var MX = ev.pageX - myCanvas.offsetLeft;
+						var MY = ev.pageY - myCanvas.offsetTop;
+						
+						// 8.lineTo到坐标
+						ctx.lineTo(MX,MY);
+						
+						// 9.绘制线条
+						ctx.stroke();
+						
+					}
+					
+					// 10.绑定鼠标松开事件
+					myCanvas.onmouseup = function(){
+						
+						// 11.关闭路径
+						ctx.closePath();
+						
+						// 12.取消鼠标移动事件
+						document.onmousemove = null;
+						
+						// 13.生成图片路径
+						var oSrc = myCanvas.toDataURL();	//转为base64格式的图片路径
+						
+						// 14.将路径赋值给oImg
+						oImg.src = oSrc;
+						
+						// 15.绑定清除按钮
+						oBtn.onclick = function(){
+							
+							// 16.清除矩形内容(X轴坐标,Y轴坐标,宽度,高度)
+							ctx.clearRect(0,0,myCanvas.offsetWidth,myCanvas.offsetHeight);
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

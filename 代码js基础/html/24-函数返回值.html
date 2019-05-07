@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			function iceLolly(a,b){
+				
+//				console.log("您做的冰棍是"+a+b+"味的");
+				return "您做的冰棍是"+a+b+"味的";
+				
+			}
+			var firstIce = iceLolly("牛奶","西瓜");
+			var secondIce = iceLolly("绿豆","红豆");
+			console.log(firstIce);
+			console.log(secondIce);
+			
+			
+			function dealData(a,b){
+				
+				var data1 = a * 3.14 * 2;	//第一个圆的周长
+				var data2 = b * 3.14 * 2;	//第二个圆的周长
+				var sum = data1 + data2;	//周长总和
+				return sum;	//返回一个处理后的最终结果
+				
+			}
+			var result = dealData(2,3);
+			console.log(result);
+		</script>
+	</body>
+</html>

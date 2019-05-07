@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.container{
+				width: 600px;
+				height: 600px;
+				border: 1px solid #ccc;
+				margin: 50px auto;
+			}
+			.content{
+				height: 350px;
+				border: 1px solid #ccc;
+				overflow-y: auto;
+			}
+			textarea{
+				width: 600px;
+				height: 100px;
+				box-sizing: border-box;
+				resize: none;
+			}
+			button{
+				width: 600px;
+				height: 50px;
+				box-sizing: border-box;
+			}
+			p{
+				word-break: break-all;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			阻止默认事件:
+				function stopPrevent(ev) {
+					if (ev && ev.preventDefault) {
+						ev.preventDefault();
+					} else {	//IE浏览器
+						window.event.returnValue = false;
+					}			
+					return false;
+				}
+
+			
+			
+			
+		-->
+		<div class="container">
+			<h2>留言板</h2>
+			<hr />
+			<div class="content"></div>
+			<textarea placeholder="请输入留言"></textarea>
+			<button>发表留言</button>
+		</div>
+		
+		<script>
+//			1.获取元素
+			var oCont = document.getElementsByClassName("content")[0];
+			var oTxt = document.getElementsByTagName("textarea")[0];
+			var oBtn = document.getElementsByTagName("button")[0];
+			var floor = 0;	//楼层初始值
+			
+//			2.绑定点击事件
+			oBtn.onclick = sendMsg;
+			
+//			3.键盘按下enter键发送
+			oTxt.onkeydown = function(ev){
+				var ev = ev || window.event;
+				if(ev.keyCode == 13){
+					sendMsg();
+					stopPrevent(ev);
+				}
+			}
+			
+			function sendMsg(){
+//				3.获取输入框的值
+				var val = oTxt.value;
+				
+//				4.判断值是否不为空
+				if(val.trim() != ""){
+									
+//					5.楼层自增1
+					floor++;
+					
+//					6.将输入的值添加到oCont
+					oCont.innerHTML += "<p>"+floor+"楼: "+val+"</p>";
+					
+//					7.清空输入框
+					oTxt.value = "";
+					
+//					8.始终保持在最新留言(后面学的内容)
+					oCont.scrollTop = oCont.scrollHeight;
+					
+				}else{
+					
+					alert("请输入留言内容");
+					
+				}
+			}
+			
+//			阻止默认事件
+			function stopPrevent(ev) {
+				if (ev && ev.preventDefault) {
+					ev.preventDefault();
+				} else {	//IE浏览器
+					window.event.returnValue = false;
+				}			
+				return false;
+			}
+		</script>
+	</body>
+</html>

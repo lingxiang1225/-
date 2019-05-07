@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.radius{
+				width: 100px;
+				height: 100px;
+				background-color: lightpink;
+				border-radius: 10px;
+			}
+			.circle{
+				width: 100px;
+				height: 100px;
+				background-color: lightblue;
+				border-radius: 50%;
+			}
+			.ellipse{
+				width: 100px;
+				height: 200px;
+				background-color: lightgreen;
+				border-radius: 50%;
+			}
+			.leaf{
+				width: 90px;
+				height: 100px;
+				background-color: forestgreen;
+				border-top-left-radius: 50%;
+				border-bottom-right-radius: 50%;
+			}
+			input{
+				height: 30px;
+				border-width: 1px;
+				border-radius: 5px;
+				outline: none;	/*去掉轮廓*/
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			圆角属性border-radius
+				圆形: 宽高一致,border-radius为50%
+				椭圆形: 宽高不一致,border-radius为50%
+				
+				指定方向:
+					border-top-left-radius
+					border-top-right-radius
+					border-bottom-left-radius
+					border-bottom-right-radius
+			
+			
+		-->
+		<div class="radius"></div>
+		<div class="circle"></div>
+		<div class="ellipse"></div>
+		<div class="leaf"></div>
+		<input type="text" name="" id="" value="" />
+	</body>
+</html>

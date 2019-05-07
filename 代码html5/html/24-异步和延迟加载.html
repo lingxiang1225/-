@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/a.js" defer="defer"></script>
+		<script src="../js/c.js" async="async"></script>
+		<script src="../js/b.js" async="async"></script>
+		<script src="../js/jquery3.4.0.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--
+			正常情况下,程序执行顺序是从上到下(相当于接力赛,等前一个执行完成之后,下一个才可以执行)
+			
+			defer: 延迟加载(相当于window.onload)--页面加载完成之后再执行该js文件
+			async: 异步加载(js可以同时加载,谁先加载完就先执行--同一起点开始跑步,谁先到终点谁先执行)
+				(如果需要依赖前面的js执行完成之后,再执行,则不可以使用异步)
+		-->
+		<div>我是div</div>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/ajax.js"></script>
+	</head>
+	<body>
+		<!--
+			赵,钱,周是同步(按照程序执行顺序,从上往下执行)
+			延时器里面的是异步(等同步的程序执行完成之后,再申请加入程序执行)
+			
+			promise解决异步回调问题(回调地狱问题)
+		-->
+		<script type="text/javascript">
+			// console.log("赵");
+			// setTimeout(()=>{
+			// 	console.log("李");
+			// },10);
+			// console.log("钱");
+			// setTimeout(()=>{
+			// 	console.log("孙");
+			// },0);
+			// console.log("周");
+			
+			// ajax("get","https://www.easy-mock.com/mock/5ba06ec82ee5a7654dc13dd7/example/nowPlaying1","",(res)=>{
+			// 	console.log(res);
+			// 	let filmId = res.data.films[0].filmId;	//filmId(根据filmId请求下一个接口)
+			// 	ajax("get","https://www.easy-mock.com/mock/5ba06ec82ee5a7654dc13dd7/example/fuchouzheDetail?filmId="+filmId,"",(res1)=>{
+			// 		console.log(res1);
+			// 	},(err)=>{
+			// 		console.log(err);
+			// 	})
+			// },(err)=>{
+			// 	console.log(err);
+			// })
+			
+			let promise = new Promise((resolve,reject)=>{	//resolve,reject都是回调函数(成功回调,失败回调)
+				ajax("get","https://www.easy-mock.com/mock/5ba06ec82ee5a7654dc13dd7/example/nowPlaying1","",(res)=>{
+					let filmId = res.data.films[0].filmId;	//filmId(根据filmId请求下一个接口)
+					resolve(filmId);	//成功回调
+				},(err)=>{
+					reject(err);	//失败回调
+				})
+			})
+			promise.then((res)=>{
+				ajax("get","https://www.easy-mock.com/mock/5ba06ec82ee5a7654dc13dd7/example/fuchouzheDetail?filmId="+res,"",(res1)=>{
+					resolve(res1);	//成功回调
+				},(err)=>{
+					console.log(err);	//失败回调
+				})
+			},(err)=>{
+				reject(err);
+				console.log(err);	//第二个接口失败回调
+				
+			}).catch((err)=>{	//捕获异常
+				console.log("发生错误"+err);
+			})
+		</script>
+	</body>
+</html>

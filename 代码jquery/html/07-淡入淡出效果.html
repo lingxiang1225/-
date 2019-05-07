@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery3.4.0.js"></script>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #ccc;
+				background-color: #000;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			fadeIn(speed,swing,fn)		淡入
+			fadeOut()		淡出
+			fadeToggle()	切换出入
+			fadeTo(speed,swing,透明度(0-1),fn)	淡入/淡出到指定透明度
+				speed: 滑动时长(默认毫秒)
+				swing: 切换效果(可能的值: linear)
+				fn: 滑动完成之后的执行语句
+				
+		-->
+		<button>淡入</button>
+		<button>淡出</button>
+		<button>切换出入</button>
+		<button>淡入/淡出到0.5透明度</button>
+		<div></div>
+		<script>
+			
+			$(function(){
+				
+				$("button").eq(0).click(function(){
+					
+					$("div").fadeIn(1000,"linear",function(){
+						alert("出来了");
+					});
+					
+				})
+				$("button").eq(1).click(function(){
+					
+					$("div").fadeOut(1000,"linear");
+					
+				})
+				$("button").eq(2).click(function(){
+					
+					$("div").fadeToggle(2000,"linear");
+					
+				})
+				$("button").eq(3).click(function(){
+					
+					$("div").fadeTo(2000, 0.5);
+					
+				})
+				
+			})
+			
+		</script>
+	</body>
+</html>

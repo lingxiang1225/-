@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/jquery3.4.0.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--
+			基本数据类型:
+				存放在栈内存
+				
+			引用数据类型:
+				存放在堆内存
+		
+			浅拷贝:
+				拷贝的是指针(新对象的值改变会影响旧对象)
+				
+			深拷贝:
+				在堆内存另外开辟一个空间复制一份obj(新对象的值改变不会影响旧对象)
+				
+				$.extend(obj3,obj1);
+					第一个参数是待修改的新对象
+					第二个参数是被拷贝的旧对象
+		
+		-->
+		<script>
+			
+			var obj1 = {name: "lili", age: 18, gender: "female"};
+			
+			var obj2 = obj1;	//浅拷贝
+			
+			console.log(obj1);
+			console.log(obj2);
+			
+			obj2.age = 30;
+			
+			console.log(obj1.age);	//30
+			console.log(obj2.age);	//30
+			
+			// 深拷贝
+			var obj3 = {};
+			$.extend(true,obj3,obj1);
+			
+			console.log(obj1);
+			console.log(obj3);
+			obj3.age = 60;	
+			console.log(obj1);	//{name: "lili", age: 30, gender: "female"}
+			console.log(obj3);	//{name: "lili", age: 60, gender: "female"}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#container{
+				width: 600px;
+				height: 600px;
+				border: 1px solid blue;
+				perspective: 350px;
+				margin: 100px auto;
+			}
+			.touzi{
+				width: 100px;
+				height: 100px;
+				position: relative;
+				transform-style: preserve-3d;
+				left: 40%;
+				top: 40%;
+				transition: 8s;
+			}
+			.touzi>div{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+			}
+			.touzi>div:nth-child(1){	/*底部*/
+				background: red;
+				transform-origin: bottom;
+				transform: rotateX(90deg);
+			}
+			.touzi>div:nth-child(2){	/*背后*/
+				background: yellow;
+				transform: translateZ(-100px);
+			}
+			.touzi>div:nth-child(3){	/*左边*/
+				background: orange;
+				transform-origin: left;
+				transform: rotateY(90deg);
+			}
+			.touzi>div:nth-child(4){	/*右边*/
+				background: limegreen;
+				transform-origin: right;
+				transform: rotateY(-90deg);
+			}
+			.touzi>div:nth-child(5){	/*上边*/
+				background: pink;
+				transform-origin: top;
+				transform: rotateX(-90deg);
+			}
+			.touzi>div:nth-child(6){	/*正面*/
+				background: lightgray;
+			}
+			#container:hover .touzi{
+				transform-origin: 50px 50px;
+				transform: rotate3d(2,2,2,720deg);	/*分别对应X,Y,Z,旋转角度*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div class="touzi">
+				<div>1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+				<div>5</div>
+				<div>6</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			JSON的格式要求:
+				1.key必须加引号
+				2.最后一个键值对不需要加逗号
+			
+			JSON数据一般用于前后台数据交互
+			
+			数据传输时,不支持使用JSON,只能使用JSON格式的字符串
+			
+			JSON格式的转换:
+				将json格式的字符串转真正的json: JSON.parse()
+				将真正的JSON格式转为字符串类型: JSON.stringify()
+				
+				eval("("+JSONData+")")
+				
+				JSON.parse与eval的区别:
+					前者对json格式要求严格,安全性高，性能好
+					后者对json格式要求不严谨.可以进行字符串的运算，用eval解析json 安全性低，容易注入，eval 可以解析格式不是非常正确的json文件，eval内存消耗大，性能低
+		-->
+		
+		<script>
+			
+//			json格式的字符串
+			var jsonStr = '{"name": "lili", "height": 165, "age": 18}';
+			
+//			转为真正的json格式
+			console.log(JSON.parse(jsonStr));
+			
+//			eval转json
+			console.log(eval("("+jsonStr+")"));
+			
+			
+//			json格式
+			var myJson = {"name": "lili", "height": 165, "age": 18};
+			console.log(JSON.stringify(myJson));
+			
+//			不严谨的json格式字符串解析对比
+			var wrongJson = '{name: "lili", "height": 165, "age": 18,}'
+			
+			console.log(eval("("+wrongJson+")"));
+			
+			console.log("1+2+3");	//1+2+3
+			console.log(eval("1+2+3"));	//6(可以计算出结果)
+			console.log(JSON.parse(wrongJson));
+			
+		</script>
+	</body>
+</html>

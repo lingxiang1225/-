@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" value=""  />
+		<input type="text" value="" />
+		<button>计算结果(和)</button>
+		<br />
+		<input type="text" value=""  />
+		<input type="text" value="" />
+		<button>计算结果(和)</button>
+		
+		<script>
+			
+//			1.获取元素
+			var aInput = document.getElementsByTagName("input");
+			var oBtn = document.getElementsByTagName("button");
+			
+//			2.绑定点击事件
+			oBtn[0].onclick = function(){
+				var oInput1 = aInput[0].value;
+				var oInput2 = aInput[1].value;
+				sum(oInput1,oInput2);	//函数调用(传实参[将两个输入框的值传进去])
+			}
+			
+//			2.绑定点击事件
+			oBtn[1].onclick = function(){
+				var oInput3 = aInput[2].value;
+				var oInput4 = aInput[3].value;
+				sum(oInput3,oInput4);	//函数调用(传实参)
+			}
+			
+			
+//			求和函数
+			function sum(val1,val2){
+				var sum = Number(val1) + Number(val2);
+				console.log(sum);
+			}
+		</script>
+	</body>
+</html>

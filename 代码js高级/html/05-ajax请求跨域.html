@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/ajax.js"></script>
+	</head>
+	<body>
+		<!--
+			跨域:
+				受同源策略影响,协议|域名|端口号有任意一个不一致,则导致跨域
+				
+				协议不一致:
+					https://www.demo.com
+					http://www.demo.com
+					
+				域名不一致:
+					http://www.demo1.com
+					http://m.demo2.com
+					
+				端口不一致:
+					http://www.demo.com:3000
+					http://www.demo.com:8080
+					
+				跨域报错:
+					Access to XMLHttpRequest at 'xxx' from origin 'xxx' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+		
+				解决办法:
+					jsonp解决跨域
+		-->
+		
+		<script>
+			
+			ajax("get","https://api.douban.com/v2/movie/in_theaters","",function(res){
+				console.log(res);
+			},function(err){
+				console.log(err);
+			})
+			
+		</script>
+	</body>
+</html>

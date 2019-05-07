@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 2000px;
+			}
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: lightblue;
+				padding: 10px;
+				border: 5px solid #ccc;
+				overflow: auto;
+			}
+			.scollBox{
+				height: 1600px;
+				background-color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			获取元素尺寸:
+				offsetWidth--包括padding,border和滚动条在内的实际宽度
+				offsetHeight--包括padding,border和滚动条在内的实际高度
+				
+				clientWidth--不包含border的可视内容宽度
+				clientHeight--不包含border的可视内容高度
+				
+				scrollWidth--元素的X轴可滚动宽度(不包含border)
+				scrollHeight--元素的Y轴可滚动高度(不包含border)
+			
+				innerWidth--浏览器可视窗口的宽度
+				innerHeight--浏览器可视窗口的高度
+				
+				document.documentElement.scrollWidth--浏览器窗口的可滚动宽度(X轴)
+				document.documentElement.scrollHeight--浏览器窗口的可滚动高度(Y轴)
+			
+		-->
+		<div id="box1">
+			<div class="scollBox"></div>
+		</div>
+		
+		<script>
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oBox = document.getElementById("box1");
+				
+//				3.获取元素尺寸
+				console.log(oBox.offsetWidth);
+				console.log(oBox.offsetHeight);
+				
+				console.log(oBox.clientWidth);
+				console.log(oBox.clientHeight);
+				
+				console.log(oBox.scrollWidth);
+				console.log(oBox.scrollHeight);
+				
+//				浏览器的尺寸
+//				console.log(window.innerWidth);
+//				console.log(window.innerHeight);
+				
+//				IE低版本
+//				console.log(document.documentElement.clientWidth);
+//				console.log(document.documentElement.clientHeight);
+				
+//				调用获取窗口尺寸兼容
+				console.log(windowWidth());
+				console.log(windowHeight());
+				
+//				窗口的Y轴可滚动距离
+				console.log(document.documentElement.scrollHeight);
+//				窗口的X轴可滚动距离
+				console.log(document.documentElement.scrollWidth);
+				
+				
+//				获取浏览器窗口的尺寸兼容
+				function windowWidth(){
+					return document.documentElement.clientWidth || window.innerWidth;
+				}
+				function windowHeight(){
+					return document.documentElement.clientHeight || window.innerHeight;
+				}
+	
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #ccc;
+			}
+			.one{
+				background: red;
+			}
+			.two{
+				background: yellow;
+			}
+			.three{
+				background: lightgreen;
+			}
+			.four{
+				background: lightblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="one two three">我是div</div>
+		<button>切换class</button>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var oBox = document.querySelector("div");
+				var oBtn = document.querySelector("button");
+				
+				console.log(oBox.classList);	//获取元素的所有class名(数组形式)
+				
+				console.log(oBox.classList.length);	//元素的class名的个数
+				
+				// oBox.className = "one two";
+				
+				// 移除class
+				oBox.classList.remove("three");
+				
+				// 添加class
+				oBox.classList.add("four");
+				
+				// 绑定点击事件
+				oBtn.onclick = function(){
+					
+					//切换class(参数接收一个需要被切换的className)
+					oBox.classList.toggle("four");
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

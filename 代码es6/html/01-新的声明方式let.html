@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			span{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			let声明
+				1.具有块级作用域(花括号)
+		
+		
+		-->
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+		<script type="text/javascript">
+			//	用var声明的变量区分为全局变量和局部变量
+			/*var a = '10';
+			function num(){
+				var a = '20';
+				if(a == '10'){
+					var a = '30';
+				}else{
+					var a = '40';
+				}
+				return a;
+			}
+			console.log(a);	//10 
+			var a = num();
+			console.log(a);	//40*/
+			
+			
+			// 1.具有块级作用域(花括号)
+			if(true){
+				var a = 10;
+				console.log(a);	//10
+			}
+			console.log(a);	//10
+			
+			if(true){
+				let b = 20;
+				console.log(b);	//20
+			}
+			// console.log(b);	//b is not defined
+			
+			// 块级作用域的应用
+			let aSpan = document.querySelectorAll("span");
+			
+			// for(var i=0; i<aSpan.length;i++){
+			// 	// aSpan[i].index = i;
+			// 	aSpan[i].onclick = function(){
+			// 		console.log(i);
+			// 	}
+			// }
+			for(let i=0; i<aSpan.length;i++){
+				aSpan[i].onclick = function(){
+					console.log(i);
+				}
+			}
+			
+			for(let j=0; j<5; j++){
+				let k = "k";
+				if(true){
+					let k = "kg";
+					console.log(k);	//kg
+				}
+				console.log(k);	//k
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			变量里面存储的值可以是任意数据类型
+			js的数据类型:
+				基本数据类型:
+					number		数字类型
+					string		字符串类型(用引号包起来的内容)
+					undefined	未定义(声明未赋值时)
+					null		空对象指针
+					boolean		布尔值(true || false)
+					
+				引用数据类型:
+					object		对象
+			
+			
+			通过typeof判断数据类型
+		-->
+		<script>
+			var num = 1234567890;
+			console.log(num);	//在控制台打印
+			console.log(typeof num);	//number
+			
+			var str = "我是小刘老师";
+			console.log(str);
+			console.log(typeof str);
+			
+			var numStr = "1234567890";
+			console.log(numStr);
+			console.log(typeof numStr);
+			
+			var cont;
+			console.log(cont); //undefined
+			console.log(typeof cont); //undefined
+			
+//			console.log(myNum);	//myNum is not defined(未定义)
+			
+//			console.log(cont);	//当前面出现报错时,后面不会再执行
+			
+			cont = null;
+			console.log(cont); //null
+			console.log(typeof cont); //object
+			
+			cont = "hello";
+			console.log(cont);
+			
+			var bool = false;
+			console.log(bool);
+			console.log(typeof bool);
+			
+			var myObj = {
+				name: "小龙女",
+				age: 18,
+				height: 168
+			}
+			console.log(myObj);
+			console.log(typeof myObj);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			span{
+				display: inline-block;	/*将span转换成行内块级元素(设置宽高)*/
+				width: 57px;
+				height:49px;
+				background: url("../../作业/day03/作业1/抓鱼.gif") no-repeat -252px -132px;
+			}
+			div{
+				display: inline;
+				width: 57px;
+				height:49px;
+				background: url("../../作业/day03/作业1/抓鱼.gif") no-repeat -252px -132px;
+			}
+			p{
+				width: 200px;
+				height: 60px;
+				background-color: lightgreen;
+			}
+			p:hover{
+				background-color: pink;
+			}
+			/*hover只能控制后代元素*/
+			p:hover .hidden_ele{
+				display: none;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--
+			块级元素: 独占一块,可以设置宽高,宽度默认为100%(如: div,p,h1~h6,li,form,table)
+			行内元素: 多个行内元素排成一排,不可以设置宽高,宽度由内容撑开(如: span,input,b,i,a,u,del,button,img)
+			
+			元素转换(display):
+				block: 将元素转换成块级元素
+				inline:将元素转换成行内元素
+				inline-block: 将元素转换成行内块级元素(既享有块级元素可以设置宽高的特点,又具有行内排成一排[不独占一块]的特点)
+				none:  隐藏元素
+		-->
+		<span>34567890</span>
+		<span>34567890</span>
+		<div>123</div>
+		<div>123</div>
+		
+		<p>
+			将span隐藏起来
+			<span class="hidden_ele"></span>
+		</p>
+		<input type="text" />
+		<input type="text" />
+	</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+			}
+			div:nth-of-type(1){
+				background-color: #ccc;				
+			}
+			div:nth-of-type(2){
+				background-color: #ff0;				
+			}
+			div:nth-of-type(3){
+				height: 300px;
+				background-color: gold;				
+			}
+			input{
+				outline: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			常用事件:
+				onclick		点击事件
+				onmouseover	鼠标移上事件
+				onmouseout	鼠标移出事件
+				onmousemove	鼠标移动事件
+				onfocus		聚焦事件
+				onblur		失焦事件
+				onkeydown	键盘按下事件
+				onkeyup		松开键盘事件
+				onselect	内容被选中事件
+				onload		页面加载完成事件(当html结构解析完成之后再执行js)
+				onresize	窗口尺寸发生变化事件
+			
+		-->
+
+		
+		<script>
+//			当页面加载完成后执行
+			window.onload = function(){
+	//			1.获取元素
+				var aDiv = document.getElementsByTagName("div");
+				var aInput = document.getElementsByTagName("input");
+				var myBody = document.getElementsByTagName("body")[0];
+				
+	//			2.绑定点击事件
+				aDiv[0].onclick = function(){
+					
+	//				CSS属性使用驼峰式写法
+	//				aDiv[0].style.backgroundColor = "red";
+	//				aDiv[0].style.color = "#fff";
+					
+	//				简写为
+	//				aDiv[0].style.cssText = "width: 200px; height: 200px; background-color: red; color: #fff;"
+					
+	//				this指向的是当前绑定事件的元素(aDiv[0])
+					this.style.cssText = "width: 200px; height: 200px; background-color: red; color: #fff;"
+					
+				}
+				
+	//			3.绑定鼠标移上事件
+				aDiv[1].onmouseover = function(){
+					
+					this.style.fontSize = "30px";
+					
+				}
+				
+	//			3.绑定鼠标移出事件
+				aDiv[1].onmouseout = function(){
+					
+					this.style.fontSize = "16px";
+					
+				}
+				
+	//			4.绑定鼠标移动事件
+				var currentW = parseInt(aDiv[2].style.width);	//获取当前宽度
+				aDiv[2].onmousemove = function(){
+					
+					var changeW = currentW++;	//鼠标移动时,宽度+1
+					this.style.width = changeW+"px";
+					
+				}
+				
+	//			5.绑定聚焦事件
+				aInput[0].onfocus = function(){
+					
+					this.style.borderStyle = "solid";
+					this.style.borderColor = "green";
+					
+				}
+				
+	//			6.绑定失焦事件
+				aInput[0].onblur = function(){
+					
+					this.style.borderColor = "red";
+					
+				}
+				
+	//			7.键盘按下事件
+				aInput[0].onkeydown = function(){
+					
+					this.style.fontSize = "26px";
+					
+				}
+				
+	//			8.松开键盘事件
+				aInput[0].onkeyup = function(){
+					
+					console.log(this.value);
+					
+				}
+				
+	//			9.内容被选中事件
+				aInput[0].onselect = function(){
+					
+					alert("你为什么想要复制我的东西");
+					this.disabled = true;
+					
+				}
+				
+//				10.窗口尺寸改变大小事件
+				window.onresize = function(){
+					
+					myBody.style.backgroundColor = "rgb("+getRandom(0,255)+","+getRandom(0,255)+","+getRandom(0,255)+")";
+					
+				}
+				
+//				随机数函数
+				function getRandom(min,max){
+					
+					return Math.floor(Math.random()*(max-min)+min);
+					
+				}
+				
+				
+			}
+		</script>
+		
+		<div>点我</div>
+		<div>移向我</div>
+		<div style="width: 20px;">移动变大大大</div>
+		<input type="text" value="我是input" placeholder="请输入内容" />
+		
+	</body>
+</html>

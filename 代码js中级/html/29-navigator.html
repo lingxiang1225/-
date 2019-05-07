@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			navigator对象包含有关浏览器的信息，通常用于检测浏览器与操作系统的版本。
+			
+				浏览器,操作系统,移动设备
+		-->
+		<script>
+			
+			console.log(navigator.userAgent);
+			
+			if(navigator.userAgent.search("Chrome") != -1){
+			
+				alert("这是谷歌浏览器");
+				
+			}else if(navigator.userAgent.search("Firefox") != -1){
+			
+				alert("这是火狐浏览器");
+				
+			}else if(navigator.userAgent.search("MSIE") != -1){
+			
+				alert("这是IE浏览器");
+				
+			}else{
+			
+				alert("不要用杂七杂八的浏览器");	
+				
+			}
+			
+//			判断移动设备还是PC
+			if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+			    window.location.href = "https://www.baidu.com/";
+			} else {
+			    window.location.href = "http://news.baidu.com/";
+			}
+			
+			
+		</script>
+	</body>
+</html>

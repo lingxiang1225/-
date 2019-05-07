@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			原型链: 
+				每一个对象都有一个__proto__属性,指向构造该对象的构造函数的原型对象
+				每个构造函数都有一个prototype属性,这个属性指向它的原型对象,简称"原型"
+			
+				obj--Object()--null
+				fn--Fn()--Object()--null
+				arr--Array()--Object()--null
+		-->
+		<script>
+			
+			var obj = {name: "小仙女", age: 19};	//new Object
+			
+			console.log(obj.__proto__ == Object.prototype);	//true(obj的原型对象是构造该对象的Object构造函数的原型对象)
+			
+			var arr = [1,2,3,4,5];
+			console.log(arr.__proto__);	//new Array()
+			console.log(arr.__proto__.__proto__ == Array.prototype.__proto__);
+			
+			var fn = function(){
+				console.log("我是函数");
+			}
+			console.log(fn.__proto__ == Function.prototype);
+			var fn = new Function('a','b','a+=10; b-=20; return a+b');	//将fn的执行语句写在最后一个参数里面,用;号隔开
+			console.log(fn(1,2));
+			
+			function Animal(name,age){
+				this.name = name;
+				this.age = age;
+				return this;
+			}
+			var cat = new Animal("kitty",3);
+			console.log(cat);
+			console.log(cat.__proto__); //Animal(name,age)的原型对象
+			console.log(cat.__proto__.__proto__);	//Object()的原型对象
+			console.log(cat.__proto__.__proto__.__proto__); //null	
+			
+			
+		</script>
+	</body>
+</html>

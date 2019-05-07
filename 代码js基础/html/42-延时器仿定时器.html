@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			延时器仿定时器的效果
+			
+				通过函数内部延时器调用当前函数,实现定时执行的效果
+			
+		-->
+		<script>
+			
+			var timer = null;
+			var num = 0;
+			
+			function repeatExe(){
+				
+				clearTimeout(timer);
+				
+				console.log(num++);
+				
+				timer = setTimeout(repeatExe,1000);
+				
+			}
+			repeatExe()
+			
+		</script>
+	</body>
+</html>

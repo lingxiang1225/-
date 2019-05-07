@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				height: 700px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			
+			自定义属性:
+				当需要用一个属性存储某个值时,没有对应的自带属性可用时使用
+				
+				获取自定义属性值: 通过dataset
+					如: aImg[i].dataset.caixukun
+		
+		-->
+		<img src="" data-caixukun="../img/caixukun.jpg" width="100%" />
+		<img src="" data-caixukun="../img/caixukun1.jpg" width="100%" />
+		<img src="" data-caixukun="../img/caixukun2.jpg" width="100%" />
+		<img src="" data-caixukun="../img/caixukun3.jpg" width="100%" />
+		<img src="" data-caixukun="../img/caixukun4.jpg" width="100%" />
+		
+		<script type="text/javascript">
+			
+			window.onload = window.onscroll = function(){
+			
+				var aImg = document.querySelectorAll("img");
+				console.log(aImg[0].dataset.caixukun);
+				
+				for(var i=0; i<aImg.length; i++){
+					
+					if(aImg[i].getBoundingClientRect().top < window.innerHeight){
+						
+						var src = aImg[i].dataset.caixukun;	//图片路径
+						
+						aImg[i].src = src;
+						
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

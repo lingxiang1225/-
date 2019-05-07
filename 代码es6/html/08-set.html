@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			set: 新的数据结构(成员的值都是唯一的，没有重复的值。)
+			
+			展开运算符: ...
+		-->
+		<script type="text/javascript">
+			// 最简短的去重
+			let arr = [1,21,32,21,32,2,43,32];
+			
+			let res = [...new Set(arr)];	//将Set数组元素展开,再放在一个数组里面
+			console.log(res);	
+			
+			
+			let arr1 = [1,2,412,32,12,12];
+			let arr2 = [9,88,999,666];
+			console.log([arr1,arr2]);	//二维数组(数组的元素还是数组)
+			console.log([...arr1,...arr2]);	//类似于concat()连接方法
+			
+			
+		</script>
+	</body>
+</html>

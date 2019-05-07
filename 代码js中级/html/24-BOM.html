@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--
+		BOM: Browser Object Model浏览器对象模型
+			基于window的方法或属性
+			
+			1.打开和关闭窗口
+				window.open(url,target,style,boolean)
+				window.close()
+			
+		
+	-->
+		<button>打开窗口</button>
+		<button>关闭窗口</button>
+		
+		<script>
+//			1.页面加载后执行
+			window.onload = function(){
+			
+//				2.获取元素
+				var oBtn1 = document.getElementsByTagName("button")[0];
+				var oBtn2 = document.getElementsByTagName("button")[1];
+				var newWindow;
+//				3.绑定点击事件
+				oBtn1.onclick = function(){
+				
+//					4.打开新窗口
+					newWindow = window.open("https://www.baidu.com","_blank","height=100, width=100",false);
+//					newWindow.document.write("您打开了我");
+					
+				}
+				
+//				5.关闭窗口
+				oBtn2.onclick = function(){
+
+					newWindow.close();	//关闭指定窗口
+					window.close();		//关闭当前窗口
+				}
+			
+			}
+		</script>
+	</body>
+</html>

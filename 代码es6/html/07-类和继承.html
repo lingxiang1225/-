@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			//创建类
+			class 类名{
+				constructor(参数){	//构造器
+					
+				}
+			}
+			
+			//继承类
+			class 子类名 extends 父类名{
+				constructor(参数){	//构造器
+					super()	//继承
+				}
+			}
+			
+		
+		-->
+		<script type="text/javascript">
+			
+			function Animal(name,age){
+				this.name = name;
+				this.age = age;
+				return this;
+			}
+			Animal.prototype.say = function(say){
+				return `${this.name}say: ${say}`;
+			}
+			var cat = new Animal("小猫咪",3);
+			console.log(cat);
+			console.log(cat.say("喵喵~"));
+			
+			var dog = new Animal("小狗",5);
+			console.log(dog);
+			console.log(dog.say("汪汪~"));
+			
+			// 类
+			class Person {
+				constructor(name,age) {
+					this.name = name;
+					this.age = age;
+				}
+				say(say){
+					return say;
+				}
+			}
+			
+			class person2 extends Person {
+				constructor(name,age) {
+					super(name,age);
+				}
+			}
+			var myperson2 = new person2("小草",17);
+			console.log(myperson2);
+			console.log(myperson2.say("hello"));
+			
+			class person3 extends Person {
+				constructor(name,age,like) {
+					super(name);	//继承过来的属性和方法
+					this.age = age+'岁';		//独有属性
+				}
+				like(like){	//独有方法
+					return `${this.name}likes ${like}`;
+				}
+			}
+			var myperson3 = new person3("小树",10);
+			console.log(myperson3);
+			console.log(myperson3.say("唰唰~"));
+			console.log(myperson3.like("静静~"));
+			
+		</script>
+	</body>
+</html>

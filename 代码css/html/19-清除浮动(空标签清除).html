@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>父元素设置高度</title>
+		<style>
+			.box{
+				border: 2px solid red;
+			}
+			.box>div{
+				width: 30%;
+				height: 60px;	/*父元素设置高度*/
+				background-color: lightblue;
+				float: left;
+				float: right;
+			}
+			.box>div:first-child{
+				background-color: lightpink;
+				float: left;
+			}
+			.box>div:last-child{
+				float: none;
+				clear: both;
+				height: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			文档流:
+				块级元素从上往下排
+				行内元素从左往右排
+			
+			浮动: 使块级元素排成一排,当父级元素宽度不够时,会自动换行环绕
+			
+				float	[脱离文档流]
+					left	从左往右排
+					right	从右往左排
+					
+				浮动造成的问题: 父级元素高度塌陷(高度为0)
+				
+				怎么解决?
+					清除浮动
+						1.父级元素设置高度
+							缺点: 不适用于高度不固定的元素
+				
+						2.通过父级元素的伪对象选择器清除(主流清除浮动的方式)
+						3.通过空标签清除
+							缺点: 多个无意义的标签
+							
+		-->
+		<div class="box">
+			<div>1</div>
+			<div>2</div>
+			<div>2</div>
+			<div>2</div>
+			<div></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			延时器
+				延迟某时间再执行的操作(只执行一次)
+			
+			
+		-->
+		<script>
+			
+			var timeout = null
+			
+//			清除延时器
+			clearTimeout(timeout);
+			
+//			设置延时器
+			timeout = setTimeout(function(){
+				
+				console.log("恭喜你中大奖了");
+				
+			},1000);
+			
+		</script>
+	</body>
+</html>

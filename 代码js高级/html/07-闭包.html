@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			变量的作用域:
+				全局变量: 不在函数内部用var声明的变量
+				局部变量: 在函数内部用var声明的变量
+			
+			闭包:(谨慎使用)
+				有权访问函数内部变量的函数,就叫做闭包
+				
+				实质就是: 在函数内部的函数
+				
+				优点: 
+					存储变量不被污染
+					
+				缺点:
+					内存泄漏
+					
+		-->
+		<script>
+			function show(){
+				var a = 10;
+				function fn(){
+					console.log(a);
+				}
+				fn();
+			}
+			show();
+			
+			function show1(){
+				var a = 10;
+				return function show2(){
+					return ++a;
+				}
+			}
+			console.log(show1()());
+			
+			function show3(){
+				var b = 5;
+				return function show4(){
+					var b = 8;
+					return b;
+				}
+			}
+			console.log(show3());	//function show4()
+			console.log(show3()());	//8
+			
+			function show5(a,b){
+				var a = a;
+				return function show6(b){
+					var b = b+a;
+					return b;
+				}
+			}
+			console.log(show5(6,8)(9));	//15
+			
+			function show7(){				
+				for(var i=0; i<5; i++){
+					setTimeout(function(){
+						console.log(i);	//5,5,5,5,5
+					},100);
+				}
+			}
+			show7();
+		</script>
+	</body>
+</html>

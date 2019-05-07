@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			JSON数据格式: 主要用于前后台数据交互时使用的数据格式
+			
+			JSON数据是以键值对的形式出现
+				key-value
+				
+				JSON的key需要加引号
+				
+				JSON的key比数组的下标更具有语义化(一看就明白什么意思)
+			
+				JSON数据的获取和设置
+					1.通过.key的方式
+					2.通过["key"]的方式(如果key为数字,只能使用[]的形式)
+					
+				JSON数据的遍历
+					for(..in..){
+						
+					}
+		-->
+		<script>
+			var arr = [1,"a"];
+			console.log(arr);
+			
+			var jsonData = {
+				"name": "小仙女",
+				"age": 18,
+				"0": 666
+			};
+			console.log(jsonData);
+			
+//			JSON值的获取
+			console.log(jsonData.name);
+			console.log(jsonData["name"]);
+			console.log(jsonData["0"]);
+			
+//			JSON值的设置
+			jsonData.name = "糟老头子";
+			jsonData["age"] = 108;
+			jsonData["0"] = 888;
+			
+			console.log(jsonData);
+			
+//			JSON的遍历
+			for(var i in jsonData){
+				
+				console.log(i);	//json数据的key
+				
+				console.log(jsonData[i]);	//json数据的value
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

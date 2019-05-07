@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			html,body,ul,li{margin: 0; padding: 0;}
+			ul,li{list-style: none;}
+			li{
+				width: 100px;
+				height: 100px;
+				background-color: lightgreen;
+				border-bottom: 1px solid yellow;
+			}
+			ul{
+				height: 200px;
+				border: 1px solid #ccc;
+				display: -moz-box;	/*火狐浏览器*/
+				display: -webkit-box;	/*谷歌和Safari浏览器*/
+				display: -ms-flexbox;	/*ie*/
+				-webkit-box-orient: horizontal;
+				-moz-box-orient: horizontal;
+				-webkit-box-direction: reverse;
+				-moz-box-direction: reverse;
+				-webkit-box-pack: justify;	
+				-webkit-box-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			弹性盒模型:
+				display: box:	声明使用盒模型	(display: flex)
+				
+				box-orient:	盒模型排列方向(horizontal水平方向,vertical垂直方向)	--(flex-direction)
+				
+				box-direction: 排序顺序(normal正常,reverse反转)
+				
+				box-pack 对盒子富裕的空间进行管理	(justify-content)
+				
+				box-align: 对垂直方向的剩余空间进行管理(align-items)
+				
+		-->
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</body>
+</html>

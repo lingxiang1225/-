@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img{
+				display: block;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			
+			图片懒加载:
+				当用户滚动到一定距离时,再请求资源,可以优化性能,减轻服务器压力
+			
+		-->
+		<img data-src="../img/风景图/0.jpg" />
+		<img data-src="../img/风景图/1.jpg" />
+		<img data-src="../img/风景图/2.jpg" />
+		<img data-src="../img/风景图/3.jpg" />
+		<img data-src="../img/风景图/4.jpg" />
+		<img data-src="../img/风景图/5.jpg" />
+		<img data-src="../img/风景图/6.jpg" />
+		<img data-src="../img/风景图/7.jpg" />
+		<img data-src="../img/风景图/8.jpg" />
+		<img data-src="../img/风景图/9.jpg" />
+		<img data-src="../img/风景图/10.jpg" />
+		<img data-src="../img/风景图/11.jpg" />
+		<img data-src="../img/风景图/12.jpg" />
+		<img data-src="../img/风景图/13.jpg" />
+		<img data-src="../img/风景图/14.jpg" />
+		<img data-src="../img/风景图/15.jpg" />
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = window.onscroll = function(){
+			
+//				2.获取元素
+				var aImg = document.querySelectorAll("img");
+			
+//				3.获取可视高度
+				var oHeight = window.innerHeight;
+				
+//				4.循环获取img的位置关系
+				for(var i=0; i<aImg.length; i++){
+					
+//					5.判断img是否进入可视区域
+					var oTop = aImg[i].getBoundingClientRect().top;
+
+					if(oTop < oHeight){	//进入
+					
+//						6.获取img里面的自定义属性(取路径)
+						var src = aImg[i].dataset.src;	
+						
+//						7.将路径赋值给img的src属性
+						aImg[i].src = src;
+					
+					}
+				
+				}
+			
+			
+			}
+		
+		</script>
+	</body>
+</html>

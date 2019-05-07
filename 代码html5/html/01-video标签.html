@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../../../jquery/代码/js/jquery3.4.0.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--
+		
+			width:	宽度
+			height:	高度
+			autoplay: autoplay  自动播放
+			controls: controls  控制界面(播放,暂停,静音,音量,全屏...)
+			loop: loop   循环播放
+			currentTime  获取/设置当前时间--秒数
+			duration  	 获取总时长(只读)--秒数
+			volume  	 音量(0~1)--0静音	1最大音量
+			muted       是否静音(返回值是true || false)--可设置/获取
+			paused   	判断是否暂停
+			ended   	判断是否播放完毕
+			
+			
+			play()	播放
+			pause()	暂停
+			load()  重新加载
+		
+		-->
+		<video width="800" controls="controls" loop="loop">
+			<source src="../static/2.mp4" type="video/mp4"></source>
+			<!-- <source src="myvideo.ogv" type="video/ogg"></source>
+			<source src="myvideo.webm" type="video/webm"></source>为了避免某些格式的视频无法播放 -->
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="../static/2.mp4">下载视频</a>
+		</video>
+		<div>
+			<button type="button">播放</button>
+			<button type="button">暂停</button>
+			<button type="button">静音</button>
+			<button type="button">重载</button>
+			<button type="button">全屏</button>
+			<input type="range" name="" id="">
+			<input type="range" step="0.1" name="" id="">
+		</div>
+		
+		<script>
+			
+			window.onload = function(){
+				
+				var oVideo = document.getElementsByTagName("video")[0];
+				var oPlay = document.getElementsByTagName("button")[0];	//播放
+				var oPause = document.getElementsByTagName("button")[1];	//暂停
+				var oMute = document.getElementsByTagName("button")[2];	//静音
+				var oLoad = document.getElementsByTagName("button")[3];	//重载
+				var oFullScreen = document.getElementsByTagName("button")[4];	//全屏
+				var oVol = document.getElementsByTagName("input")[0];	//音量
+				var oProcess = document.getElementsByTagName("input")[1];	//进度
+				
+				// 播放功能
+				oPlay.onclick = function(){
+					
+					oVideo.play();
+					
+				}
+				
+				// 暂停功能
+				oPause.onclick = function(){
+					
+					oVideo.pause();
+					
+					console.log(oVideo.paused);	//true判断是否暂停
+					
+				}
+				
+				//静音功能
+				oMute.onclick = function(){
+					
+					oVideo.muted = !oVideo.muted;
+					console.log(oVideo.currentTime);
+					
+				}
+				
+				//音量(由于range的取值范围是0-100,所以/100之后再赋值给volume)
+				oVol.onchange = function(){
+					
+					oVideo.volume = this.value/100;
+					console.log(oVideo.volume);
+					
+				}
+				
+				// 重载功能
+				oLoad.onclick = function(){
+					
+					oVideo.load();
+					
+				}				
+				
+				// 全屏功能
+				oFullScreen.onclick = function(){
+					
+					if(navigator.userAgent.indexOf("Chrome") != -1){	//谷歌浏览器
+						
+						oVideo.webkitRequestFullScreen();
+						
+					}else if(navigator.userAgent.indexOf("Firefox") != -1){	//火狐浏览器
+						
+						oVideo.mozRequestFullScreen(); 
+						
+					}
+					
+				}
+				
+				//进度条	
+				oProcess.setAttribute("max",oVideo.duration);	//设置range的最大值等于视频的总时长
+				
+				oProcess.onchange = function(){	//将当前range值设置为当前播放进度
+					
+					var currentProcess = oProcess.value;
+					
+					oVideo.currentTime = currentProcess;
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

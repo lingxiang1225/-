@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body,div,p{margin: 0; padding: 0;}
+			body{
+				width: 1600px;
+				height: 1500px;
+			}
+			.container{
+				width: 200px;
+				height: 250px;
+				border: 3px solid red;
+				/*position: relative;*/
+			}
+			#box{
+				width: 100px;
+				height: 200px;
+				background-color: lightblue;
+				padding: 10px;
+				margin-left: 15px;
+				border: 2px solid yellow;
+				position: relative;
+				padding-left: 20px;
+				overflow-y: auto;
+			}
+			p{
+				width: 500px;
+				height: 500px;
+				background-color: pink;
+				padding: 10px;
+				margin: 10px;
+				border: 8px solid #ccc;
+				border-top-width: 12px;
+			}
+			.toTop{
+				width: 100px;
+				height: 100px;
+				text-align: center;
+				line-height: 100px;
+				background-color: lightgreen;
+				border-radius: 50%;
+				position: fixed;
+				right: 50px;
+				bottom: 50px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			offsetParent: 返回离它最近的具有定位的父级元素
+			
+			元素的位置关系:
+				offsetLeft: 获取对象相对于浏览器窗口或由 offsetParent属性指定的父坐标的计算左侧位置
+				offsetTop: 获取对象相对于浏览器窗口或由 offsetParent属性指定的父坐标的计算顶端位置
+
+				clientLeft: 对象与左侧元素中间隔开的距离 （边框线）
+				clientTop: 对象与上边元素中间隔开的距离 （边框线）
+				
+				scrollLeft: 设置或获取位于对象最左侧和窗口中可见内容的最左侧之间的距离(已滚动的距离)
+				scrollTop:	设置或获取位于对象最顶端和窗口中可见内容的最顶端之间的距离(已滚动的距离)
+				
+				pageXoffset: 窗口的滚动距离(X轴)
+				pageYoffset: 窗口的滚动距离(Y轴)
+				
+				getBoundingClientRect(): 获取可视距离(返回一个对象)
+					bottom: 227
+					height: 224
+					left: 18
+					right: 152(元素的实际宽度+offsetLeft)
+					top: 3
+					width: 134
+					x: 18
+					y: 3
+
+		-->
+		
+		<div class="container">
+			<div id="box">
+				<p></p>
+			</div>
+		</div>
+		<div class="toTop">回到顶部</div>
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oP = document.getElementsByTagName("p")[0];
+				var oBox = document.getElementById("box");
+				var oTop = document.getElementsByClassName("toTop")[0];
+				
+				console.log(oP.offsetParent);	//当父元素有定位时,返回父元素,否则返回body
+				
+//				元素的位置关系
+				console.log(oP.offsetLeft);	
+				console.log(oP.offsetTop);	
+				
+				console.log(oP.clientLeft);
+				console.log(oP.clientTop);
+				
+				console.log(oBox.getBoundingClientRect());
+				
+				oBox.onscroll = function(){
+//					console.log(oBox.scrollTop);
+//					console.log(oBox.scrollLeft);
+				}
+				
+//				绑定窗口滚动事件
+				window.onscroll = function(){
+//					console.log(document.documentElement.scrollTop);
+//					console.log(window.pageXOffset);
+//					console.log(window.pageYOffset);
+					if(getScrollY() >= 300){
+						
+						oTop.style.display = "block";
+						
+					}else{
+						oTop.style.display = "none";
+					}
+					
+				}
+				
+//				绑定oTop点击事件
+				oTop.onclick = function(){
+					
+//					设置滚动高度
+					setScrollY(0);
+					
+				}
+
+				
+				
+				
+//				设置滚动高度
+				function setScrollY(num){
+					document.documentElement.scrollTop = document.body.scrollTop = num;
+				}
+
+//				获取滚动高度
+				function getScrollY(){
+					return window.pageYOffset || document.documentElement.scrollTop; 
+				}
+
+			}
+			
+		</script>
+	</body>
+</html>

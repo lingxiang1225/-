@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: lightblue;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			节点操作:
+				查找节点:
+					getElementById()
+					getElementsByClassName()
+					getElementsByTagName()
+					getElementsByName()
+				
+				创建节点:
+					创建元素节点: createElement
+					创建属性节点: createAttribute
+					创建文本节点:	 createTextNode
+				
+				添加节点:
+					appendChild()	--在子节点列表的最后面添加
+					
+				插入节点:
+					insertBefore(newNode,refNode)	--在某位置的前面插入节点(新节点,参考节点)
+		
+				替换节点:
+					replaceChild(newNode,oldNode)	--替换节点(新节点,旧节点)
+					
+				克隆节点:
+					cloneNode(bool)	--参数接收布尔值(true时将克隆元素内部的内容,false只克隆元素)
+		
+				删除节点:
+					removeChild()	--参数接收要删除的节点
+		-->
+		
+		<script>
+//			1.创建元素节点
+			var myNewBox1 = document.createElement("div");
+			var myNewBox2 = document.createElement("div");
+			
+//			2.创建属性节点
+			var myAttr = document.createAttribute("class");
+			myAttr.value = "box";
+			myNewBox1.setAttributeNode(myAttr);
+			
+			myNewBox1.id = "box";
+			
+//			3.创建文本节点
+			var myTxt = document.createTextNode("我是XXX");
+			myNewBox1.appendChild(myTxt);
+			
+			myNewBox2.innerHTML = "我是LLL<button>删除</button>";
+			
+//			4.添加节点
+			document.body.appendChild(myNewBox1);
+			document.body.appendChild(myNewBox2);
+			
+//			获取第一个div
+			var oBox = document.getElementById("box");
+			
+//			5.插入节点
+			var div3 = document.createElement("div");
+			div3.innerHTML = "我是插入进来的div<button>删除</button>";
+			document.body.insertBefore(div3,oBox);	//将div3插入到oBox前面
+			
+//			6.替换节点
+			var div4 = document.createElement("div");
+			div4.innerHTML = "我把谁替换了<button>删除</button>";
+			document.body.replaceChild(div4,oBox);
+			
+//			7.克隆节点
+			var aBoxs = document.getElementsByTagName("div");
+			console.log(aBoxs);
+			for(var i=0; i<aBoxs.length; i++){
+				
+				aBoxs[i].onclick = function(){
+					
+					var cloneBox = this.cloneNode(true);	//参数接收布尔值(true时将克隆元素内部的内容,false只克隆元素)
+					
+					document.body.appendChild(cloneBox);
+					
+					aDeL = document.getElementsByTagName("button");
+					
+				}
+				
+			}
+			
+//			8.删除节点
+			var aDeL = document.getElementsByTagName("button");
+			for(var j=0; j<aDeL.length; j++){
+				
+				aDeL[j].onclick = function(){
+					document.body.removeChild(this.parentNode);
+				}
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

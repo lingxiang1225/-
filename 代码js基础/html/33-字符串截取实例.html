@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button>减一个</button>
+		<p>英烈是价值标杆，更是精神脊梁，致敬英烈，唱响吾辈当自强的时代最强音，才是对他们最好的礼赞。</p>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oBtn = document.getElementsByTagName("button")[0];
+				var oCont = document.getElementsByTagName("p")[0];
+				
+//				3.绑定点击事件
+				oBtn.onclick = function(){
+					
+//					4.获取p标签的值
+					var txt = oCont.innerHTML;
+					
+//					5.截取从1下标到最后的字符
+					var restTxt = txt.substring(1);
+					
+//					6.将截取后的字符放入p标签里面
+					oCont.innerHTML = restTxt;					
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

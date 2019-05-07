@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			function show7(){				
+				for(var i=0; i<5; i++){
+					setTimeout((function(){
+						console.log(i+"--"+new Date());	//0,1,2,3,4
+					})(),1000);
+				}
+			}
+			show7();
+			
+			function show8(){				
+				for(var i=0; i<5; i++){
+					(function(){						
+						setTimeout(function(){
+							console.log(i+"--"+new Date());	//5,5,5,5,5(每秒打印)
+						},i*1000);
+					})(i);
+				}
+			}
+			show8();
+			
+//			自执行函数(自己执行)
+			(function(){
+				console.log(666);
+			})()
+		</script>
+	</body>
+</html>

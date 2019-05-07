@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 2000px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			event句柄:
+				
+			鼠标位置:
+				pageX: 相对于整个页面的X轴位置	(IE低版本不兼容)
+				pageY: 相对于整个页面的Y轴位置
+				
+				clientX: 相对于浏览器可视窗口的X轴位置
+				clientY: 相对于浏览器可视窗口的Y轴位置
+				
+				screenX: 相对于设备屏幕的X轴位置
+				screenY: 相对于设备屏幕的Y轴位置
+			
+		-->
+		<script>
+			
+			document.body.onclick = function(ev){
+				var ev = ev || window.event;
+				console.log(666);
+//				1.获取鼠标位置
+				console.log(ev.pageY);
+				console.log(ev.clientY);
+				console.log(ev.screenY);
+				
+			}
+			
+		</script>
+	</body>
+</html>

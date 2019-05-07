@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			关闭会话即清除
+				window.sessionStorage
+			
+				setItem()	设置
+				getItem()	获取
+				removeItem()	删除
+				clear()		清空
+		
+		-->
+		<button>存</button>
+		<button>取</button>
+		<button>删</button>
+		<button>清</button>
+		
+		<script>
+			
+			var oSave = document.querySelectorAll("button")[0];
+			var oRead = document.querySelectorAll("button")[1];
+			var oDel = document.querySelectorAll("button")[2];
+			var oClear = document.querySelectorAll("button")[3];
+			
+			// 保存
+			oSave.onclick = function(){
+				
+				window.sessionStorage.setItem("sport","篮球");
+				window.sessionStorage.setItem("hobby","play basketball");
+				window.sessionStorage.setItem("height","2米3");
+				
+			}
+			
+			//读取
+			oRead.onclick = function(){
+				
+				var val = window.sessionStorage.getItem("hobby");
+				console.log(val);
+				
+			}
+			
+			// 删除
+			oDel.onclick = function(){
+				
+				window.sessionStorage.removeItem("sport");
+				
+			}
+			
+			// 清除
+			oClear.onclick = function(){
+				
+				window.sessionStorage.clear();
+				
+			}
+			
+		</script>
+	</body>
+</html>

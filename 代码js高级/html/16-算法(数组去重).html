@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			另外声明一个数组, 循环判断两个数组的元素,将不重复添加入新数组里面
+			
+		-->
+		<script>
+			
+			var arr = [12,32,12,54,32,48,12,43,54];
+			
+//			1.声明一个新数组(用于存储去重后的结果)
+			var res = [arr[0]];
+			
+//			2.循环依次判断是否相等
+			for(var i=0; i<arr.length; i++){
+				
+				var isRepeat = false;	//标识是否重复
+				
+				for(var j=0; j<res.length; j++){
+					
+//					3.判断两个数组里面的元素是否相等
+					if(arr[i] == res[j]){
+						
+//						4.相等时将标识置为true
+						isRepeat = true;
+						break;
+						
+					}
+					
+				}
+				
+//				不重复时
+				if(!isRepeat){
+					
+					res.push(arr[i]);
+					
+				}
+				
+			}
+			console.log(res);
+			
+		</script>
+	</body>
+</html>

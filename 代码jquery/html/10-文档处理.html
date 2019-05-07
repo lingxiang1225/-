@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery3.4.0.js"></script>
+	</head>
+	<body>
+		<!--
+			append()	
+			appendTo()
+			prepend()
+			prependTo()
+			after()
+			insertBefore()
+			insertAfter()
+			replaceWith()
+			replaceAll()
+			empty()
+			remove()
+		-->
+		<input type="text">
+		<button>发送</button>
+		<div>
+			<p>1</p>
+			<p class="active">2</p>
+		</div>
+			
+		<script>
+			
+			$(function(){
+				
+				$("button").eq(0).click(function(){
+					
+					// 1.获取输入框的值
+					var val = $("input").val();
+					
+					// 2.将值添加到div
+					// $("div").append("<p>"+val+"</p>");	//给div添加内容
+					$("<p>"+val+"<button>删除</button></p>").appendTo($("div"));	//将内容添加到div
+					
+					// $("p").first().prepend("<p>"+val+"</p>");	//给第一个p标签前面添加一个p
+					// $("<p>"+val+"</p>").prependTo($("p").first());	//将内容添加到第一个p标签的前面
+					
+					// $("p").last().after("<p>"+val+"</p>");
+					
+					// $("p").first().insertAfter($(".active"));	//将$("p").first()插入到.active元素的后面
+					$(".active").insertBefore($("p").first());		//将.active的元素插入到$("p").first()的前面
+					
+					// $("input").replaceWith("<textarea></textarea>");	//将input用textarea替换
+					// $("<b>1</b>").replaceAll("p");	//用b标签替换p标签
+					
+					// 3.清空输入框
+					$("input").val("");
+					// $("div").empty();	//清空div里面的内容
+					
+					$("p button").click(function(){
+						
+						$(this).parent().remove();	//移除元素
+						
+					})
+					
+				})
+				
+			})
+			
+		</script>
+	</body>
+</html>

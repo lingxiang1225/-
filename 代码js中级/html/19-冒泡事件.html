@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body,ul,li{margin: 0; padding: 0;}
+			ul,li{list-style: none;}
+			ul{
+				width: 130px; 
+				height: 200px;
+				display: flex;
+				flex-direction: column;
+				border: 1px solid #ccc;
+				background-color: lightgoldenrodyellow;
+				border-bottom: 0;
+				display: none;
+				position: absolute;
+			}
+			li{
+				flex: 1;
+				border-bottom: 1px solid #ccc;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			当子元素和父元素同时绑定同一个事件,那子元素的点击事件触发时,同时会触发父元素的事件
+			
+			事件流:
+				冒泡: 从最特定事物到最不特定事物传递的过程(鱼吐泡泡)
+				捕获: 从最不特定事物到最特定事物传递的过程(捕鱼)
+				
+				解决冒泡:
+					function stopBubble(ev){
+						if(ev && ev.stopPropagation){ //标准 
+							ev.stopPropagation();
+						}else{	//ie
+							ev.cancelBubble = true;
+						}
+					}; 
+
+			
+		-->
+		<ul class="myMenu">
+			<li>西红柿炒鸡蛋</li>
+			<li>辣椒炒肉</li>
+			<li>宫保鸡丁</li>
+			<li>可乐鸡翅</li>
+			<li>水煮鱼</li>
+		</ul>
+		<script>
+			
+			var oUl = document.getElementsByTagName("ul")[0];
+			var aLi = document.getElementsByTagName("li");
+			
+			window.oncontextmenu = function(ev){
+				var ev = ev || window.event;
+				
+				stopPrevent(ev);	//阻止默认菜单
+				
+//				获取鼠标位置
+				var oMouseX = ev.pageX;
+				var oMouseY = ev.pageY;
+				
+//				设置ul菜单的位置
+				oUl.style.cssText = "left: "+oMouseX+"px; top: "+oMouseY+"px;display: flex;";
+
+//				绑定文档点击事件(隐藏菜单)
+				document.onclick = function(){
+					
+					oUl.style.cssText = "display: none;";
+					
+				}
+				
+//				绑定菜单内容的点击事件
+				for(var i=0; i<aLi.length; i++){
+					
+					aLi[i].onclick = function(ev){
+						
+						console.log(this.innerHTML);
+						
+						stopBubble(ev);		//取消冒泡
+						
+					}
+					
+				}
+
+
+//				阻止默认事件
+				function stopPrevent(ev) {
+					if (ev && ev.preventDefault) {
+						ev.preventDefault();
+					} else {	//IE浏览器
+						window.event.returnValue = false;
+					}			
+					return false;
+				}
+				
+//				取消冒泡事件
+				function stopBubble(ev){
+					if(ev && ev.stopPropagation){ //标准 
+						ev.stopPropagation();
+					}else{	//ie
+						ev.cancelBubble = true;
+					}
+				}; 
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 1.引入jquery -->
+		<script src="../js/jquery3.4.0.js"></script>
+	</head>
+	<body>
+		<!--
+			获取或设置属性:
+				attr("属性名")	--获取属性值
+				attr("属性名","属性值")	--设置属性
+				attr({属性名:"属性值",属性名:"属性值"})	--设置多个属性
+				
+			移除属性
+				removeAttr("属性名")
+		-->
+		<img src="../../../HTML_CSS/CSS部分/作业/day03/images/index_02.gif" />
+		<!-- <img src="../../../HTML_CSS/CSS部分/作业/day03/images/index_02_f2.gif" > -->
+		
+		<script type="text/javascript">
+			
+			// 1.加载后执行
+			$(function(){
+				
+				// 2.点击获取img的src
+				$("img").click(function(){
+					
+					var src = $(this).attr("src");	//获取src属性值
+					
+					$(this).attr("src","../../../HTML_CSS/CSS部分/作业/day03/images/index_02_f2.gif");
+					
+					$(this).attr({src: "../../../HTML_CSS/CSS部分/作业/day03/images/index_02_f2.gif", width: 200, title: "享乐"})
+					
+					if($(this).attr("title") == "享乐"){
+						
+						$(this).removeAttr("title");
+						
+						$(this).attr("title","音乐");
+						
+					}
+					
+				})
+			})
+			
+		</script>
+	</body>
+</html>

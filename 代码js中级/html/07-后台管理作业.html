@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body,div,input,button,p{margin: 0; padding: 0;}	
+			.container{
+				width: 625px;
+				margin: 100px auto;
+			}		
+			th{
+				background-color: #81A7E8;
+				color: #fff;
+			}
+			table tr:nth-child(even){
+				background-color: #f1f1f1;
+			}
+			.tools{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 10px;
+			}
+			.tool_left span{
+				display: inline-block;
+				border-radius: 5px;
+				padding: 5px 15px;
+				text-align: center;
+				color: #fff;
+			}
+			.tool_left span:nth-of-type(1){
+				background-color: #F88D90;
+			}
+			.tool_left span:nth-of-type(2){
+				background-color: #6AD0DC;
+			}
+			.tool_right span{
+				border: 1px solid #ccc;
+				padding: 5px;
+				font-size: 14px;
+			}
+			.tool_right span.active{
+				padding: 5px 10px;
+				background-color: #4B83E4;
+				color: #fff;
+			}
+			/*遮罩弹窗*/
+			.mask{
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0,0,0,.5);
+				display: none;
+			}
+			.popup{
+				width: 300px;
+				height: 280px;
+				background-color: #fff;
+				padding: 10px;
+				position: absolute;
+				left: 50%;
+				margin-left: -160px;
+				top: 50%;
+				margin-top: -140px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+			.popup p:last-child{
+				display: flex;
+				justify-content: space-around;
+			}
+			.popup p:last-child span{
+				border: 1px solid #ccc;
+				padding: 5px 10px;
+				border-radius: 10px;
+			}
+			.popup p:not(:last-child) span:first-child{
+				display: inline-block;
+				width: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<table border="1" bordercolor="#ccc" cellspacing="0" cellpadding="10">
+				<tr>
+					<th>
+						<input type="checkbox" name="" id="" value="" />
+					</th>
+					<th>展项ID</th>
+					<th>名称</th>
+					<th>所属楼层</th>
+					<th>所属位置</th>
+					<th>所属展区</th>
+					<th>更多</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>item-01</td>
+					<td>大门ee</td>
+					<td>4</td>
+					<td>100,300</td>
+					<td>zone-03</td>
+					<td>查看更多</td>
+					<td>
+						<button>编辑</button>
+						<button>删除</button>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>item-02</td>
+					<td>大门ee</td>
+					<td>4</td>
+					<td>100,300</td>
+					<td>zone-03</td>
+					<td>查看更多</td>
+					<td>
+						<button>编辑</button>
+						<button>删除</button>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="" id="" value="" /></td>
+					<td>item-03</td>
+					<td>大门ee</td>
+					<td>4</td>
+					<td>100,300</td>
+					<td>zone-03</td>
+					<td>查看更多</td>
+					<td>
+						<button>编辑</button>
+						<button>删除</button>
+					</td>
+				</tr>
+			</table>
+			<div class="tools">
+				<div class="tool_left">
+					<input type="checkbox"  />
+					<span>批量删除</span>
+					<span>新增</span>
+				</div>
+				<div class="tool_right">
+					<span>首页</span>
+					<span>上一页</span>
+					<span class="active">1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>下一页</span>
+				</div>
+			</div>
+			<div class="mask">
+				<div class="popup">
+					<p><span>展区ID: </span><input type="text" value="" /></p>
+					<p><span>名称: </span><input type="text" value="" /></p>
+					<p><span>所属楼层: </span><input type="text" value="" /></p>
+					<p><span>所属位置: </span><input type="text" value="" /></p>
+					<p><span>所属展区: </span><input type="text" value="" /></p>
+					<p><span>确定</span><span>取消</span></p>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oAdd = document.querySelectorAll(".tool_left>span:nth-of-type(2)")[0];
+				var oTable = document.getElementsByTagName("tbody")[0];
+				var oPopup = document.getElementsByClassName("mask")[0];
+				
+//				3.绑定"新增"点击事件
+				oAdd.onclick = function(){
+					
+//					4.弹出弹窗
+					oPopup.style.display = "block";
+					
+//					5.获取"取消"按钮和"确定"按钮
+					var oCancel = document.querySelector(".popup>p:last-child span:last-child");
+					var oConfirm = document.querySelector(".popup>p:last-child span:first-child");
+					
+//					6.绑定"取消"按钮点击事件(隐藏弹窗)
+					oCancel.onclick = function(){
+						oPopup.style.display = "none";
+					}
+					
+//					7.绑定确定按钮点击事件
+					oConfirm.onclick = function(){
+						var canAdd = false;
+						
+//						8.创建新的tr
+						var oTr = document.createElement("tr");
+
+//						9.将弹窗输入的内容添加到tr
+						oTr.innerHTML = '<td><input type="checkbox" name="" id="" value="" /></td>'
+//					
+//						10.获取弹窗里面的所有输入框
+						var aInput = document.querySelectorAll(".popup p input");
+						
+//						收集展项ID
+						var zhanXiang = document.querySelectorAll("tr>td:nth-child(2)");
+						var idArr = [];
+						for(var j=0; j<zhanXiang.length; j++){
+							idArr.push(zhanXiang[j].innerHTML);
+						}
+						
+//						11.循环获取输入框的值
+						for(var i=0; i<aInput.length; i++){
+							
+//							12.判断输入是否为空
+							if(aInput[i].value.trim() == ""){
+								
+								alert("请输入对应内容");
+								return;
+								
+							}else{
+								
+//								判断展项ID是否重复
+								if(idArr.indexOf(aInput[0].value) != -1){
+									
+									alert("展区ID重复了,请重新输入");
+									return;
+									
+								}else{
+
+	//								13.新建td将输入框的值填入
+									var oTd = document.createElement("td");
+									oTd.innerHTML = aInput[i].value;
+
+	//								14.将多个td添加到tr
+									oTr.appendChild(oTd);
+
+	//								15.将弹窗内容清空
+									aInput[i].value = "";
+									
+//									16.标识添加
+									canAdd = true;
+									
+								}
+								
+							}
+							
+						}
+						
+//						判断标识是否可以添加
+						if(canAdd){
+	
+//							16.将tr添加到table
+							oTr.innerHTML += "<td>查看更多</td><td><button>编辑</button><button>删除</button></td>";
+							oTable.appendChild(oTr);
+	
+//							17.隐藏弹窗
+							oPopup.style.display = "none";
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

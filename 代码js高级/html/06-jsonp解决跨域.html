@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			jsonp解决跨域:
+				原理: 利用<script></script>可以访问外部js文件的特点
+			
+				需要有一个回调函数
+			
+			
+			豆瓣公开api:
+				https://api.douban.com/v2/movie/in_theaters
+				
+				http://api.douban.com/v2/movie/top250
+				
+				http://api.douban.com/v2/movie/search
+				
+				http://api.douban.com/v2/movie/subject
+				
+				(如无法访问,则添加一个apikey=0df993c66c0c636e29ecbb5344252a4a)
+		-->
+		<script>
+			
+//			1.创建一个script标签
+			var oScript = document.createElement("script");
+			
+//			2.设置script标签的src属性(接口地址url?callback=函数名)
+			oScript.src = "https://api.douban.com/v2/movie/in_theaters?callback=fn&apikey=0df993c66c0c636e29ecbb5344252a4a";
+			
+//			3.将script标签添加到body
+			document.body.appendChild(oScript);
+			
+//			4.定义回调函数
+			function fn(res){
+				console.log(res);
+			}
+			
+		</script>
+	</body>
+</html>

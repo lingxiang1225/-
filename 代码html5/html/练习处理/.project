@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			ul,li{list-style: none;}
+			header{
+				height: 60px;
+				background: #000;
+				color: #fff;
+				font-size: 20px;
+				line-height: 60px;
+				padding-left: 20px;
+			}
+			.container>div{
+				display: flex;
+			}
+			aside{
+				width: 30%;
+				background: skyblue;
+				padding: 8px;
+				padding-right: 0;
+			}
+			aside h1{
+				color: #fff;
+				font-size: 30px;
+				margin: 0;
+			}
+			aside li{
+				height: 40px;
+				line-height: 40px;
+				font-size: 22px;
+				padding-left: 12px;
+			}
+			aside li.active{
+				background: #000;
+				border-left: 2px solid #fff;
+				color: #fff;
+			}
+			.container>div>div{
+				width: 100%;
+			}
+			.container>div>div>img{
+				width: 100%;
+				display: none;
+			}
+			.container>div>div>img.active_img{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header>html5 history</header>
+			<div>
+				<aside>
+					<h1>NAV</h1>
+					<ul>
+						<li class="active">美女</li>
+						<li>香车</li>
+						<li>豪宅</li>
+						<li>money</li>
+					</ul>
+				</aside>
+				<div>
+					<img class="active_img" src="../../img/history/girl.jpg" />
+					<img src="../../img/history/car.jpg" />
+					<img src="../../img/history/house.jpg" />
+					<img src="../../img/history/money.jpg" />
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var aLi = document.querySelectorAll("li");
+				var aImg = document.querySelectorAll("img");
+				var arr = ["girl","car","house","money"];
+				
+				// 获取hash值或设置初始hash
+				var oHash = window.location.hash?window.location.hash.substring(1):arr[0];
+				// if(window.location.hash){
+				// 	var oHash = window.location.hash.substring(1);
+				// }else{
+				// 	var oHash = arr[0];
+				// }
+				window.location.hash = oHash;
+				
+				// 循环绑定点击事件
+				for(var i=0; i<aLi.length; i++){
+					
+					aLi[i].index = i;	//另存下标
+					
+					aLi[i].onclick = function(){
+						
+						resetCSS();	//重置样式
+						activeCSS(this.index);	//激活样式
+						window.location.hash = arr[this.index];	//设置hash值
+						
+					}
+					
+				}
+				
+				// 监听hash值改变
+				window.onhashchange = function(){
+					
+					oHash = window.location.hash.substring(1);	//获取hash值
+					
+					for(var j=0; j<arr.length; j++){
+						
+						if(oHash == arr[j]){	//根据hash与arr的元素判断当前下标
+							resetCSS();	//重置样式
+							activeCSS(j);	//激活样式
+						}
+						
+					}
+					
+				}
+				
+				// 激活样式
+				function activeCSS(ind){
+					aLi[ind].classList.add("active");
+					aImg[ind].classList.add("active_img");
+				}
+				
+				// 重置样式
+				function resetCSS(){
+					for(var i=0; i<aLi.length; i++){
+						aLi[i].classList.remove("active");
+						aImg[i].classList.remove("active_img");
+					}
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

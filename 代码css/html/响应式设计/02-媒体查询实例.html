@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--移动端-->
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<style>
+			html,body,ul,li{margin: 0; padding: 0;}
+			ul,li{list-style: none;}
+			
+			/*1000以上*/
+			@media only screen and (min-width: 1000px){
+				li{
+					width: 20%;
+					height: 60px;
+					line-height: 60px;
+					float: left;
+					border-right: 2px solid yellow;
+					background-color: lightblue;
+					text-align: center;
+					box-sizing: border-box;	/*转成IE怪异盒子(使得总宽度不超出100%)*/
+				}
+			}
+			/*640~1000*/
+			@media only screen and (min-width: 640px) and (max-width: 1000px){
+				li{
+					width: 33.33%;
+					height: 50px;
+					line-height: 50px;
+					float: left;
+					background-color: pink;
+					text-align: center;
+					margin-bottom: 10px;
+					border-right: 2px solid red;
+					box-sizing: border-box;
+				}
+			}
+			/*640~以下*/
+			@media only screen and (max-width: 640px){
+				li{
+					height: 40px;
+					line-height: 40px;
+					background-color: yellow;
+					text-align: center;
+					border-bottom: 2px solid blue;
+				}
+			}
+			
+			/*竖屏*/
+			@media only screen and (orientation: portrait ) {
+				body{
+					background-color: lightgray;
+				}
+			}
+			/*横屏*/
+			@media only screen and (orientation: landscape ) {
+				body{
+					background-color: limegreen;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			视口(移动端需要设置)--viewport
+			
+				移动设备的浏览器宽度默认是大于设备宽度
+				<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+				
+					width=device-width: 设置浏览器宽度等于设备宽度
+					initial-scale=1:	初始缩放比例为1(没缩放)
+					user-scalable=no:	用户是否可缩放-不可以
+		-->
+		<ul>
+			<li>娱乐</li>
+			<li>军事</li>
+			<li>数码</li>
+			<li>科技</li>
+			<li>体育</li>
+		</ul>
+	</body>
+</html>

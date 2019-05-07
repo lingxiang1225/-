@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			转字符串: 		String()
+			转数字:			Number()
+			转整型数:		parseInt()
+			转浮点数:		parseFloat()
+			转布尔值:		Boolean()
+			判断是否为非数字: isNaN()--返回true或者false
+			
+		-->
+		<script>
+//			转字符串
+			console.log(String(1234567));	//"1234567"
+			console.log(String(true));		//"true"
+			console.log(String(undefined));	//"undefined"
+			console.log(String(null));		//"null"
+			console.log(String("我是谁"));	//"我是谁"
+			
+//			转数字
+			console.log(Number("我是谁")); 	//NaN(Not A Number 不是一个数字)
+			console.log(Number(false)); 	//0
+			console.log(Number(12345)); 	//12345
+			console.log(Number("12345")); 	//12345
+			console.log(Number(undefined)); //NaN
+			console.log(Number(null)); 		//0
+			console.log(Number("123木头人"));//NaN
+			
+//			转整型数
+			console.log(parseInt(3.9415926)); 		//3(只取整数位)
+			console.log(parseInt("3.9415926")); 		//3(只取整数位)
+			console.log(parseInt(10,2)); 			//2进制的10转成10进制(2)
+			console.log(parseInt(110,2)); 			//2进制的10转成10进制(6)
+			console.log(parseInt("123木头人456"));	//123
+			console.log(parseInt("石头人"));			//NaN
+			console.log(parseInt(true));			//NaN
+			console.log(parseInt(undefined));		//NaN
+			console.log(parseInt(null));			//NaN
+
+//			转浮点数
+			console.log(parseFloat('1234.132'));	//字符串转小数(1234.132)
+			console.log(parseFloat('1234'));		//字符串转小数(1234)
+			console.log(parseFloat('1234木头人'));	//字符串转小数(1234)
+			
+//			转布尔值
+			console.log(Boolean("我")); 		//true
+			console.log(Boolean(0)); 		//false
+			console.log(Boolean("")); 		//false
+			console.log(Boolean(undefined)); //false
+			console.log(Boolean(null)); 	//false
+			console.log(Boolean(false)); 	//false
+			
+//			判断是否为非数字
+			console.log(isNaN(12345)); 		//false
+			console.log(isNaN("我")); 		//true
+			console.log(isNaN("123")); 		//false
+			console.log(isNaN(true)); 		//false(隐式转换为数字1)
+			console.log(isNaN(undefined)); 	//true
+			console.log(isNaN(null)); 		//false(隐式转换为数字0)
+			
+			var num1 = Number(prompt("请输入第一个数字")) ;
+			var num2 = Number(prompt("请输入第二个数字"));
+			console.log(typeof num1);	//转为了数字类型(number)
+			if(num1 > num2){
+				alert(num1+">"+num2);
+			}else if(num1 == num2){
+				alert(num1+"="+num2);
+			}else{
+				alert(num1+"<"+num2);
+			}
+			
+		</script>
+	</body>
+</html>

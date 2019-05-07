@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				height: 200px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			DOM: Document Object Model(文档对象模型)
+			
+			获取属性值
+				1.通过.的方式获取
+				2.通过[]的方式获取
+				3.通过.getAttribute()
+				
+			设置属性值:
+				1.通过.的方式获取
+				2.通过[]的方式获取
+				3.通过.setAttribute()
+				
+			获取最终样式
+				getComputedStyle(obj)[attr]	--适用于大多数浏览器及IE9以上
+				obj.currentStyle[attr]		--仅适用于IE8及以下
+			
+		-->
+		<input type="text" name="user" id="user" value="" placeholder="请输入用户名" />
+		<div id="box" style="width: 100px;">123</div>
+		
+	
+		<script>
+			
+			window.onload = function(){
+				
+				var oInput = document.getElementById("user");
+				var oBox = document.getElementById("box");
+				
+//				获取属性值
+				console.log(oInput.placeholder);	//请输入用户名
+				console.log(oInput["name"]);	//user
+				console.log(oInput.getAttribute("type")); //text
+				
+//				设置属性值
+				oInput.className = "myUser";
+//				oInput["type"] = "password";
+				oInput.setAttribute("placeholder","请输入密码");
+				
+				console.log(oInput);
+				
+//				获取最终样式
+				console.log(oBox.style.width);	//只能获取行内样式
+//				console.log(getComputedStyle(oBox)["height"]);
+//				console.log(oBox.currentStyle["height"]);
+				console.log(getStyle(oBox, "height"));	//调用兼容写法
+				
+//				设置最终样式
+				oBox.style.fontSize = "20px";
+				oBox.style["color"] = "yellow";
+				css(oBox, "background-color", "lightblue");
+				
+				
+//				兼容函数
+				function  getStyle(obj, attr){    //获取最终样式函数
+			       	if(window.getComputedStyle){	//判断浏览器是否支持getComputedStyle
+		               return getComputedStyle(obj)[attr];
+			       	}else{
+		               return obj.currentStyle[attr];
+			        }	
+				};
+				
+//				设置或获取样式兼容函数
+				function css(obj, attr, val){
+					
+//					判断是设置样式还是获取样式
+					if(!val){	//获取样式
+						if(window.getComputedStyle){	//判断浏览器是否支持getComputedStyle
+			               return getComputedStyle(obj)[attr];
+				       	}else{
+			               return obj.currentStyle[attr];
+				        }	
+					}else{	//设置样式
+						return obj.style[attr] = val;
+					}
+					
+				}
+			}
+			
+		</script>
+	</body>
+</html>

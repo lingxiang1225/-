@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			利用对象的key不可以重复的特点
+			
+		-->
+		<script>			
+			var obj = {
+				name: "lili",
+				age: 18,
+				name: "xiaoming",
+				11: "11"
+			}
+			console.log(obj);
+			console.log(obj.name);
+			console.log(obj[11]);
+			
+			var arr = [12,32,12,54,32,48,12,43,54];
+			var res = [];
+			var obj = {};
+			
+			for(var i=0; i<arr.length; i++){
+				
+				console.log(arr[i]);
+				if(!obj[arr[i]]){	//不重复时进入
+					
+					obj[arr[i]] = true;	//赋值必须为真值
+					res.push(arr[i]);
+					
+				}
+				
+			}
+			
+			console.log(res);	//[12,32,54,48,54]
+			console.log(obj);	//{12: true, 32: true, 43: true, 48: true, 54: true}
+			
+			
+		</script>
+	</body>
+</html>

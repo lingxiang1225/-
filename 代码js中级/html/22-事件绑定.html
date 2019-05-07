@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			同一个元素的相同事件通过obj.onclick形式(只能执行后面的一个事件)
+			通过事件监听可以绑定同一个元素的相同事件,并可以单独取消该事件的不同功能
+			
+			添加事件监听:
+				obj.addEventListener(events, fn, false);	--参数分别对应元素,函数,布尔值[false为冒泡,true为捕获]
+				obj.attachEvent('on'+events, fn);
+			
+			取消事件监听:
+				obj.removeEventListener(events, fn, false);
+				obj.detachEvent('on'+events, fn);
+
+
+
+//				事件监听的兼容函数
+				function bindEvent(obj,events, fn){
+					if (obj.addEventListener) {
+						obj.addEventListener(events, fn, false);
+			       }else{	//ie低版本
+						obj.attachEvent('on'+events, fn);
+			        }
+				};
+
+//				取消事件监听
+				function deEvent(obj,events,fn) {	
+					if (removeEventListener) {				
+						obj.removeEventListener(events,fn,false);
+					}else {	//IE版本
+						obj.detachEvent("on"+events,fn);
+					}
+				}
+		-->
+		<div>1</div>
+		
+		<script>
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oDiv = document.getElementsByTagName("div")[0];
+				
+//				3.绑定点击事件(改变值,改变背景色)--通过onclick的方式后面的事件会覆盖前面的
+//				oDiv.onclick = changeTxt;
+//				oDiv.onclick = changeBgColor;
+				
+				
+//				事件监听的方式(可以同时绑定同一个事件调用两个不同的函数)
+//				oDiv.addEventListener("click",changeTxt);
+//				oDiv.addEventListener("click",changeBgColor);
+				
+//				事件监听调用兼容写法
+				bindEvent(oDiv,"click", changeTxt);
+				bindEvent(oDiv,"click", changeBgColor);
+				
+//				bindEvent(oDiv,"click", function(){
+//					console.log(7777);
+//				});
+//				bindEvent(oDiv,"click", function(){
+//					console.log(6666);
+//				});
+				
+				
+//				改变文字内容
+				function changeTxt(){
+					
+					this.innerHTML = Number(this.innerHTML)+1;
+					
+					if(this.innerHTML >= 5){
+						deEvent(this,"click",changeTxt);	//取消click事件的changeTxt方法(changeBgColor的方法仍然执行)
+					}
+					
+				}
+				
+//				改变背景色
+				function changeBgColor(){
+					
+					this.style.backgroundColor = "rgb("+getRandom(0,255)+","+getRandom(0,255)+","+getRandom(0,255)+")"
+					
+				}
+				
+//				事件监听的兼容函数
+				function bindEvent(obj,events, fn){
+					if (obj.addEventListener) {
+						obj.addEventListener(events, fn, false);
+			       }else{	//ie低版本
+						obj.attachEvent('on'+events, fn);
+			        }
+				};
+
+//				取消事件监听
+				function deEvent(obj,events,fn) {	
+					if (removeEventListener) {				
+						obj.removeEventListener(events,fn,false);
+					}else {	//IE版本
+						obj.detachEvent("on"+events,fn);
+					}
+				}
+
+				
+//				随机数函数
+				function getRandom(min,max){
+					return Math.floor(Math.random()*(max-min)+min);
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

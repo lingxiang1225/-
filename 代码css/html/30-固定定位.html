@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				height: 1600px;
+			}
+			.div1,.div2{
+				width: 150px;
+				height: 150px;
+			}
+			.div1{
+				background-color: lightblue;
+				position: fixed;
+				top: 300px;
+			}
+			.div2{
+				background-color: lightgreen;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			定位
+				相对定位 position: relative
+					参考自身原有位置定位,偏移后原有位置仍占有
+					
+					偏移量:
+						top: 与上边的距离
+						right: 与右边的距离
+						bottom: 与下边的距离
+						left: 与左边的距离
+					
+				绝对定位 position: absolute;
+					参考离它最近的具有相对定位的父元素,如果父元素都没有定位,则参考浏览器可视区域
+					[一旦设置绝对定位,则脱离文档流,原有位置会被占有]
+					
+					偏移量:
+						top: 与上边的距离
+						right: 与右边的距离
+						bottom: 与下边的距离
+						left: 与左边的距离
+					
+				固定定位 position: fixed;
+					参考浏览器可视区域定位(不随滚动条滚动而变换位置)
+					[一旦设置固定定位,则脱离文档流,原有位置会被占有]
+					
+					偏移量:
+							top: 与上边的距离
+							right: 与右边的距离
+							bottom: 与下边的距离
+							left: 与左边的距离
+					
+				默认定位	position: static(正常文档流定位)
+			
+			
+		-->
+		<div class="div1">1</div>
+		<div class="div2">2</div>
+	</body>
+</html>

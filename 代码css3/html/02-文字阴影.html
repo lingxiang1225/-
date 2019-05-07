@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			html{
+				font-size: 12px;
+			}
+			div:nth-child(1){
+				margin-top: 100px;
+				letter-spacing: 1em;
+				/* text-shadow: 5px 5px 5px red,8px 8px 5px yellow,10px 10px 5px green,13px 13px 5px blue; */
+				text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
+				font-family: "楷体";
+				font-size:100px;
+				font-weight:bold;
+				color:white;
+			}
+			div:nth-child(2){
+				width: 3em;
+				height: 1em;
+				font-family: "华文行楷";
+				/* letter-spacing: 1em; */
+				font-size: 120px;
+				color: #000;
+				-webkit-text-stroke: 1px pink;
+				unicode-bidi: bidi-override;
+				direction: rtl;	/*从右到左排(需要配合unicode-bidi使用)*/
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			html默认16px的字体大小
+			em: 基于父元素的字体大小换算, 1em = 16px
+		
+			text-shadow: x轴偏移量 y轴偏移量 模糊程度 阴影颜色(可以叠加,用逗号隔开)
+			-webkit-text-stroke: 文字描边(宽度 颜色)
+			
+			超出显示省略号
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			
+		-->
+		<div>走向人生巅峰</div>
+		<div>迎娶白富美!</div>
+	</body>
+</html>

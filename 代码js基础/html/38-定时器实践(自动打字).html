@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			定时器的this指向问题:
+				this指向window(setInterval 是 window.setInterval()的缩写)
+			
+				怎么解决:
+					使用变量另存一份所需的this
+			
+		-->
+		<button>点击自动打字</button>
+		<p></p>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oBtn = document.getElementsByTagName("button")[0];
+				var oCont = document.getElementsByTagName("p")[0];
+				
+//				3.定义字符串
+				var str = "习近平总书记在学校思想政治理论课教师座谈会上指出，推动思想政治理论课改革创新，要不断增强思政课的思想性、理论性和亲和力、针对性，并提出“八个统一”。";
+				var num = 0; 
+				var timer = null;
+				
+//				4.绑定点击事件
+				oBtn.onclick = function(){
+					
+//					5.禁用按钮
+					this.disabled = true;
+					console.log(this);
+					
+//					6.保存当前this
+					var _this = this;
+					
+//					5.清除定时器
+					clearInterval(timer);
+					
+//					6.设置定时器
+					timer = setInterval(function(){
+						
+//						5.判断是否输入完成
+						if(num == str.length){	//判断如果下标等于字符长度时,说明已经输完了
+							
+							console.log(666);
+							clearInterval(timer);	//打印完了之后,清除定时器
+							
+//							按钮解禁
+							_this.disabled = false;
+	
+						}else{
+	
+							oCont.innerHTML += str.charAt(num);
+
+							num++;						
+	
+						}
+						
+					}, 50);
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

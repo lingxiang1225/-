@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			document.onkeydown = function(ev){
+				
+				var ev = ev || window.event;
+				
+				if(ev.keyCode == 13){
+					
+					console.log("您按下了enter键");
+					
+				}else{
+					
+					console.log("您按下了"+ev.key+"---"+ev.keyCode);
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

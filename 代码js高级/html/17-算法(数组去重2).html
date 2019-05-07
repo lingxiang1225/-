@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			利用数组排序后, 后面的数组元素不会与前面的相同
+			
+		-->
+		<script>
+			var arr = [12,32,12,54,32,48,12,43,54];
+//			1.排序!!!
+			arr.sort(sort);	//[12, 12, 12, 32, 32, 43, 48, 54, 54]
+			
+//			2.声明新数组
+			var res = [arr[0]];	//12,32,43,48,54
+			
+			for(var i=0; i<arr.length; i++){
+				
+				if(arr[i] != res[res.length-1]){
+					
+					res.push(arr[i]);
+					
+				}
+				
+			}
+			console.log(res);
+			
+			function sort(a,b){
+				return a-b;
+			}
+			
+		</script>
+	</body>
+</html>

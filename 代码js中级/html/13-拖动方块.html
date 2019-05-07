@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: lightblue;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oBox = document.getElementsByTagName("div")[0];
+				
+//				3.绑定oBox的鼠标按下事件
+				oBox.onmousedown = function(){
+					
+//					4.绑定鼠标移动事件
+					document.onmousemove = function(ev){
+						
+//						5.ev兼容
+						var ev = ev || window.event;
+						
+//						6.获取鼠标位置-方块宽高的一半(使鼠标在方块的中间)
+						var oMouseX = ev.pageX - oBox.offsetWidth/2;
+						var oMouseY = ev.pageY - oBox.offsetHeight/2;
+						
+//						7.根据鼠标位置设置方块的位置
+						oBox.style.cssText = "left: "+oMouseX+"px; top: "+oMouseY+"px;"
+						
+					}
+					
+//					8.绑定鼠标松开事件
+					oBox.onmouseup = function(){
+
+//						9.清除鼠标移动事件
+						document.onmousemove = null;
+
+//						10.给方块设置随机背景色
+						oBox.style.backgroundColor = "rgb("+getRandom(0,255)+","+getRandom(0,255)+","+getRandom(0,255)+")"
+
+					}
+					
+				}
+				
+//				随机数函数
+				function getRandom(min,max){
+					
+					return Math.floor(Math.random()*(max-min)+min);
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

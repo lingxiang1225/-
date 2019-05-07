@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery3.4.0.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.container{
+				width: 600px;
+				height: 600px;
+				border: 1px solid #ccc;
+				margin: 50px auto;
+			}
+			.content{
+				height: 350px;
+				border: 1px solid #ccc;
+				overflow-y: auto;
+			}
+			textarea{
+				width: 600px;
+				height: 100px;
+				box-sizing: border-box;
+				resize: none;
+			}
+			button{
+				width: 600px;
+				height: 50px;
+				box-sizing: border-box;
+			}
+			p{
+				word-break: break-all;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h2>留言板</h2>
+			<hr />
+			<div class="content"></div>
+			<textarea placeholder="请输入留言"></textarea>
+			<button>发表留言</button>
+		</div>
+
+		<!--
+			$.trim()	去掉前后空格
+			
+		-->
+		<script>
+			
+			var txt = "    我是   谁   ";
+			
+			console.log(txt.trim());
+			
+			console.log($.trim(txt));
+			
+			// 留言板内容
+			var floor = 0;	//楼层初始值
+			
+			$("button").eq(0).click(function(){
+				
+				var val = $("textarea").eq(0).val();
+				
+				if($.trim(val) !== ""){
+					
+					floor++;
+					$(".content").eq(0).append("<p>"+floor+"楼: "+val+"</p>");
+					$("textarea").eq(0).val("");
+					
+					// 保留在最新留言
+					$(".content").scrollTop($(".content")[0].scrollHeight);
+					
+				}
+				
+				
+			})
+			
+		</script>
+		
+	</body>
+</html>

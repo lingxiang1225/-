@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			表单标签:
+				用于收集用户输入信息的标签
+			<form>
+				input系列
+					属性			值			描述
+					type
+								text		文本类型
+								submit		提交类型
+								hidden		隐藏类型(不显示输入框,但是会将里面的name和value拼接到url)
+								
+					placeholder	自定义		输入框的提示水印
+					value		自定义		输入框的初始值
+					name		自定义		输入框的名字(一般用于拼接内容到url)
+			</form>
+				action:	数据提交到的地址(由后台人员提供)
+				method:	数据提交的方式(post|get)
+					get: 获取数据(将数据拼接到url,安全性低,数据量小)
+					post:传递数据(将数据放在request body,安全性高,传输数据量大[一般用于隐私信息])
+		-->
+		<form action="https://search.jd.com/Search?">
+			<input type="text" placeholder="请输入搜索内容" name="keyword" value=""  />
+			<input type="hidden" name="enc" value="utf-8" />
+			<input type="submit" value="京东搜索"  />
+		</form>
+	</body>
+</html>

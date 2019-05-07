@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div,p{
+				width: 100px;
+				height: 100px;
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			this: 谁调用指向谁
+			
+			改变this指向:
+				apply(obj,[参数1,参数2,参数3])
+					obj: 将this指向谁
+					参数通过数组的形式传递
+					
+				call(obj,参数1,参数2,参数3)
+				
+			面试题: apply和call的异同点?
+					相同点: 都是可以改变this指向
+					不同点: 
+						apply通过数组形式传参
+						call直接传参,用逗号隔开
+			
+		-->
+		<div></div>
+		<p></p>
+		
+		<script>
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oDiv = document.getElementsByTagName("div")[0];
+				var oP = document.getElementsByTagName("p")[0];
+				
+//				3.绑定点击事件
+				oDiv.onclick = function(){
+					
+//					setCSS.apply(oDiv,["background-color","red"]);
+					setCSS.call(oDiv,"background-color","red");
+								
+				}
+				
+				oP.onclick = function(){
+					
+//					setCSS.apply(oP,["width","300px"]);
+					setCSS.call(oP,"width","300px");
+					
+				}
+				
+				
+				function setCSS(attr,val){
+					console.log(this);
+					this.style[attr] = val;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

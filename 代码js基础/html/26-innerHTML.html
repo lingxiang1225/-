@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 600px;
+				height: 666px;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<button>点我添加内容</button>
+		<div></div>
+		
+		<script>
+//			1.获取元素
+			var oBtn = document.getElementsByTagName("button")[0];
+			var oDiv = document.getElementsByTagName("div")[0];
+			var i = 0;
+			
+//			2.绑定点击事件
+			oBtn.onclick = function(){
+				
+				i++;
+				oDiv.innerHTML += "<p>大山给了我回应"+i+"次</p>";
+				
+				
+			}
+			
+		</script>
+	</body>
+</html>

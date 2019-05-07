@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			data-xxx	自定义属性(自己定义任意属性)
+				通过dataset方式获取值
+				
+		-->
+		<div data-liu="666" data-item="777" data-8="888" data-list="[1,2,3,4,5]"></div>
+		
+		<script>
+//			1.页面加载后执行
+			window.onload = function(){
+			
+//				2.获取元素
+				var oDiv = document.querySelector("div");
+				
+				console.log(oDiv.dataset);
+				console.log(oDiv.dataset.liu);
+				console.log(oDiv.dataset.item);
+				console.log(oDiv.dataset['8']);
+				console.log(oDiv.dataset.list);
+				
+			}
+		</script>
+	</body>
+</html>

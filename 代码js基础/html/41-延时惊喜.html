@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 800px;
+				height: 600px;
+				background-color: #ccc;
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="surprise">在很久很久以前......(点击继续阅读)</div>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var mySurprise = document.getElementsByClassName("surprise")[0];
+				var timeout = null;
+				
+//				3.绑定点击事件
+				mySurprise.onclick = function(){
+					
+//					4.改变div的内容
+					this.innerHTML = "从前有一个人，他有一个女朋友。他比世界上任何一个人都爱她。可是有一天，他女朋友无情的离开了他，甚至连一个理由都没给他。看着自己的女朋友被别人挽着手逛街，他痛不欲生，失去了理智。终于有一天他把女朋友杀了。本来他打算杀了她以后自杀的。可是将死之时才感到生命的可贵。从此以后他天天被噩梦困扰，梦境中他女朋友赤身露体，披头散发，红舌垂地，十指如钩来向他索命。噩梦把他折磨的形如销骨，一天他找来一个道士已求摆脱。道士要他做三件事第一，把他女朋友的尸体好好安葬第二，把他女朋友生前穿的睡衣烧掉第三，把藏起来的血衣洗干净所有的事情必须在三更之前完成，要不就会有杀身之祸！他遵照道士的嘱咐把所有的事情都做的很仔细，可是那件血衣却怎么也找不到了。马上就要三更了，豆大的汗珠从他脸上滴下来把地毯都打湿了。"
+					
+//					5.延时出现惊喜
+					clearTimeout(timeout);	
+					timeout = setTimeout(function(){
+						
+						mySurprise.innerHTML = "<img src='http://img3.imgtn.bdimg.com/it/u=1300223626,2053639769&fm=26&gp=0.jpg' width='100%' />";
+						
+					},5000)
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

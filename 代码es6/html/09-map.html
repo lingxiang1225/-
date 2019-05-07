@@ -1,0 +1,58 @@
+<!DOCTYPE html>	
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			
+			map
+				set()		设置
+				get()		获取
+				has()		判断是否存在
+				delete()	删除
+			
+		
+		-->
+		<script type="text/javascript">
+			
+			let arr1 = [1,2,412,32,12,12];
+			
+			// 数组的遍历
+			arr1.map((a,b)=>{
+				console.log("值是:"+a);
+				console.log("下标是:"+b);
+			})
+			
+			for(var i=0; i<arr1.length; i++){
+				console.log("值是:"+arr1[i]);
+				console.log("下标是:"+i);
+			}
+			
+			let obj = {
+				name: "小李",
+				age: 18,
+				gender: "男",
+				height: 178
+			}
+			
+			for(var j in obj){
+				console.log(j);	//key
+				console.log(obj[j]);	//value
+			}			
+			
+			
+			// 创建一个map实例
+			var m = new Map();
+			var o = {say: "Hello World"};
+
+			m.set(o, 666)	//设置
+			m.get(o) 		//获取666
+			m.has(o) // true
+			m.delete(o) // true
+			m.has(o) // false
+			
+		</script>
+	</body>
+</html>

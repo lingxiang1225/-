@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<!--
+		window.history
+			back()
+			forward()
+			go()
+	-->
+		<img src="../img/数码时钟/0.png" />
+		<button>回退</button>
+		<button>前进</button>
+		<button>前进/后退XX个历史记录</button>
+		
+		<script>
+			window.onload = function(){
+			
+				var oImg = document.querySelector("img");
+				var oBtn1 = document.querySelectorAll("button")[0];
+				var oBtn2 = document.querySelectorAll("button")[1];
+				var oBtn3 = document.querySelectorAll("button")[2];
+				
+				var oNow = window.location.hash?window.location.hash.substring(1):0;
+				oImg.src = "../img/数码时钟/"+oNow+".png";
+				window.location.hash = "#"+oNow;
+				
+//				绑定点击事件
+				oImg.onclick = function(){
+				
+					oNow++;
+					if(oNow <= 9){
+						
+					}else{
+						oNow = 0;
+					}
+					oImg.src = "../img/数码时钟/"+oNow+".png";
+					window.location.hash = "#"+oNow;
+				}
+			
+//				绑定回退
+				oBtn1.onclick = function(){
+				
+					window.history.back();
+					
+				}
+//				绑定前进
+				oBtn2.onclick = function(){
+				
+					window.history.forward();
+					
+				}
+				
+//				指定前进或后退n个历史记录(正数为前进,负数为后退)
+				oBtn3.onclick = function(){
+				
+					window.history.go(2);
+					
+				}
+				
+				
+			
+			}
+		</script>
+	</body>
+</html>

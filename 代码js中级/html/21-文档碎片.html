@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				width: 300px;
+				background-color: #ccc;
+			}
+			li{
+				height: 40px; 
+				line-height: 40px; 
+				background-color: lightblue;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			每次appendChild到父元素时,会导致页面的重排或重绘,性能不够优化
+			
+			文档碎片: 不真实存在于DOM树(相当于一个临时的文件夹)--性能优化的方式之一
+				将10个li先添加到文档碎片中,收集起来,循环完了之后再一次性添加给ul,只操作一个DOM节点
+			
+		-->
+		<ul></ul>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oUl = document.getElementsByTagName("ul")[0];
+				var oFrag = document.createDocumentFragment();	//创建文档碎片
+	
+//				3.循环创建10个li
+				for(var i=0; i<10; i++){
+					
+					var aLi = document.createElement("li");
+					
+					aLi.innerHTML = i+1;
+					
+					oFrag.appendChild(aLi);
+					
+//					oUl.appendChild(aLi);	//操作10次
+
+					
+				}
+				
+				oUl.appendChild(oFrag);		//操作1次
+				
+				oUl.onclick = function(ev){
+					
+					var ev = ev || window.event;
+					
+					var target = ev.target || ev.srcElement;	//事件源兼容
+					
+//						判断事件源的节点名字
+					if(target.nodeName.toLowerCase() == "li"){
+						
+						console.log(target.innerHTML);
+						
+					}
+					
+				}
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: #F0F0F0;
+			}
+			canvas{
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			1.设置字体(字体大小 字体类型)
+				ctx.font = "80px 华文行楷";
+		
+			2.获取字体宽度(无法获取高度)
+				ctx.measureText("需要获取宽度的文字").width;
+				
+			3.填充字体/描绘字体边框
+				fillText("文字",x坐标,y坐标)
+				strokeText("文字",x坐标,y坐标)
+				
+			4.设置阴影
+			ctx.shadowOffsetX = 5;	X轴偏移量
+			ctx.shadowOffsetY = 5;	Y轴偏移量
+			ctx.shadowBlur = 10;	高斯模糊程度
+			ctx.shadowColor = "#ccc";	阴影颜色
+		
+		-->
+		<canvas width="500" height="500">
+			您的浏览器不支持canvas
+		</canvas>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var myCanvas = document.getElementsByTagName("canvas")[0];
+				
+				// 1.创建画布
+				var ctx = myCanvas.getContext("2d");
+				
+				// 2.设置字体
+				ctx.font = "80px 华文行楷";
+				
+				// 3.获取字体的宽度(实现文字居中)
+				var txtWidth = ctx.measureText("今天真热").width;
+				
+				// 4.创建渐变色
+				var txtColor = ctx.createLinearGradient((myCanvas.offsetWidth-txtWidth)/2,0,(myCanvas.offsetWidth-txtWidth)/2+txtWidth,0);
+				
+				// 5.设置渐变点
+				txtColor.addColorStop(0,"yellow");
+				txtColor.addColorStop(0.5,"red");
+				txtColor.addColorStop(1,"lightblue");
+				
+				// 6.填充渐变色
+				ctx.fillStyle = txtColor;
+				ctx.strokeStyle = txtColor;
+				
+				// 7.设置阴影
+				ctx.shadowOffsetX = 5;	//X轴偏移量
+				ctx.shadowOffsetY = 5;	//Y轴偏移量
+				ctx.shadowBlur = 10;	//高斯模糊程度
+				ctx.shadowColor = "#ccc";	//阴影颜色
+				
+				
+				// 8.填充字体("文字",x坐标,y坐标)
+				// ctx.fillText("今天真热", 200, 200);
+				ctx.strokeText("今天真热", (myCanvas.offsetWidth-txtWidth)/2, 200);
+				
+				
+			}
+		</script>
+	</body>
+</html>

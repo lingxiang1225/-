@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度一下，你就知道</title>
+		<!--设置角标-->
+		<link rel="shortcut icon" type="image/x-icon" href="../img/baidu.ico"/>
+	</head>
+	<body>
+		<!--
+			iframe: 
+				可以用于嵌入别的网页
+				
+				src: 网址
+				width: 宽度
+				height: 高度
+				frameborder: 是否有边框(0无边框 | 1有边框)
+				scrolling: 是否允许滚动(yes滚动 | no不滚动)
+			
+			天气预报集成插件:
+				http://tianqi.2345.com/plugin
+		-->
+		<div>
+			<iframe allowtransparency="true" frameborder="0" width="385" height="96" scrolling="no" src="//tianqi.2345.com/plugin/widget/index.htm?s=1&z=1&t=0&v=0&d=3&bd=0&k=&f=ff00ff&ltf=009944&htf=cc0000&q=1&e=1&a=1&c=54511&w=385&h=96&align=center"></iframe>
+		</div>
+		<iframe src="https://www.baidu.com" width="100%" height="730" frameborder="0" scrolling="no"></iframe>
+		<iframe src="https://www.jd.com" width="100%" height="730" frameborder="0"></iframe>
+		<iframe src="https://www.taobao.com" width="100%" height="730" frameborder="0"></iframe>
+	</body>
+</html>

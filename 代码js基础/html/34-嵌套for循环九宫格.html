@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body,ul,li{margin: 0; padding: 0;}
+			ul,li{list-style: none;}
+			li{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+			}
+			/*ul li:nth-child(1){
+				left: 0;
+				top: 0;
+			}
+			ul li:nth-child(2){
+				left: 110px;
+				top: 0;
+			}
+			ul li:nth-child(3){
+				left: 220px;
+				top: 0;
+			}
+			ul li:nth-child(4){
+				left: 0;
+				top: 110px;
+			}
+			ul li:nth-child(5){
+				left: 110px;
+				top: 110px;
+			}
+			ul li:nth-child(6){
+				left: 220px;
+				top: 110px;
+			}
+			ul li:nth-child(7){
+				left: 0;
+				top: 220px;
+			}
+			ul li:nth-child(8){
+				left: 110px;
+				top: 220px;
+			}
+			ul li:nth-child(9){
+				left: 220px;
+				top: 220px;
+			}*/
+		</style>
+	</head>
+	<body>
+		<ul>
+			<!--<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>-->
+		</ul>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oUl = document.getElementsByTagName("ul")[0];
+				
+//				3.for循环添加li
+				for(var i=0; i<3; i++){	//控制行(top跟行数有关)
+					
+					for(var j=0; j<3; j++){	//控制列(left跟列数有关)
+						
+						oUl.innerHTML += "<li style='top: "+110*i+"px; left: "+110*j+"px;'></li>";					
+						
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

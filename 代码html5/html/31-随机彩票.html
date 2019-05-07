@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button>更新数据</button>
+		<div></div>
+		<script>
+			
+			window.onload = function(){
+				
+				var oBtn = document.querySelector("button");
+				var oBox = document.querySelector("div");
+				var obj = {};
+				
+				// 绑定点击事件
+				oBtn.onclick = function(){
+					
+					// 1.生成一个随机数当做hash值
+					var myHash = Math.random();	//0~1的随机数
+					
+					window.location.hash = myHash;
+					
+					var arr = [];
+					for(var i=0; i<7; i++){
+						
+						var num = getRandom(1,32);
+						arr.push(num);
+						
+					}
+					oBox.innerHTML = arr;
+					
+					obj[myHash] = arr;	//将hash值当做obj的key,存储对应的彩票数组
+					
+				}
+				
+				// 监听hash变化事件
+				window.onhashchange = function(){
+					
+					var changeHash = window.location.hash.substring(1);
+					
+					if(changeHash){
+						
+						oBox.innerHTML = obj[changeHash];
+						
+					}
+					
+				}
+				
+				// 随机数函数
+				function getRandom(min,max){
+					
+					return Math.floor(Math.random()*(max-min)+min);
+					
+				}
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="getSpeed" class="getName" value="50" />
+		<input type="text" name="getSpeed" class="getName" value="70" />
+		
+		<input type="text" value="80" />
+		<input type="text" value="60" />
+		
+		<input type="text" value="90" />
+		<input type="text" value="78" />
+		
+		<script>
+//			1.获取元素
+			var aInput = document.getElementsByTagName("input");
+			
+//			2.获取元素的属性
+//			var input1 = aInput[0].value;
+//			var input2 = aInput[1].value;
+//			var group1 = input1 * input2;	//第一组的乘积
+//			console.log(group1);
+//			
+//			var input3 = aInput[2].value;
+//			var input4 = aInput[3].value;
+//			var group2 = input3 * input4;	//第二组的乘积
+//			console.log(group2);
+//			
+//			var input5 = aInput[4].value;
+//			var input6 = aInput[5].value;
+//			var group3 = input5 * input6;	//第三组的乘积
+//			console.log(group3);
+			
+//			将重复的代码提取成模板
+			function getSpeed(a,b){
+				var input1 = aInput[a].value;
+				var input2 = aInput[b].value;
+				var group1 = input1 * input2;	//第一组的乘积
+				console.log(group1);
+			}
+			getSpeed(0,1);
+			getSpeed(2,3);
+			getSpeed(4,5);
+			getSpeed(3,4);
+//			getSpeed(6,7);
+		</script>
+	</body>
+</html>

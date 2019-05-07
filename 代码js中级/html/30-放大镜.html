@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.smallBox{
+				width: 180px;
+				height: 180px;
+				position: relative;
+			}
+			#mask{
+				display: inline-block;
+				width: 60px;
+				height: 60px;
+				background-color: rgba(0,0,0,.5);
+				position: absolute;
+				display: none;
+			}
+			.bigBox{
+				width: 400px;
+				height: 400px;
+				position: absolute;
+				left: 200px;
+				top: 50px;
+				overflow: hidden;
+				border: 1px solid #ccc;
+				display: none;
+			}
+			#oImg{
+				position: absolute;
+				width: 900px;
+				height: 900px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="smallBox">
+				<img src="../img/放大镜/small.jpg" />
+				<span id="mask"></span>
+			</div>
+			<div class="bigBox">
+				<img id="oImg" src="../img/放大镜/big.jpg" />
+			</div>
+		</div>
+		
+		<script>
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oBigBox = document.querySelector(".bigBox");
+				var oSmallBox = document.querySelector(".smallBox");
+				var oMask = document.querySelector("#mask");
+				var oImg = document.querySelector("#oImg");
+				
+//				3.绑定鼠标移入小盒子事件(oMask出现,oBigBox里面的图要位移)
+				oSmallBox.onmouseenter = function(ev){
+					
+					oSmallBox.onmousemove = function(ev){
+					
+//						4.获取鼠标位置出现oMask,并设置位置
+						var ev = ev || window.event;
+						var oMaskLeft = ev.pageX - oSmallBox.offsetLeft - oMask.offsetWidth/2
+						var oMaskTop = ev.pageY - oSmallBox.offsetTop- oMask.offsetHeight/2
+						
+//						5.判断鼠标位置是否超出oSmallBox
+						if(oMaskLeft < oSmallBox.offsetLeft){
+							oMaskLeft=0;
+						}else if((oMaskLeft+oMask.offsetWidth) > oSmallBox.offsetWidth){
+							oMaskLeft = oSmallBox.offsetWidth - oMask.offsetWidth;
+						}
+						
+						if(oMaskTop < oSmallBox.offsetTop){
+							oMaskTop=0;
+						}else if((oMaskTop+oMask.offsetHeight) > oSmallBox.offsetHeight){
+							oMaskTop = oSmallBox.offsetHeight - oMask.offsetHeight;
+						}
+						
+						oMask.style.cssText = "display: block; left: "+oMaskLeft+"px; top: "+oMaskTop+"px;";
+						
+//						获取每个元素的宽高,根据比例设置oBigBox的宽高
+						var oSW = getComputedStyle(oSmallBox)["width"].slice(0,-2);
+						var oMW = getComputedStyle(oMask)["width"].slice(0,-2);
+						var oImgW = getComputedStyle(oImg)["width"].slice(0,-2);
+						var oBW = oMW/oSW*oImgW;
+						
+						var oSH = getComputedStyle(oSmallBox)["height"].slice(0,-2);
+						var oMH = getComputedStyle(oMask)["height"].slice(0,-2);
+						var oImgH = getComputedStyle(oImg)["height"].slice(0,-2);
+						var oBH = oMH/oSH*oImgH;
+						
+						oBigBox.style.display = "block";
+						oBigBox.style.width = oBH+"px";
+						oBigBox.style.height = oBH+"px";
+						
+//						6.算缩放比
+						var oScaleX = oMaskLeft/(oSmallBox.offsetWidth - oMask.offsetWidth);
+						var oScaleY = oMaskTop/(oSmallBox.offsetHeight - oMask.offsetHeight);
+						
+//						7.根据缩放比设置oImg的位置
+						oImg.style.left = -oScaleX*(oImg.offsetWidth - oBigBox.offsetWidth)+"px";
+						oImg.style.top = -oScaleY*(oImg.offsetHeight - oBigBox.offsetHeight)+"px";
+						
+					}
+					
+				}
+			
+				oSmallBox.onmouseleave = function(){
+				
+					oMask.style.display = "none";
+					oBigBox.style.display = "none";
+					
+				}
+			}
+		
+		</script>
+	</body>
+</html>

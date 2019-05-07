@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*通配符*/
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			/*标签选择器*/
+			div{
+				width: 100px;
+				height: 100px;
+			}
+			
+			/*id选择器*/
+			#div1{
+				background-color: lightblue;
+			}
+			#div1:hover{
+				color: white;
+				font-size: 30px;	/*字体大小*/
+			}
+			
+			/*类选择器*/
+			.yellow{
+				color: blue;
+				background-color: yellow;
+			}
+			
+			/*未访问过的效果*/
+			a:link{
+				color: lightpink;
+			}
+			/*访问过的效果*/
+			a:visited{
+				color: lightgreen;
+			}
+			/*鼠标悬停的效果*/
+			a:hover{
+				background-color: lightseagreen;
+			}
+			/*点击瞬间的效果*/
+			a:active{
+				background-color: yellow;
+			}
+			
+			/*交集选择器*/
+			p.yellow{	/*既是p标签,又有yellow的类名*/
+				font-size: 20px;
+			}
+			
+			/*并集选择器*/
+			#div1,p.yellow{
+				text-decoration: underline;	/*文本修饰:下划线*/
+			}
+			
+			/*后代选择器*/
+			li p{
+				color: red;
+			}
+			
+			/*子代选择器*/
+			li>p{
+				font-size: 30px;
+				color: blue;
+			}
+			
+			/*弟弟选择器*/
+			.li2~li{
+				background-color: lightblue;
+			}
+			
+			/*最近的弟弟选择器*/
+			.li2+li{
+				font-family: "楷体";
+			}
+			
+			/*属性选择器*/
+			input[value]{	/*有value属性的标签*/
+				border: 1px solid yellow;  /*边框*/
+			}
+			input[name="userName"]{	/*name属性值是userName的标签*/
+				height: 40px;				
+			}
+			input[name*="m"]{	/*name属性值包含m的标签*/
+				width: 100px;				
+			}
+			input[value^="6"]{	/*value的值以6开头的标签*/
+				background-color: red;				
+			}
+			
+			/*伪类选择器*/
+			p.yellow:first-letter{
+				font-size: 30px;
+				color: deeppink;
+			}
+			.first_line_p:first-line{
+				color: gold;
+			}
+			
+			.pe{
+				width: 100%;
+			}
+			/*伪对象选择器*/
+			.pe::after{
+				content: "|";
+				/*background-color: pink;*/
+				/*color: lightgreen;*/
+				font-size: 22px;
+			}
+			.pe::before{
+				content: "床前明月光";
+				background-color: lightblue;
+				color: brown;
+				font-size: 22px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--
+			CSS选择器:[用最精简的代码选中想要的标签]
+				基础选择器
+					标签选择器: 直接使用标签名
+					id选择器: 通过#号对应id(唯一不可重复)
+					类选择器: 通过.对应class(将多个标签归为一类)
+					通配符: *	(匹配所有标签,一般用于清除浏览器默认样式)
+					
+				伪类选择器:(顺序: 爱恨记忆法LoVe HAte)
+					给特殊的标签添加特殊的效果
+					:link			有超链接,未访问过的效果
+					:visited		访问过后的效果
+					:hover			鼠标悬停的效果
+					:active			点击瞬间的效果
+					:first-letter	首个字符的特殊效果
+					:first-line		首行的特殊效果
+					
+				复合选择器:
+					交集选择器: 标签名.class名(既是xx标签,又是xxx类名[同时满足两个条件])
+					并集选择器: 多个选择器用逗号隔开,共用样式
+					后代选择器: 祖先标签 后代标签(中间用空格隔开)
+					子代选择器: 父级标签>子代标签(中间用>隔开)
+					弟弟选择器: 哥哥标签~弟弟标签(中间用~隔开)--选中所有的弟弟
+					最近的弟弟选择器: 哥哥标签+弟弟标签(中间用+隔开)--选中离它最近的弟弟标签
+				
+				属性选择器:
+					input[value]			有value属性的标签
+					input[name="userName"]	name属性值是userName的标签
+					input[name*="m"]		name属性值包含m的标签
+					input[value^="6"]		value的值以6开头的标签
+					
+				伪对象选择器:(相当于生成了一个行内元素(标签),可以对标签里面的内容进行设置样式)
+					::after
+					::before
+					[注意: 一定要配合content属性使用,如果内容为空,可以写成""]
+		-->
+		我是body
+		<div id="div1">第一个div</div>
+		<div class="yellow">第二个div</div>
+		<div class="yellow">第三个div</div>
+		<div>第四个div</div>
+		<p class="yellow">我是p标签</p>
+		<p>我是没有class的p标签</p>
+		<a href="https://www.baidu.com">百度一下,你就知道</a>
+		
+		<ul>
+			<li>
+				老大
+				<p>我是ul的后代</p>
+			</li>
+			<li class="li2">老二</li>
+			<li>老三</li>
+			<li>老四</li>
+			<li>老五</li>
+		</ul>
+		
+		<input type="text" name="userName" value="666" />
+		<input type="password" name="userName" value="669" />
+		<input type="number" name="num" />
+		
+		<p class="first_line_p">
+			 截至目前，二十一号线员村至镇龙西段土建工程累计完成88%；全段12座车站主体结构已封顶并移交机电施工，进行附属结构施工；12个区间已贯通并移交机电系统施工；水西停车场至镇龙西段机电系统已基本完工，正在调试。记者从广州地铁获悉，二十一号线员村至镇龙西段将于年内开通。
+		</p>
+		
+		<div class="pe">疑是地上霜</div>
+		<span>第一个</span>
+		<span>第二个</span>
+		<span>第三个</span>
+		<span>第四个</span>
+		
+	</body>
+</html>

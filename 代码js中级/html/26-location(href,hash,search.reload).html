@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			href: 返回整个网页的网址路径
+			hash: 哈希值(#号后面的字符串)--记录历史(回退)
+			search: 搜索值(?号后面的字符串)
+			reload: 刷新
+		-->
+		<a href="https://www.baidu.com?wd='oppo'#666">跳转</a>
+		<button>刷新页面</button>
+		<script>
+			var oA = document.querySelector("a");
+			var oRefresh = document.querySelector("button");
+		
+
+			console.log(oA.href);	//https://www.baidu.com/s?wd=oppo#666
+			console.log(oA.search);	//?wd=oppo
+			console.log(oA.hash);	//#666
+			
+			oA.href = "https://search.jd.com/Search";
+			oA.search = "?keyword=华为P30&enc=utf-8";
+			oA.hash = "#1";
+			
+//			window.location = "https://www.baidu.com/s?wd=oppo#666";
+//			绑定点击事件(刷新)
+			oRefresh.onclick = function(){
+				
+				window.location.reload();
+			
+			}
+		
+		</script>
+	</body>
+</html>

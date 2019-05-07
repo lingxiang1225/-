@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/md5.js"></script>
+	</head>
+	<body>
+		<input type="text" name="name" placeholder="请输入用户名" />
+		<input type="password" name="password" placeholder="请输入密码" />
+		<button>登录</button>
+		
+		<script>
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var aInput = document.getElementsByTagName("input");
+				var oBtn = document.getElementsByTagName("button")[0];
+				
+//				3.点击登录
+				oBtn.onclick = function(){
+					var name = aInput[0].value;
+					var pwd = md5(aInput[1].value);	//md5加密
+					
+					if(name.trim()!="" && pwd.trim()!=""){
+						
+//						1.创建对象
+						var xhr;
+						
+//						2.捕获异常
+						try{
+							xhr = new XMLHttpRequest();
+						}catch(err){
+							xhr = new ActiveXObject("Microsoft.XMLHTTP");
+						}
+//						3.打开请求
+						xhr.open("post","http://192.168.2.114:3000/api/user");
+
+//						4.设置请求头
+						xhr.setRequestHeader("Content-Type", "Application/x-www-form-urlencoded");
+
+//						5.发送请求
+						xhr.send("name="+name+"&password="+pwd);
+						
+//						6.监听响应状态
+						xhr.onreadystatechange = function(){
+							
+//							7.判断是否响应成功
+							if(xhr.readyState == 4 && xhr.status == 200){
+								
+								console.log(xhr.responseText);
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

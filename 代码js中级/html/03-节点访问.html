@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			节点访问:(获取到节点的亲戚)
+				第一个子节点
+				最后一个子节点
+				所有子节点
+			
+			
+		-->
+		<div id="box">
+			<h2>我是大儿子</h2>
+			<p>我是二儿子</p>
+			<p>我是三儿子</p>
+			<span>我是小儿子</span>
+		</div>
+		
+		<script>
+			var oBox = document.getElementById("box");
+			
+//			第一个子节点
+			console.log(oBox.firstElementChild);
+			console.log(oBox.firstChild);
+			console.log(firstNode(oBox));
+			
+//			最后一个子节点
+			console.log(oBox.lastChild);
+			console.log(oBox.lastElementChild);
+			console.log(lastNode(oBox));
+			
+//			所有子节点
+			console.log(oBox.children);	//所有子节点
+			console.log(oBox.childNodes);	//包括换行,空格的所有子节点
+			
+//			弟弟节点
+			console.log(oBox.firstElementChild.nextSibling);
+			console.log(oBox.firstElementChild.nextElementSibling);
+			
+//			哥哥节点
+			console.log(oBox.lastElementChild.previousSibling);
+			console.log(oBox.lastElementChild.previousElementSibling);
+			
+			
+//			父节点
+			console.log(oBox.lastElementChild.previousElementSibling.parentNode);
+			
+//			第一个子节点的兼容写法
+			function firstNode(obj){
+				if(!obj.firstChild){
+					return false;
+				}
+				return obj.firstElementChild || (obj.firstChild.nodeType==1?obj.firstChild:(obj.firstChild).nextSibling);
+			}
+			
+//			最后一个子节点的兼容写法
+			function lastNode(obj){
+				if(!obj.lastChild){
+					return false;
+				}
+				return obj.lastElementChild || (obj.lastChild.nodeType==1?obj.lastChild:(obj.lastChild).previousSibling);
+			}
+			
+//			弟弟节点的兼容写法
+			function nextNode(obj){
+				if(!obj.nextSibling){return false;}
+				return obj.nextElementSibling ||(obj.nextSibling.nodeType==1?obj.nextSibling:nextNode(obj.nextSibling));
+			}
+			
+//			哥哥节点的兼容写法
+			function previousNode(obj){
+				if(!obj.previousSibling){return false;}
+				return obj.previousElementSibling||(obj.previousSibling.nodeType==1?obj.previousSibling:previousNode(obj.previousSibling));
+			}
+
+			
+			
+			
+		</script>
+	</body>
+</html>

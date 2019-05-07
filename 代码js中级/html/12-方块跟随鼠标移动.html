@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 100px;
+				height: 100px;
+				background-color: deeppink;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		
+		<script>
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oBox = document.getElementsByTagName("div")[0];
+				
+//				3.绑定鼠标移动事件
+				document.onmousemove = function(ev){
+					
+//					4.ev兼容
+					var ev = ev || window.event;
+					
+//					5.获取鼠标位置
+					var oMouseX = ev.pageX;
+					var oMouseY = ev.pageY;
+					
+//					6.根据鼠标位置设置oBox的偏移量
+					oBox.style.cssText = "left: "+(oMouseX-(oBox.offsetWidth/2))+"px; top: "+(oMouseY-(oBox.offsetHeight/2))+"px;";
+					
+				}
+				
+			}
+		</script>
+	</body>
+</html>

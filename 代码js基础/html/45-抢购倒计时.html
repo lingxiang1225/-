@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span>距离抢购还剩12:32:19</span>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oSpan = document.getElementsByTagName("span")[0];
+				var timer = null;
+				
+//				3.设置抢购开始时间
+				var startShopping = new Date("2019-4-10 00:00").getTime();	//设定开始抢购时间的时间戳
+				
+//				4.设置延时器仿定时器
+				function startRush(){
+					
+//					5.清除延时器
+					clearTimeout(timer);
+					
+//					6.获取当前时间的时间戳
+					var nowDate = new Date().getTime();
+					
+//					7.获取时间差
+					var differTime = startShopping - nowDate;
+					
+//					8.将时间戳的时间差转换为时分秒
+					if(differTime <= 0){
+						
+						clearTimeout(timer);
+						oSpan.innerHTML = "赶紧抢购吧";
+						
+					}else{
+						
+						var restSecond = Math.floor(differTime/1000%60);	//剩余秒数
+						var restMinute= Math.floor(differTime/1000/60%60);	//剩余分钟数
+						var restHour= Math.floor(differTime/1000/60/60);	//剩余小时数
+						
+						oSpan.innerHTML = "距离抢购还剩"+restHour+":"+restMinute+":"+restSecond;
+						
+					}
+					
+					timer = setTimeout(startRush,1000);
+					
+				}
+				
+				startRush();
+				
+			}
+			
+		</script>
+	</body>
+</html>

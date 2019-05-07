@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			var data = "5,3,29,34,11,87,65,4";
+			
+			var myArr = data.split(",").sort(sortNum);	//分割成数组并排序
+			var myArr1 = myArr.push("End");		//后插一个end
+			var myArr1 = myArr.unshift("Start");	//前插start
+			var myArr1 = myArr.splice(Math.floor(myArr.length/2),0,"middle"); //
+			
+			console.log(myArr);
+			
+			function sortNum(a,b){
+				return a-b;
+			}
+			
+		</script>
+	</body>
+</html>

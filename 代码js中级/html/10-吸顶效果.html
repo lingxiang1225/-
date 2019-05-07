@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body,ul,li,div{margin: 0; padding: 0;}
+			ul,li{list-style: none;}
+			body{
+				height: 2000px;
+			}
+			div{
+				margin-top: 300px;
+			}
+			ul{
+				height: 60px;
+				background-color: lightgreen;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<ul>
+				<li>生活</li>
+				<li>体育</li>
+				<li>科技</li>
+				<li>娱乐</li>
+				<li>军事</li>
+			</ul>
+		</div>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oUl = document.getElementsByTagName("ul")[0];
+				
+//				3.获取ul与顶部的距离
+				var oHeight = oUl.offsetTop;
+				
+//				4.绑定滚动事件
+				window.onscroll = function(){
+					
+//					5.判断当前滚动高度是否达到oHeight的高度
+					if(getScrollY() >= oHeight){
+						
+						oUl.style.cssText = "position: fixed; left: 0; right: 0; top: 0;";
+						
+					}else{
+						
+						oUl.style.position = "static";
+						
+					}
+					
+				}
+				
+				
+//				获取滚动高度
+				function getScrollY(){
+					return window.pageYOffset || document.documentElement.scrollTop; 
+				}
+			}
+			
+		</script>
+	</body>
+</html>

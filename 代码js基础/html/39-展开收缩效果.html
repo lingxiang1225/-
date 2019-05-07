@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button>展开</button>
+		<button>收缩</button>
+		<p></p>
+		
+		<script>
+			
+//			1.页面加载后执行			
+			window.onload = function(){
+				
+//				2.获取元素
+				var aBtn = document.getElementsByTagName("button");
+				var oP = document.getElementsByTagName("p")[0];
+				var str = "习近平总书记在学校思想政治理论课教师座谈会上指出，推动思想政治理论课改革创新，要不断增强思政课的思想性、理论性和亲和力、针对性，并提出“八个统一”。";
+				var timer = null;
+				var num = 0; 	//初始化下标
+				
+//				3.绑定点击事件(展开)
+				aBtn[0].onclick = function(){
+					
+//					4.清除定时器
+					clearInterval(timer);
+					
+//					5.设置定时器
+					timer = setInterval(function(){
+						
+//						6.判断是否输入完成
+						if(num == str.length){
+							
+//							7.停止定时器
+							clearInterval(timer);
+							
+						}else{
+							
+//							8.根据递增的下标依次添加字符串内容
+							oP.innerHTML += str.charAt(num);	//近
+							
+//							9.下标递增1
+							num++;
+							
+						}
+						
+					},100);
+					
+				}
+				
+//				10.绑定点击事件(收缩)
+				aBtn[1].onclick = function(){
+					
+//					11.清除定时器
+					clearInterval(timer);
+					
+//					12.设置定时器
+					timer = setInterval(function(){
+						
+//						13.内容从后面依次减一
+						num--;
+						oP.innerHTML = str.substring(0,num);
+						
+//						14.判断是否收缩完成(完成即清除定时器)
+						if(num == 0){
+							
+							clearInterval(timer);
+							
+						}
+						
+					},100)
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

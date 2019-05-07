@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			
+			window.location	可以设置网页路径
+				href: 返回页面路径
+				hash: 哈希值
+				search:	搜索
+				reload: 刷新
+			
+		-->
+		<input type="text" name="wd" />
+		<button>百度一下,你就知道</button>
+		<script>
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oInput = document.querySelector("input");
+				var oBtn = document.querySelector("button");
+				
+//				3.绑定点击事件
+				oBtn.onclick = function(){
+					
+					var val = oInput.value;
+					
+					if(val.trim() != ""){
+						window.location = "https://www.baidu.com/s?wd="+val;
+					}
+				
+				}
+			
+			}
+		
+			
+		
+		</script>
+	</body>
+</html>

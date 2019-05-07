@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				background: #f0f0f0;
+			}
+			canvas{
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="500" height="500">
+			您的浏览器不支持canvas
+		</canvas>
+		
+		<script>
+			
+			window.onload = function(){
+				
+				var myCanvas = document.getElementsByTagName("canvas")[0];
+				
+				// 1.创建画布
+				var ctx = myCanvas.getContext("2d");
+				
+				// 2.移动到起始坐标
+				ctx.moveTo(100,200);
+				
+				// 3.绘制圆(正圆)
+				// ctx.arc(100,200,100,0*Math.PI/180,360*Math.PI/180,true);
+				
+				// 半圆
+				ctx.arc(100,200,100,30*Math.PI/180,210*Math.PI/180,true);
+				
+				// 扇形
+				ctx.arc(100,200,100,30*Math.PI/180,150*Math.PI/180);
+					/*
+						圆心的x轴
+						圆心的y轴
+						圆的半径
+						起始弧度
+						结束弧度
+						旋转方向(默认false顺时针,true为逆时针)
+					*/
+				// 4.填充
+				ctx.fill();
+			
+			}
+			
+		</script>
+	</body>
+</html>

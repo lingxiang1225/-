@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			表单标签:	用于收集用户输入信息的标签
+			
+			<form>
+				input系列:
+					属性				值			描述
+					type	
+									text		文本类型
+									password	密码类型(以密文形式出现)
+									color		颜色类型
+									date		日期类型
+									time		时间类型
+									number		数字类型
+									range		范围类型
+									file		文件类型
+									hidden		隐藏类型(不显示输入框,name与value会拼接到url)
+									submit		提交按钮
+									reset		重置按钮
+									button		普通按钮
+									radio		单选框(必须要统一name属性)
+									checkbox	复选框
+					
+					placeholder		自定义		输入框的提示水印
+					step			数值			number类型时设置步长
+					name			自定义		输入框的名字(一般用于拼接内容到url)
+					value			自定义		输入框的初始值
+					maxlength		数值			输入框的最大输入限制
+					disabled		disabled	禁用属性(样式会置为灰色)
+					readonly		readonly	只读属性(只可以读取内容,不可以编辑)
+					checked			checked		默认选中(单选框和复选框)
+				
+				<label></label>
+					表单容器,可以实现点击文字选中选项,有两种写法:
+						01.label直接包住整个选项
+						<label>
+							<input type="radio" name="gender" />男
+						</label>
+						
+						02.通过id对应label(label的位置不受限制)
+						<input type="radio" name="gender" id="female" />
+						<label for="female">女</label>
+				
+				<select>
+					<optgroup label="组名">	--可选(分组)
+						<option></option>
+						<option></option>
+						<option></option>
+					</optgroup>
+				</select>
+					属性				值			描述
+					multiple	multiple		实现下拉框的多选(按住ctrl键点击)
+					size		数值				可显示的选项个数
+					selected	selected		下拉框的默认选中
+					
+				<button></button>	按钮
+					属性			值			描述
+					type
+								button		普通按钮
+								submit		提交按钮
+								reset		重置按钮
+								
+					button与input按钮的区别?
+						button是双标签,可以嵌套其他标签,实现按钮的功能
+						input是单标签,无法嵌套
+						
+				<textarea></textarea>	多行文本域
+					rows		行数
+					cols		列数
+				
+			</form>
+				action:	数据提交到的地址(由后台人员提供)
+				method:	数据提交的方式(post|get)
+					get: 获取数据(将数据拼接到url,安全性低,数据量小)
+					post:传递数据(将数据放在request body,安全性高,传输数据量大[一般用于隐私信息])
+		-->
+		<form>
+			<input type="text" placeholder="请输入用户名" readonly="readonly" value="小刘老师" maxlength="5" />
+			<input type="password" placeholder="请输入密码" disabled="disabled" />
+			<input type="color" />
+			<input type="date" />
+			<input type="time" />
+			<input type="number" placeholder="请输入数字" step="10" />
+			<input type="range" name="myRange" />
+			<input type="file" />
+			<input type="hidden" />
+			<input type="submit" />
+			<input type="reset" disabled="disabled" />
+			<input type="button" id="btn" value="普通按钮" />
+			<label>
+				<input type="radio" name="gender" value="male" checked="checked" />男
+			</label>
+			<input type="radio" name="gender" id="female" value="female"  /><label for="female">女</label>
+			<br />
+			<label><input type="checkbox" name="fruit" value="apple" />苹果</label>
+			<label><input type="checkbox" name="fruit" value="banana" />香蕉</label>
+			<label><input type="checkbox" name="fruit" value="pear" />雪梨</label>
+			<label><input type="checkbox" name="fruit" value="watermelon" checked="checked" />西瓜</label>
+			<br />
+			
+			<!--下拉框-->
+			<!--普通下拉框-->
+			<select name="ball">
+				<option value="basketball">篮球</option>
+				<option value="football">足球</option>
+				<option value="badminton">羽毛球</option>
+				<option value="volleyball">排球</option>
+			</select>
+			
+			<!--分组下拉框-->
+			<select name="city">
+				<optgroup label="南方城市">
+					<option value="sz">深圳</option>
+					<option value="gz">广州</option>
+					<option value="dg">东莞</option>
+					<option value="fs">佛山</option>
+				</optgroup>
+				<optgroup label="北方城市">
+					<option value="jl">吉林</option>
+					<option value="hlj">黑龙江</option>
+					<option value="bj">北京</option>
+					<option value="heb" selected="selected">哈尔滨</option>
+				</optgroup>
+			</select>
+			
+			<!--多选下拉框-->
+			<select name="sport" multiple="multiple" size="2">
+				<option value="basketball">篮球</option>
+				<option value="football">足球</option>
+				<option value="badminton">羽毛球</option>
+				<option value="volleyball" selected="selected">排球</option>
+			</select>
+			
+			<!--按钮-->
+			<button type="button">普通按钮</button>
+			<button type="submit">提交按钮</button>
+			<button type="reset">重置按钮</button>
+			<!--图片按钮-->
+			<button type="reset">
+				<img src="../img/xiaomi.jpg" width="50"/>
+			</button>
+			
+			<textarea style="resize: none;" rows="5" cols="10" placeholder="请输入自我介绍">小刘老师</textarea>
+		</form>
+		
+		<script>
+			
+//			普通按钮的用法
+			var oBtn = document.getElementById("btn");
+			
+			oBtn.onclick = function(){
+				
+				alert(666);
+				
+			}
+			
+		</script>
+	</body>
+</html>

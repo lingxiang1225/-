@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			ul,li{
+				list-style: none;
+			}
+			li{
+				width: 200px;
+				height: 40px;
+				border: 1px solid #ccc;
+				background: yellow;
+				-webkit-user-select: none;	/*谷歌浏览器兼容前缀(禁用默认选中)*/
+				margin: 5px 0;
+			}
+			.basket{
+				width: 400px;
+				height: 400px;
+				border: 2px solid #0000FF;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			拖拽事件必须先给拖拽元素设置draggable属性
+		
+			火狐浏览器必须携带数据进行访问
+		
+			数据传输:
+				ev.dataTransfer.setData: 设置数据(键值对的形式)
+				ev.dataTransfer.getData: 获取数据(参数接收一个key)
+		
+		-->
+		<ul>
+			<li draggable="true">1</li>
+			<li draggable="true">2</li>
+			<li draggable="true">3</li>
+			<li draggable="true">4</li>
+			<li draggable="true">5</li>
+		</ul>
+		<div class="basket"></div>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var aLi = document.querySelectorAll("li");
+				var oBox = document.querySelector(".basket");
+				
+				// 1.循环绑定li的拖拽事件
+				for(var i=0; i<aLi.length; i++){
+					
+					aLi[i].index = i;
+					
+					// 拖拽开始
+					aLi[i].ondragstart = function(ev){
+						
+						var ev = ev || window.event;
+						
+						// 设置传输的数据,键值对的形式
+						ev.dataTransfer.setData("index",this.index);
+						ev.dataTransfer.setData("context",this.innerHTML);
+						this.style.background = "red";
+						
+					}
+					
+				}
+				
+				oBox.ondragenter = function(){
+					
+					this.style.borderColor = "red";
+					
+					this.ondragover = function(ev){
+						
+						var ev = ev || window.event;
+						ev.preventDefault();
+						
+					}
+					
+					// 将拖拽元素放置在oBox里面
+					this.ondrop = function(ev){
+						
+						var ev = ev || window.event;
+						
+						// 获取传输过来的数据
+						var ind = ev.dataTransfer.getData("index");
+						var cont = ev.dataTransfer.getData("context");
+						console.log(cont);
+						
+						this.appendChild(aLi[ind]);
+						
+						aLi[ind].draggable = false;	//置为不可拖拽
+						
+					}
+					
+				}
+				
+				
+				// 随机数函数
+				function getRandom(min,max){
+					
+					return Math.floor(Math.random()*(max-min)+min);
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

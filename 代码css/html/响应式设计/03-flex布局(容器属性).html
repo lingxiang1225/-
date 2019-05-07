@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body,ul,li{margin: 0; padding: 0;}
+			ul,li{list-style: none;}
+			li{
+				width: 300px;
+				/*height: 60px;*/
+				background-color: lightgray;
+				border: 1px solid yellow;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			ul{
+				background-color: lightgreen;
+				height: 500px;
+				display: flex;
+				/*flex-direction: row;	方向*/
+				/*flex-wrap: nowrap;	是否换行*/
+				flex-flow: row wrap;	/*以上两个的合写方式,值用空格隔开*/
+				justify-content: space-between;
+				align-items: stretch;
+				align-content: space-around;
+			}
+			li:nth-child(3){
+				font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			弹性盒子(flex布局)
+				容器属性:
+				1.声明使用flex布局
+					display: flex(方向默认为横向)
+				
+				2.声明flex布局的方向
+					flex-direction
+						row				横向(默认)
+						column			纵向
+						row-reverse		横向反转
+						column-reverse	纵向向反转
+				
+				3.声明是否换行
+					flex-wrap
+						wrap			换行
+						nowrap			不换行(默认)
+						wrap-reverse	反转换行
+				
+				4.以上两个的合写方式
+					flex-flow
+				
+				5.主轴对齐方式(当方向为row时,X轴为主轴;反之,Y轴为主轴)
+					justify-content
+						center	居中
+						flex-start		从起点开始
+						flex-end		从终点开始
+						space-around	元素两边外边距相等(环绕对齐)
+						space-between	两端对齐
+						
+				6.交叉轴对齐方式(当方向为row时,Y轴为交叉轴;反之,X轴为交叉轴)
+					align-items
+						center			居中
+						flex-start		从起点开始
+						flex-end		从终点开始
+						stretch			撑满容器
+						baseline 		基线对齐
+						
+				7.堆叠伸缩对齐方式(整体一起移动)
+					align-content
+						center			居中
+						flex-start		从起点开始
+						flex-end		从终点开始	
+						space-around	元素两边外边距相等(环绕对齐)
+						space-between	两端对齐
+						stretch			默认方式
+		-->
+		<ul>
+			<li>娱乐</li>
+			<li>军事</li>
+			<li>数码</li>
+			<li>科技</li>
+			<li>体育</li>
+		</ul>
+	</body>
+</html>

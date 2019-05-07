@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			if(判断条件){
+				条件为真时的执行语句
+			}else{
+				条件为假时的执行语句
+			}
+			判断条件会转换成布尔值(true || false)
+			
+			假值: 0,"",undefined,null,false
+		-->
+		<script>
+			if(10>20){
+				console.log("条件是真的");
+			}else if(10>5){
+				console.log("条件是真的");
+			}else{
+				console.log("条件是假的")
+			}
+			
+//			判断输入的数值是奇数还是偶数(前提是数字)
+			var num = Number(prompt("请输入一个数字"));
+			if(isNaN(num)){	//判断是否为非数字(非数字输入不合法)
+				
+				alert("输入不合法, 请输入一个数字")
+				
+			}else{	//输入为数字
+				if( num % 2 ){	//条件不为0时执行(因为0是假)
+					alert(num+"是奇数");
+				}else{
+					alert(num+"是偶数");
+				}
+			}
+			
+		</script>
+	</body>
+</html>

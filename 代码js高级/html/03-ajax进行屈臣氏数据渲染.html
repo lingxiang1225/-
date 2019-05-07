@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../css/watson.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="fix_box">
+				<div>
+					<span class="iconfont">&#xe619;</span>
+					<div>
+						<span class="iconfont">&#xe621;</span>
+						<input type="text" name="" id="" value="" placeholder="精华" />
+					</div>
+					<span class="iconfont">&#xe658;</span>
+				</div>
+				<!--选项卡切换S-->
+				<div class="switch_box">
+					<p class="active_btn">今日推荐</p>
+					<p>面膜中心</p>
+					<p>居家生活</p>
+					<p>购全球</p>
+				</div>
+				<!--选项卡切换E-->
+			</div>
+			<div class="content_box">
+				<div class="active">	<!--今日推荐-->
+					<div class="banner">
+						<div class="img_box">
+							<!--<img class="active" src="https://i1.mifile.cn/a4/xmad_15547798366135_YcVSe.jpg"/>
+							<img src="https://i1.mifile.cn/a4/xmad_15541194668557_Xpoxs.jpg"/>
+							<img src="https://i1.mifile.cn/a4/xmad_15547822805969_hxdoV.jpg" />-->
+						</div>
+						<div class="span_box">
+							<span class="active_btn"></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+				</div>
+				<div>2</div>
+				<div>3</div>
+				<div>	<!--购全球-->
+					<div class="imgBg"></div>
+					<ul class="product_list">
+						<!--<li>
+							<div>
+								<img src="https://image.watsons.com.cn//upload/1b2467f3.jpg?x-oss-process=image/resize,w_375/quality,q_80/format,webp"/>
+							</div>
+							<div class="txt">
+								<p>玥之秘水晶防晒喷雾SPF50+PA+++ 150ml</p>
+								<p>
+									<span>¥59<del>¥89</del></span>
+									<span class="iconfont">&#xe658;</span>
+								</p>
+							</div>
+							<p>满600送小米手环</p>
+						</li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素				
+				var switchBox = document.getElementsByClassName("switch_box")[0];
+				var aSwitchBtn = switchBox.getElementsByTagName("p");  //选项卡的按钮
+				
+				var contentBox = document.getElementsByClassName("content_box")[0];
+				var conts = contentBox.querySelectorAll(".content_box>div");  //选项卡的内容
+				
+				var productList = document.getElementsByClassName("product_list")[0];
+				
+				var imgBox = document.getElementsByClassName("img_box")[0];	//轮播图
+				var timer = null;
+				
+//				3.循环绑定点击事件
+				for(var i=0; i<aSwitchBtn.length; i++){
+					
+					aSwitchBtn[i].index = i;	//另存下标
+					
+					aSwitchBtn[i].onclick = function(){
+						resetCSS(aSwitchBtn,conts);	//重置样式
+						activeCSS(this.index,aSwitchBtn,conts);	//激活样式
+					}
+					
+				}
+				
+//				通过ajax获取数据
+//				1.创建对象
+				var xhr;
+				
+//				2.捕获异常
+				if(window.XMLHttpRequest){
+					xhr = new XMLHttpRequest();
+				}else{
+					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+//				3.打开请求
+				xhr.open("GET","https://www.easy-mock.com/mock/5ba06ec82ee5a7654dc13dd7/example/watson");
+				
+//				4.发送请求
+				xhr.send();
+				
+//				5.监听响应状态
+				xhr.onreadystatechange = function(){
+					
+//					6.判断响应状态
+					if(xhr.readyState == 4 && xhr.status == 200){
+						
+						var jsonData = JSON.parse(xhr.responseText);
+						console.log(jsonData);
+						
+//						数据渲染
+						var myData = jsonData.data.item_list;
+						
+//						循环数组
+						for(var i in myData){
+					
+							var eachData = myData[i];
+							
+		//					处理最高价
+							var marketPrice;
+							if(eachData.min_market_price){
+								marketPrice = "¥"+eachData.min_market_price/100;
+							}else{
+								marketPrice = "";
+							}
+							
+		//					处理促销活动
+							var proActivity;
+							if(eachData.promotions){
+								proActivity = eachData.promotions[0];
+							}else{
+								proActivity = "";
+							}
+							
+							productList.innerHTML += '<li><div><img src="'+eachData.over_image_url+'"/></div><div class="txt"><p>'+eachData.item_name+'</p><p><span>¥'+eachData.min_app_price/100+'<del>'+marketPrice+'</del></span><span class="iconfont">&#xe658;</span></p></div><p>'+proActivity+'</p></li>';
+							
+						}
+						
+					}
+					
+				}
+				
+				
+//				重置样式函数
+				function resetCSS(dot,box){
+					for(var j=0; j<dot.length; j++){
+						dot[j].className = "";
+						box[j].className = "";
+					}
+				}
+				
+				function activeCSS(aa,dot,box){
+					dot[aa].className = "active_btn";
+					box[aa].className = "active";
+				}
+				
+			}
+		</script>
+	</body>
+</html>

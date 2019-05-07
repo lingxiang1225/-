@@ -1,0 +1,29 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1555054016895'); /* IE9 */
+  src: url('iconfont.eot?t=1555054016895#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOsAAsAAAAAB/QAAANgAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqDMIJtATYCJAMQCwoABCAFhG0HRhvdBsg+QCa3uoOAaKkpDlNYN+o6L5Ml7MCnEA/Rfumbv3O0/wKoklMBklRHpKpIErlKIIfgZGNkhWIj8n92798HTcQuc/rIWszqefZuxA+Vqon6V0HN03+Vch092e6FjSxJXataU2iAgCj5ac7sYWezU0yI3aYECNX/1/Apgg24OKWIBpLbo0XPWib+kv/P5fSuYRtsfjvLaaxBez8/6kVxvK0X0FibIiuQRL1h7IKWeJxANZLNdqK1exi8kjkuEPd1VQBvxislS/SFbsXSFB/Ipd+8xBHwPvh+/FeY0ugU5tTzN1tkqP81suLYWjftISSezgG2ioItIInbla6rHFF0i0NVezvtAn19DVO15Fg5XyQyVdH4h9dHIxSiC+YPwTaMFX7hYDT8EiP4VZ4CH2RJH+N4AfgKpixQdrRu886M9QUnaiTsHg+J7VuR2FeRCsTdZutWTNL13r4dioPhlZs3wT5eUoLqgc7LmITXneH6kgvtwf4sr98ZS65YjXU8v9eegH34ZbaepsXJ13P9eYYjvr+yuas1cq26FO+ZMMyJ0l4eWxnO3q0ahw6b7lu+o3pPjwbWfXI0O8n0+vdN4wyevdojP/mEDT7oYMolgfPmNVRVxCt/Y6lpUL6zK00JzVnNCU3zv5r8rr/mLaEoqylhff7jCbAVlPy/6FuanaN9gCP7z9pyw17ngX4/076/H+oNEYAD5T5OEfvyjMvjlRv48Ot+49yXu0/mEqr/S5vg59uHngMJ3cXvX6yKf5S4Y1FqUtOcqcgckZ6bzvJy94Wqit+TZNr7KTRznZmEZi6BRs8iFH1LaJK3oKO1DV19h6Ha1La6NYNziBxgw0UAYdJraIz7AcWkYzTJ76Bj3nfomoxQXYiULVsrDWniTEAmU3GZ6lI4pNhWJGHhIFOtgMDT0oA1yripB2hBbn4+0cZCjE8xw1xQCxEVqvBwkLaC01ggEKYRHjaYhLkaYqQyL0+pelOuFA4CcRzHCBAjo0TLKJ0kLETxKiNS+PwgRmUJEPAGXJV/FMOZ9M6pArnyO6BtqlAn3K28YlqgKoSQglJwYUFUK3AwASsaRkWqBxkYCcqlDQhHVMpDpZSuqtzlNcE3XAWVuU9GEyUyOnoPNCEkaZbv+ufkIDPRLepCyNABAA==') format('woff2'),
+  url('iconfont.woff?t=1555054016895') format('woff'),
+  url('iconfont.ttf?t=1555054016895') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1555054016895#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shanchu:before {
+  content: "\e62d";
+}
+
+.icon-icon-test:before {
+  content: "\e61e";
+}
+
+.icon-bianji:before {
+  content: "\e67a";
+}
+

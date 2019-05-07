@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="container">
+			<input type="text" placeholder="请输入内容" />
+			<button>留言</button>
+			<ul></ul>
+		</div>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oInput = document.getElementsByTagName("input")[0];
+				var oBtn = document.getElementsByTagName("button")[0];
+				var oUl = document.getElementsByTagName("ul")[0];
+				
+//				3.绑定点击事件
+				oBtn.onclick = function(){
+					
+//					4.判断输入内容是否为空
+					if(oInput.value.trim() == ""){
+						
+						alert("请输入内容");
+						
+					}else{
+						
+//						5.获取输入内容
+						var txt = oInput.value;
+						
+//						6.创建li标签
+						var oLi = document.createElement("li");
+						
+//						7.将输入内容填入li
+						oLi.innerHTML = txt;
+						
+//						8.将li插入到ul的最前面一个
+						if(firstNode(oUl)){		//判断ul是否有第一个子节点(如果有,则使用插入,没有则给ul添加)				
+							oUl.insertBefore(oLi, firstNode(oUl));
+						}else{
+							oUl.appendChild(oLi);
+						}
+						
+//						9.清空输入框
+						oInput.value = "";
+						
+//						10.判断是否超过5条留言,超出删除最早的一条
+						if(oUl.children.length > 5){
+							
+							oUl.removeChild(lastNode(oUl));
+							
+						}
+						
+					}
+					
+				}
+				
+				
+//				第一个子节点的兼容写法
+				function firstNode(obj){
+					if(!obj.firstChild){
+						return false;
+					}
+					return obj.firstElementChild || (obj.firstChild.nodeType==1?obj.firstChild:(obj.firstChild).nextSibling);
+				}
+				
+//				最后一个子节点的兼容写法
+				function lastNode(obj){
+					if(!obj.lastChild){
+						return false;
+					}
+					return obj.lastElementChild || (obj.lastChild.nodeType==1?obj.lastChild:(obj.lastChild).previousSibling);
+				}
+			}
+			
+		</script>
+	</body>
+</html>

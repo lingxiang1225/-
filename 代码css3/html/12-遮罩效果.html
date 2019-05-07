@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div{
+				width: 1000px;
+				height: 666px;
+				background: url(../img/liu.jpg) no-repeat;
+				background-size: 100% 100%;
+				-webkit-mask: url(../img/mask.png) no-repeat 0 0;
+				/* transition: 2s; */
+			}
+			div:hover{
+				-webkit-mask-position: 100% 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+<!-- 		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var oBox = document.getElementsByTagName("div")[0];
+				
+				oBox.onmousemove = function(ev){
+					var ev = ev || window.event;
+					var oMouseX = ev.pageX - 200;
+					var oMouseY = ev.pageY - 200;
+					this.style["-webkit-mask-position"] = oMouseX+"px "+oMouseY+"px";
+					
+				}
+				
+			}
+			
+		</script> -->
+	</body>
+</html>

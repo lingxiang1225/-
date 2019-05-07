@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				background: #F0F0F0;
+			}
+			canvas{
+				background: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			创建渐变色
+				var bg = ctx.createLinearGradient(起始坐标x,起始坐标y,结束坐标x,结束坐标y);
+			
+			给渐变色添加渐变点(至少需要有两个渐变点)(位置取值为0~1)
+				bg.addColorStop(位置,颜色)
+			
+			
+		
+		
+		-->
+		<canvas width="500" height="500">
+			您的浏览器不支持canvas
+		</canvas>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				var myCanvas = document.getElementsByTagName("canvas")[0];
+				
+				// 1.创建画布
+				var ctx = myCanvas.getContext("2d");
+				
+				// 2.创建渐变色
+				var bgColor = ctx.createLinearGradient(0,0,myCanvas.offsetWidth,myCanvas.offsetHeight);
+				
+				// 3.添加渐变点(位置,颜色)[位置取值范围是0~1]
+				bgColor.addColorStop(0, "red");
+				bgColor.addColorStop(0.5, "yellow");
+				bgColor.addColorStop(1, "green");
+				
+				ctx.fillStyle = bgColor;
+				
+				ctx.fillRect(0,0,myCanvas.offsetWidth,myCanvas.offsetHeight);
+				
+			}
+			
+		</script>
+	</body>
+</html>

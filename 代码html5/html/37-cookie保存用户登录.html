@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/jquery3.4.0.js"></script>
+		<script src="../js/jquery.cookie.js"></script>
+	</head>
+	<body>
+		<div>
+			
+		</div>
+		
+		<script>
+			
+			$(function(){
+				
+				// 获取cookie
+				if($.cookie("user")){
+					
+					$("div").html("欢迎"+$.cookie("user")+"登陆本网站   <button>退出登录</button>");
+					
+					$("button").click(function(){
+						
+						$.removeCookie("user");
+						
+						$("div").html('<input type="text" value="" placeholder="请输入用户名" /><input type="password" value="" placeholder="请输入密码" /><input type="button" name="" id="" value="登录">')
+						
+					})
+					
+					
+				}else{
+					
+					$("div").html('<input type="text" value="" placeholder="请输入用户名" /><input type="password" value="" placeholder="请输入密码" /><input type="button" name="" id="" value="登录">')
+					
+					$("[type=button]").click(function(){
+						
+						if($.trim($("[type=text]").val())!="" && $.trim($("[type=password]").val())!=""){
+							
+							var userName = $("[type=text]").val();
+							console.log(userName);
+							
+							$("div").html("欢迎"+$("[type=text]").val()+"登陆本网站  <button>退出登录</button>");
+							
+							// 设置cookie
+							$.cookie("user",userName, {expires: 7});
+							
+							$("button").click(function(){
+								
+								$.removeCookie("user");
+								
+								$("div").html('<input type="text" value="" placeholder="请输入用户名" /><input type="password" value="" placeholder="请输入密码" /><input type="button" name="" id="" value="登录">')
+								
+							})
+							
+						}
+						
+					})
+				}
+				
+				
+			})
+			
+		</script>
+	</body>
+</html>

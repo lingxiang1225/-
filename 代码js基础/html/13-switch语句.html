@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			switch(判断的变量){
+				case 第一种情况: 执行语句
+				break;
+			}
+			
+			break: 终止循环(跳出循环),后面的语句不会再执行
+			
+			
+		-->
+		<script>
+//			星期从星期日开始,值为0
+			var myDate = new Date().getDay();	//获取当前星期(3)
+			
+//			if(myDate == 0){	//星期日
+//				alert("今天休息,多睡一会儿");
+//			}else if(myDate == 1){	//星期一
+//				alert("今天周一,综合症犯了");
+//			}else if(myDate == 2){	//星期二
+//				alert("今天周二,好累");
+//			}else if(myDate == 3){	//星期三
+//				alert("今天周三,受不了了");
+//			}else if(myDate == 4){	//星期四
+//				alert("今天周四,再坚持一天");
+//			}else if(myDate == 5){	//星期五
+//				alert("今天周五,终于快要休息了");
+//			}else if(myDate == 6){	//星期六
+//				alert("今天周六,还要上自习");
+//			}else{
+//				alert("你生活在哪个空间");
+//			}
+			
+			
+			switch(myDate){
+				case 1: alert("今天周一,综合症犯了");
+				break;
+				case 2: alert("今天周二,好累");
+				break;
+				case 3: alert("今天周三,受不了了");
+				break;
+				case 4: alert("今天周四,再坚持一天");
+				break;
+				case 5: alert("今天周五,终于快要休息了");
+				break;
+				default: alert("今天周末,还是得敲代码");
+			}
+			
+			
+		</script>
+	</body>
+</html>

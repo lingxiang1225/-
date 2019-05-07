@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			dialog{
+				display: block;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!--
+			语义化标签:
+				
+				1.标签名有实际意义,更直观
+				2.有利于SEO
+				
+				header  页面的上部分
+				nav     导航
+				hgroup  标题组合
+				footer  底部
+				section 章节|分块
+				article 文章
+				aside   侧面栏
+				datalist数据列表(输入框可能的值)
+				details 详情
+				summary 概要
+				figure  描述
+				figcaption 描述内容
+				dialog  对话
+				progress进度条
+				time    时间
+				address 地址(斜体)
+				mark    标记(黄色背景色)
+			
+		
+		-->
+		<div id="header"></div>
+		<div id="nav"></div>
+		
+		<header>
+			用于包裹页面的头部
+		</header>
+		
+		<nav>
+			导航部分
+		</nav>
+		
+		<!-- datalist显示input可能输入的值 -->
+		<input type="text" name="" list="citylist" value="" />
+		<datalist id="citylist">
+			<option value ="sz">深圳</option>
+			<option value ="gz">广州</option>
+			<option value ="dg">东莞</option>
+			<option value ="hz">惠州</option>
+		</datalist>
+		
+		<hgroup>
+			<h1>前端课堂</h1>
+			<h2>走向人生巅峰</h2>
+		</hgroup>
+		
+		<footer>
+			页面的底部
+		</footer>
+		
+		<figure>
+			<img src="../../../HTML_CSS/CSS部分/代码/img/flower.jpg" />
+			 <figcaption> 趣味课堂 photo &copy 趣味趣学</figcaption>
+		</figure>
+
+		<p>五一期间的<time>10:00</time>, 你还在睡觉吗?</p>
+		
+		<details>
+			<summary>趣味课堂</summary>	<!--概要-->
+			<p>带您走向人生巅峰，出任CEO，迎娶白富美！</p>	<!--细节(一开始会隐藏)-->
+		</details>
+
+		<dialog>
+			<dt>老师说:</dt>
+			<dd>你们要认真敲代码</dd>
+			<dt>学生说:</dt>
+			<dd>我们要走向人生巅峰!</dd>
+		</dialog>
+		
+		<p>明天<time>9:00</time>请准时到<address>资信达大厦4楼</address><mark>找我</mark></p>
+		
+		<progress max="100" value="14"></progress>
+		<span class="progress_val">14</span>%
+		
+		
+		<script>
+			
+			window.onload = function(){
+				
+				var oProgress = document.getElementsByTagName("progress")[0];
+				var progressVal = document.getElementsByClassName("progress_val")[0];
+				var timeout = null;
+				
+				function valAddOne(){
+					
+					if(oProgress.value < oProgress.max){
+						oProgress.value += 1;
+						progressVal.innerHTML = oProgress.value;
+					}
+					
+					timeout = setTimeout(valAddOne,100);
+					
+				}
+				valAddOne();
+			}
+			
+		</script>
+	</body>
+</html>

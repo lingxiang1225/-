@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			localStorage:(同步购物车)
+				除非手动清除,永久存储在本地,可以跨页面
+				
+				window.localStorage
+					setItem()	设置
+					getItem()	获取
+					removeItem()	删除
+					clear()		清空
+		-->
+		<button>存</button>
+		<button>取</button>
+		<button>删</button>
+		<button>清</button>
+		<script>
+			
+			// 设置本地存储
+			var oSave = document.querySelectorAll("button")[0];
+			var oRead = document.querySelectorAll("button")[1];
+			var oDel = document.querySelectorAll("button")[2];
+			var oClear = document.querySelectorAll("button")[3];
+			
+			//保存
+			oSave.onclick = function(){
+				
+				window.localStorage.setItem("myName","小刘老师");
+				window.localStorage.setItem("myClass","web16");
+				window.localStorage.setItem("myAge","18");
+				
+			}
+			
+			//读取
+			oRead.onclick = function(){
+				
+				var val = window.localStorage.getItem("myName");
+				console.log(val);
+				
+			}
+			
+			//删除单个localStorage
+			oDel.onclick = function(){
+				
+				window.localStorage.removeItem("myName");
+				
+			}
+			
+			//全部清除
+			oClear.onclick = function(){
+				
+				window.localStorage.clear();
+				
+			}
+			
+		</script>
+	</body>
+</html>

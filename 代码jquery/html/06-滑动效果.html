@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery3.4.0.js"></script>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #ccc;
+				background-color: yellow;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			slideDown(speed,swing,fn)		向下滑
+			slideUp()		向上滑
+			slideToggle()	切换滑动
+				speed: 滑动时长(默认毫秒)
+				swing: 切换效果(可能的值: linear)
+				fn: 滑动完成之后的执行语句
+		-->
+		<button>向下滑动</button>
+		<button>向上滑动</button>
+		<button>切换滑动</button>
+		<div></div>
+		<script>
+			
+			$(function(){
+				
+				$("button").eq(0).click(function(){
+					
+					$("div").slideDown(500",0,"linearfunction(){
+						alert("滑行完成");
+					});
+					
+				})
+				$("button").eq(1).click(function(){
+					
+					$("div").slideUp(5000,"linear",function(){
+						alert("滑行完成");
+					});
+					
+				})
+				$("button").eq(2).click(function(){
+					
+					$("div").slideToggle(5000,"linear",function(){
+						alert("滑行完成");
+					});
+					
+				})
+				
+			})
+			
+		</script>
+	</body>
+</html>

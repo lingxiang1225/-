@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/优先级.css"/>
+		<style>
+			#div_id{	/*100*/
+				background-color: lightblue;
+			}
+			div{	/*1*/
+				background-color: orange;
+			}
+			.div_class{	/*10*/
+				background-color: lightgreen;
+			}
+			div#div_id{	/*101*/
+				background-color: purple;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			CSS样式引入的优先级:
+				行内样式>内部样式|外部样式
+				内部样式和外部样式没有明显的优先级,最后引入的会覆盖前面引入的
+			
+			CSS样式的权重:
+				id: 100
+				class: 10
+				标签: 1
+				权重可叠加
+			
+		-->
+<!--		<div style="background-color: red;">1234567890</div>-->
+		<div class="div_class" id="div_id">1234567890</div>
+	</body>
+</html>

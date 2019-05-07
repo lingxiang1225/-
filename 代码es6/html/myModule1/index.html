@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="module">
+			import {result,myName} from "./modules/moduleB.js";	//导入B
+			console.log(result);
+			console.log("moduleA:"+result.myName);
+			console.log(result.fn());
+			console.log("moduleB:"+myName);
+		</script>
+	</body>
+</html>

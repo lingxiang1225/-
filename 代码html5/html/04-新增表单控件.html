@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../../../jquery/代码/js/jquery3.4.0.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			input{
+				margin: 10px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			HTML5新增表单控件
+				email:  电子邮件地址(在移动端会调取对应键盘)--简单验证: 要包含@,@后面需要有内容
+				tel:	电话号码(在移动端会调取对应键盘)
+				url:	网址(携带协议的完整网址)
+				search:	搜索(输入框自带x进行清空)
+				range:	滑动取值器
+					max:	最大值
+					min:	最小值
+					step:	步长
+				number:	数值类型(只能输入数字)
+				color:	颜色选择器
+				datetime-local:	当地时间
+				date:	年月日
+				month:	年月
+				week:	年周
+				time:	时间(时分)
+				
+			HTML5表单新增属性
+				placeholder:	输入框的提示水印
+				autocomplete:	是否提示用户输入过值(默认是on,关闭提示为off)
+				autofocus:		是否自动聚焦(autofocus)
+				list:			为输入框构造一个选择列表(配合datalist标签使用)
+				required:		必须输入(为空时提示"请输入此字段")
+				pattern:		正则验证
+				formaction:		在提交按钮标签里面定义(数据提交到的地址)
+				
+			HTML5表单验证:
+				通过invalid事件进行判断
+				返回一个validity对象
+					patternMismatch: 不匹配正则表达式
+					typeMismatch:	不匹配类型
+					stepMismatch:	不匹配步长
+					valueMissing:	输入值为空
+					tooLong:	过长
+					tooShort:	过短
+					rangeUnderflow : 验证的number/range最小值
+					rangeOverflow：验证的number/range最大值
+					
+					通过setCustomValidity()修改自带的提示信息
+					(如果validity.valid为true时,说明验证通过)
+		
+		-->
+		<form>
+			text: <input type="text" pattern="^[a-z]{6}$" name="" id="" value="" />
+			email: <input type="email" pattern="^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$" autocomplete="on" placeholder="请输入邮件地址" /><br />
+			tel: <input type="tel" required="required" maxlength="11" pattern="^[1][3-9]\d{9}$" autofocus="autofocus" placeholder="请输入电话号码"  /><br />
+			url: <input type="url" placeholder="请输入网址"  /><br />
+			search: <input type="search" placeholder="请输入搜索内容"  /><br />
+			range: <input type="range" required="required" value="3.5" max="10" min="0" step="0.2"  /><br />
+			number: <input type="number" max="100" min="10" step="8" placeholder="请输入数值"  /><br />
+			color: <input type="color" /><br />
+			datetime-local: <input type="datetime-local" /><br />
+			time: <input type="time" /><br />
+			date: <input type="date" /><br />
+			week: <input type="week" /><br />
+			month: <input type="month" /><br />
+			<input type="submit"  name="" id="" value="提交" />
+		</form>
+		
+		<script>
+			
+			window.onload = function(){
+				
+				// HTML5新增的选择器
+				var oRange = document.querySelector("[type='range']");
+				var oTxt = document.querySelector("[type='text']");
+				var oTel = document.querySelector("[type='tel']");
+				
+				// range改变
+				oRange.onchange = function(){
+					
+					console.log(oRange.value);
+					
+				}
+				
+				// 文本有效性判断
+					
+				oTxt.oninvalid = function(){
+					
+					console.log(oTxt.validity);
+					
+				}
+					
+				// 数值输入框有效性判断
+					
+				oTel.oninvalid = function(ev){
+					// 阻止默认验证
+					var ev = ev || window.event;
+					ev.preventDefault();
+					
+					if(oTel.validity.stepMismatch){
+						console.log("步长不匹配");
+					}else if(oTel.validity.tooLong){
+						console.log("太长了");
+					}else if(oTel.validity.tooShort){
+						console.log("太短了");
+					}else if(oTel.validity.patternMismatch){
+						oTel.setCustomValidity("您输入的内容与正则不匹配"); 	//自定义验证提示
+						console.log("正则不匹配");
+					}else if(oTel.validity.typeMismatch){
+						console.log("类型不匹配");
+					}else if(oTel.validity.valueMissing){
+						console.log("输入值为空");
+					}else if(oTel.validity.rangeUnderflow){
+						console.log("小于最小值");
+					}else if(oTel.validity.rangeOverflow){
+						console.log("大于最大值");
+					}				
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

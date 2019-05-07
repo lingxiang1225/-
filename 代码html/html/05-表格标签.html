@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			<table>(先有行,再有列	)
+				<tr>	--行
+					<th></th>	--表头列(默认加粗居中显示)
+					<th></th>	--表头列(默认加粗居中显示)
+					<th></th>	--表头列(默认加粗居中显示)
+				</tr>
+				<tr>
+					<td></td>	--普通列
+					<td></td>	--普通列
+					<td></td>	--普通列
+				</tr>
+			</table>
+			属性				值
+			border			数值		表格的边框
+			
+			cellspacing		数值		单元格之间的间距
+			
+			cellpadding		数值		单元格的内部空间
+			
+			align					水平方向对齐方式
+					left|center|right
+					
+			valign					垂直方向对齐方式
+					top			靠上对齐
+					middle		居中对齐
+					bottom		靠下对齐
+					baseline	基线对齐(文字的底线对齐)
+					
+			bgcolor			颜色值	背景色
+			
+			bordercolor		颜色值	边框颜色
+			
+			rowspan			数值		合并行(自动生成所需要的行数)
+			
+			colspan			数值		合并列
+		-->
+		<table border="1" cellspacing="0" cellpadding="10" align="center" bgcolor="lightblue" bordercolor="red">
+			<tr>
+				<th colspan="6">课程表</th>
+			</tr>
+			<tr>
+				<th></th>
+				<th>星期一</th>
+				<th>星期二</th>
+				<th>星期三</th>
+				<th>星期四</th>
+				<th>星期五</th>
+			</tr>
+			<tr valign="baseline">
+				<td valign="middle" rowspan="3">上午</td>
+				<td>语文</td>
+				<td align="center" style="font-size: 40px;">数学</td>
+				<td>英语</td>
+				<td style="font-size: 32px;" align="center">数学</td>
+				<td>英语</td>	
+			</tr>
+			<tr>
+				<td>语文</td>
+				<td align="center">数学</td>
+				<td>英语</td>
+				<td align="center">数学</td>
+				<td>英语</td>	
+			</tr>
+			<tr>
+				<td>语文</td>
+				<td align="center">数学</td>
+				<td>英语</td>
+				<td align="center">数学</td>
+				<td>英语</td>	
+			</tr>
+			<tr>
+				<td>下午</td>
+				<td>语文</td>
+				<td align="center">数学</td>
+				<td>英语</td>
+				<td align="center">数学</td>
+				<td>英语</td>	
+			</tr>
+			<tr>
+				<td></td>
+				<td>语文</td>
+				<td align="center">数学</td>
+				<td>英语</td>
+				<td align="center">数学</td>
+				<td>英语</td>	
+			</tr>
+		</table>
+	</body>
+</html>

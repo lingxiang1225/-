@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li{
+				margin: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>1. 
+				<button class="toTop">上移</button>
+				<button class="toBottom">下移</button>
+			</li>
+			<li>2. 
+				<button class="toTop">上移</button>
+				<button class="toBottom">下移</button>
+			</li>
+			<li>3. 
+				<button class="toTop">上移</button>
+				<button class="toBottom">下移</button>
+			</li>
+			<li>4. 
+				<button class="toTop">上移</button>
+				<button class="toBottom">下移</button>
+			</li>
+			<li>5. 
+				<button class="toTop">上移</button>
+				<button class="toBottom">下移</button>
+			</li>
+		</ul>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oTop = document.getElementsByClassName("toTop");
+				var oBottom = document.getElementsByClassName("toBottom");
+				var oUl = document.getElementsByTagName("ul")[0];
+				
+//				3.循环绑定点击事件
+				for(var i=0; i<oTop.length; i++){
+					
+					oTop[i].onclick = function(){
+						
+//						4.判断是否是第一个子节点
+						if(!previousNode(this.parentNode)){	//判断是否有哥哥
+							console.log("到头了");
+						}else{
+							oUl.insertBefore(this.parentNode,previousNode(this.parentNode));
+						}
+						
+					}
+					
+//					5.绑定下移点击事件
+					oBottom[i].onclick = function(){
+						
+//						6.判断是否是最后一个子节点
+						if(!nextNode(this.parentNode)){	//判断是否有弟弟
+							console.log("到尾了");
+						}else{
+							oUl.insertBefore(nextNode(this.parentNode),this.parentNode);
+						}
+						
+					}
+					
+				}
+				
+//				第一个子节点的兼容写法
+				function firstNode(obj){
+					if(!obj.firstChild){
+						return false;
+					}
+					return obj.firstElementChild || (obj.firstChild.nodeType==1?obj.firstChild:(obj.firstChild).nextSibling);
+				}
+				
+//				最后一个子节点的兼容写法
+				function lastNode(obj){
+					if(!obj.lastChild){
+						return false;
+					}
+					return obj.lastElementChild || (obj.lastChild.nodeType==1?obj.lastChild:(obj.lastChild).previousSibling);
+				}
+				
+//				弟弟节点的兼容写法
+				function nextNode(obj){
+					if(!obj.nextSibling){return false;}
+					return obj.nextElementSibling ||(obj.nextSibling.nodeType==1?obj.nextSibling:nextNode(obj.nextSibling));
+				}
+				
+//				哥哥节点的兼容写法
+				function previousNode(obj){
+					if(!obj.previousSibling){return false;}
+					return obj.previousElementSibling||(obj.previousSibling.nodeType==1?obj.previousSibling:previousNode(obj.previousSibling));
+				}
+					
+			}
+			
+		</script>
+	</body>
+</html>

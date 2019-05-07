@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			getCurrentPosition(成功回调,失败回调,配置参数对象)
+			
+			请求成功:
+				经度 :  coords.longitude
+				纬度 :  coords.latitude
+				准确度 :  coords.accuracy
+				海拔 :  coords.altitude
+				海拔准确度 :  coords.altitudeAcuracy
+				行进方向 :  coords.heading
+				地面速度 :  coords.speed
+				时间戳 : new Date(position.timestamp)
+			
+			请求失败:
+				0: 不包括其他错误编号中的错误
+				1: 用户拒绝浏览器获取位置信息
+				2:  尝试获取用户信息，但失败了
+				3:  设置了timeout值，获取位置超时了
+				
+			对象选项:
+				enableHighAcuracy: true,	//允许更精确定位
+				timeout: 3000,		//允许超时时间
+				maximumAge: 5000	//指定多长时间后可再次获取定位
+		-->
+		
+		
+		<button>获取位置</button>
+		
+		<script>
+			
+			window.onload = function(){
+				
+				var oBtn = document.querySelector("button");
+				
+				oBtn.onclick = function(){
+					
+					//判断是否支持地理定位
+					if(window.navigator.geolocation){
+						
+						window.navigator.geolocation.getCurrentPosition(function(res){	//成功回调
+							
+							console.log("经度: "+res.coords.longitude);
+							console.log("纬度: "+res.coords.latitude);
+							console.log("准确度: "+res.coords.accuracy);
+							console.log("海拔: "+res.coords.altitude);
+						
+						},function(err){	//失败回调
+						
+							console.log(err);
+							
+						},{
+							enableHighAcuracy: true,	//允许更精确定位
+							timeout: 3000,		//允许超时时间
+							maximumAge: 5000	//指定多长时间后可再次获取定位
+						})
+						
+						
+						
+					}else{
+						console.log("不支持");
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

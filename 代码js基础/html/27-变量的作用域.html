@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			变量的作用域(没有用var声明的变量是全局变量,不推荐使用)
+				全局变量: 不在函数内部声明的变量
+				局部变量: 在函数内部用var声明的变量,只能在声明该变量的函数里面获取
+				
+				生命周期:	
+					全局变量在程序关闭之前,会一直占用内存
+					局部变量在函数调用之后即销毁
+			
+			
+			变量声明提升:
+				在后面有声明的前提下,提前打印变量时,会显示undefined
+			
+		-->
+		<script>
+//			变量声明提升
+//			var valA;
+			console.log(valA);	//undefined(用var声明,但是没有赋值)
+			
+			var valA = "我是第一个变量"; 	//全局变量
+			
+			console.log(valA);
+			
+			
+//			函数内部声明的变量是局部变量(只可以在函数内部获取)
+//			var valD;
+			function show(){
+				
+				var valB = "我是函数里面的变量";	//局部变量(有var)
+				valD = "我是函数内部没有用var声明的变量";	//全局变量(没有var)
+				console.log(valA);
+				console.log(valB);
+				
+			}
+			show();
+			console.log(valA);
+			console.log(valD);
+			
+			
+			
+//			var num1 = 10;
+//			
+//			
+//			function dealNum(){
+//				
+//				num1++;
+//				console.log(num1);
+//				
+//			}
+//			dealNum();
+//			
+//			var num1 = 20;
+//			console.log(num1);
+			
+			
+			console.log(valB);	//valB is not defined(函数内部声明的变量取不到)
+		</script>
+	</body>
+</html>

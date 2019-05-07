@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#wrap1,#wrap2,#wrap3{
+				width: 250px;
+				height: 250px;
+				border: 1px solid blue;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.box1,.box2,.box3{
+				width: 100px;
+				height: 100px;
+				background: yellow;
+				transition: 2s;
+			}
+			
+			.box1{
+				transform-origin: 100px 100px; 	/*基点设置为100px 100px的位置*/
+			}
+			#wrap1:hover .box1{
+				transform: rotate(3600deg);
+			}
+			
+			.box2{
+				transform-origin: left top; 	/*基点设置为左上角的位置*/
+			}
+			#wrap2:hover .box2{
+				transform: scale(0.5,0.5);
+			}
+			
+			.box3{
+				transform-origin: right bottom; 	/*基点设置为左上角的位置*/
+			}
+			#wrap3:hover .box3{
+				transform: skewX(30deg);
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			tranform-origin: 变换基点
+				默认中心位置为基点
+				可以设置left | top | right | bottom,或者其他固定值
+		
+		-->
+		<div id="wrap1">
+			<div class="box1"></div>
+		</div>
+		<div id="wrap2">
+			<div class="box2"></div>
+		</div>
+		<div id="wrap3">
+			<div class="box3"></div>
+		</div>
+	</body>
+</html>

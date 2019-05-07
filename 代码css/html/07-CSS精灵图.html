@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 16px;
+				height: 16px;
+				background: url("../img/sprite.png") no-repeat -288px -192px;
+			}
+			div:hover{
+				/*background-position-x: -312px;*/
+				width: 15px;
+				height: 13px;
+				background-position: -576px -168px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			css sprite精灵图(雪碧图)
+				将多个小图标合成在同一张图片上
+				
+				优势: 减少图片请求,性能优化的方式之一
+				
+				步骤:
+					1.将精灵图在Photoshop打开
+					2.缩放至合适大小,按住alt+鼠标进行拖动
+					3.使用切片工具(左侧菜单栏第五个长按,选择切片工具),切对应的图标
+					4.右击"编辑切片选项",获取到width,height,x,y
+					5.给标签设置宽高,引入背景图,设置x和y位置(取负值)
+		-->
+		<div></div>
+	</body>
+</html>

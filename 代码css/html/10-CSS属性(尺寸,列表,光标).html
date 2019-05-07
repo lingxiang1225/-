@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.news1{
+				width: 80%;
+				height: 150px;
+				background-color: lightgray;
+				min-width: 85%;
+				max-width: 50%;
+			}
+			ul{
+				list-style-type: circle;
+				list-style-position: inside;
+				list-style-image: url("../../../HTML部分/代码/img/baidu.ico");
+				list-style: none;	/*去掉项目符号*/
+			}
+			li{
+				background-color: lightblue;
+				cursor: text;
+				cursor: pointer;
+				cursor: wait;
+				cursor: crosshair;
+				cursor: copy;
+				cursor: help;
+				cursor: url("../../../HTML部分/代码/img/baidu.ico"),auto;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			CSS属性
+				尺寸:
+					width	宽度
+					height	高度
+					max-width 最大宽度(限制宽度)
+					max-height最大高度
+					min-width 最小宽度
+					min-height 最小高度
+					
+				列表:
+					list-style-type: circle | disc | square | none;	项目符号的类型
+					list-style-position: inside | outside(默认);		项目符号的位置
+					list-style-image: url("");						将图片当成项目符号
+					list-style
+			
+				光标:
+					cursor
+						pointer		手形
+						text		文本类型
+						wait		等待
+						crosshair	十字形
+						copy		复制
+						help		帮助
+			
+		-->
+		<div class="news1"></div>
+		
+		<ul>
+			<li>第一章</li>
+			<li>第二章</li>
+			<li>第三章</li>
+		</ul>
+	</body>
+</html>

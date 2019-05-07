@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			获取元素:
+				getElementById("")			根据id获取元素
+				getElementsByTagName("")	根据标签名获取元素
+				getElementsByClassName("")	根据类名获取元素
+			
+			
+			
+			通过类名获取的元素是一个数组
+				通过下标获取数组里面的元素(下标从0开始)
+			
+			
+		-->
+		<!--已知有甲乙丙三辆车，甲车与乙车速度都是50km/h，丙车速度是甲乙两车的速度之和，求丙车速度-->
+		<input type="text" class="getSpeed" value="50" />
+		<input type="text" class="getSpeed" value="50" />
+		<input type="text" value="60" />
+		
+		<script>
+//			获取元素(通过标签名从文档获取元素)
+			var aInput = document.getElementsByClassName("getSpeed");
+			console.log(aInput);
+			
+//			获取属性里面的值
+			var jiaSpeed = aInput[0].value;
+			var yiSpeed = aInput[1].value;
+			
+//			求丙车速度= 甲车速度+乙车速度
+			var bingSpeed = Number(jiaSpeed) + Number(yiSpeed);
+			console.log(bingSpeed);
+		</script>
+	</body>
+</html>

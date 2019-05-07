@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			@import url("../css/外部样式.css");
+		</style>
+	</head>
+	<body>
+		<!--
+			CSS(Cascading Style Sheet)--层叠样式表
+			
+			CSS的引入方式:
+				1.内联样式(行内样式)--作用于当前标签
+					写在标签里面用style属性引入
+					css属性1:属性值1; css属性2:属性值2;
+					
+				2.内部样式--作用于当前文档选择器对应的标签
+					写在head标签里面用<style></style>嵌套
+					语法: 
+						选择器{
+							css属性1:属性值1;
+							css属性2:属性值2;
+						}
+				
+				3.外部样式--作用于所有引入了该外部css文件的对应标签
+					新建一个css文件
+					a.用link标签在head标签里面引入
+						<link rel="stylesheet" type="text/css" href="../css/外部样式.css" />
+							rel: relationship的缩写(定义了被引入文档与当前文档的关系)
+							type: 定义了被引入文档的类型
+							href: 指定被引入文档的路径
+					
+					b.用@import导入
+						@import url("../css/外部样式.css");
+						
+					link标签引入与@import导入的区别:(面试题)
+						(1)@import在旧版本浏览器可能不支持,link引入比较早
+						(2)link是在html加载过程中渲染;@import是html结构加载完成之后再渲染
+							(浏览器显示时,link引入的是装修好的房子;@import将毛坯房显示出来,再慢慢装修)
+						(3)link可以引入除css外的其他文件,@import是引入css文件的
+		-->
+		<div>文字</div>
+		<div>我是div标签</div>
+		<p>我是p标签</p>
+	</body>
+</html>

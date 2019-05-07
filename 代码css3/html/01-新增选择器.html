@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			div ul:nth-child(5){
+				background: red;
+			}
+			div p:nth-last-child(3){
+				background: blue;
+			}
+			
+			div ul:nth-of-type(2){
+				background: yellow;
+			}
+			div ul:first-of-type{
+				
+			}
+			div ul:last-of-type{
+				
+			}
+			div ul:nth-last-of-type(1){
+				color: #fff;
+			}
+			
+			div p:first-letter{	/*第一个字符*/
+				font-size: 30px;
+			}
+			div p:nth-child(1):first-line{	/*第一行*/
+				color: lightcoral;
+			}
+			
+			input:checked{
+				width: 30px;
+				height: 50px;
+			}
+			
+			div p:not(:nth-of-type(2)){
+				border-bottom: 2px solid lightblue;
+			}
+			
+			ul li:not(:nth-of-type(2n)){
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			伪类选择器:
+				div ul:nth-child(5)	需要满足两个条件: 1.ul是div的孩子; 2.第1个孩子的标签名是ul
+				div ul:first-child
+				div ul:last-child
+				div ul:nth-last-child(3)	倒数第几个
+				
+				div ul:nth-of-type(1)	比较符合正常认知;获取div里面的第几个ul
+				div ul:first-of-type	获取div里面的第一个ul
+				div ul:last-of-type		获取div里面的最后一个ul
+				div ul:nth-last-of-type()	获取div里面的倒数的第几个ul
+				ul li:not(:nth-of-type(2n))	获取ul里面非偶数的li	
+				
+			属性选择器:
+				详情见css选择器
+		
+		-->
+		<div>
+			<p>1数（或复数）绝对值在任意域上的推广。赋值这个概念最初是由J.屈尔沙克于1913年提出的。设φ是定义在任意域F上的一个取非负实数值的函数,并满足以下三个条件：①φ(α)=0，当且仅当α=0，并对某个α∈F有φ(α)≠1；②φ(αb)=φ(α)φ(b)；③φ(α+b)≤φ(α)+φ(b),J.屈尔沙克把这样的φ称为F上的一个赋值。按照通行的叫法，后改称之为F的绝对值。不久以后,A.奥斯特罗夫斯基引进了另一种绝对值φ，它满足上述的①和②,以及，并把这种φ称为非阿基米德绝对值,而把满足①、②、③而不满足④的那些φ称为阿基米德绝对值。实数域R或复数域C的通常绝对值就是它们的阿基米德绝对值。有绝对值φ的域F，赋值赋值记作(F,φ)。 [3] </p>
+			<p>p2</p>
+			<p>p3</p>
+			<p>p4</p>
+			<ul>
+				<li>ul1</li>
+				<li>ul2</li>
+				<li>ul3</li>
+				<li>ul4</li>
+				<li>ul5</li>
+				<li>ul6</li>
+			</ul>
+			<ul>
+				<li>ul2</li>
+			</ul>
+			<label><input type="radio" checked="checked" value="male" />男</label>
+			<label><input type="radio" value="female" />女</label>
+		</div>
+	</body>
+</html>

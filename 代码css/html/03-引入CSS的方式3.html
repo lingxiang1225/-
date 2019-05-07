@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/外部样式.css" />
+	</head>
+	<body>
+		<!--
+			CSS(Cascading Style Sheet)--层叠样式表
+			
+			CSS的引入方式:
+				1.内联样式(行内样式)--作用于当前标签
+					写在标签里面用style属性引入
+					css属性1:属性值1; css属性2:属性值2;
+					
+				2.内部样式--作用于当前文档选择器对应的标签
+					写在head标签里面用<style></style>嵌套
+					语法: 
+						选择器{
+							css属性1:属性值1;
+							css属性2:属性值2;
+						}
+				
+				3.外部样式
+					新建一个css文件
+					a.用link标签在head标签里面引入
+						<link rel="stylesheet" type="text/css" href="../css/外部样式.css" />
+							rel: relationship的缩写(定义了被引入文档与当前文档的关系)
+							type: 定义了被引入文档的类型
+							href: 指定被引入文档的路径
+		-->
+		<div>文字</div>
+		<div>我是div标签</div>
+		<p>我是p标签</p>
+	</body>
+</html>

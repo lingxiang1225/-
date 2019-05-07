@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				width: 300px;
+				background-color: #ccc;
+			}
+			li{
+				height: 40px; 
+				line-height: 40px; 
+				background-color: lightblue;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			为什么使用事件委托?
+				减少DOM操作,优化性能
+			
+			原理: 利用事件冒泡,子元素的事件可以由父元素事件执行
+			
+			
+		-->
+		<ul></ul>
+		
+		<script>
+			
+//			1.页面加载后执行
+			window.onload = function(){
+				
+//				2.获取元素
+				var oUl = document.getElementsByTagName("ul")[0];
+	
+//				3.循环创建10个li
+				for(var i=0; i<10; i++){
+					
+					var aLi = document.createElement("li");
+					
+					aLi.innerHTML = i+1;
+					
+					oUl.appendChild(aLi);
+					
+//					aLi.onclick = function(){	//操作了10个DOM
+//						
+//						console.log(this.innerHTML);
+//						
+//					}
+
+					oUl.onclick = function(ev){	//操作了1个DOM
+						
+						var ev = ev || window.event;
+						
+						var target = ev.target || ev.srcElement;	//事件源兼容
+						
+//						判断事件源的节点名字
+						if(target.nodeName.toLowerCase() == "li"){
+							
+							console.log(target.innerHTML);
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		</script>
+	</body>
+</html>

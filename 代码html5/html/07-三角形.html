@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				background-color: #eee;
+			}
+			canvas{
+				background-color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			ctx.lineWidth = 10;	//设置线宽
+			ctx.lineJoin = "round";	//边界连接点样式
+			ctx.lineCap = "round";	//线帽
+			
+			ctx.beginPath();	//开始路径绘制
+			
+			ctx.moveTo(100,100);	//设置起始坐标(x轴坐标,y轴坐标)
+			ctx.lineTo(350,200);	//三角形的另一个点坐标
+			ctx.lineTo(150,300);	//三角形的第三个点坐标
+			
+			ctx.closePath();	//关闭路径绘制(关闭路径时会将最后一个点与起始点连接)
+			
+			ctx.stroke();	//绘制边框
+			ctx.fill();		//填充形状
+		
+		-->
+		<canvas width="500" height="500">
+			您的浏览器不支持canvas
+		</canvas>
+		
+		<script>
+			
+			window.onload = function(){
+				
+				var myCanvas = document.getElementsByTagName("canvas")[0];
+				
+				// 1.创建画布
+				var ctx = myCanvas.getContext("2d");
+				
+				// 2.设置样式
+				ctx.fillStyle = "yellow";
+				ctx.strokeStyle = "blue";
+				ctx.lineWidth = 10;	//设置线宽
+				ctx.lineJoin = "round";	//边界连接点样式
+				ctx.lineCap = "round";	//线帽
+				
+				// 3.绘制线条
+				ctx.beginPath();	//开始路径绘制
+				
+				ctx.moveTo(100,100);	//设置起始坐标(x轴坐标,y轴坐标)
+				ctx.lineTo(350,200);	//三角形的另一个点坐标
+				ctx.lineTo(150,300);	//三角形的第三个点坐标
+				
+				ctx.closePath();	//关闭路径绘制(关闭路径时会将最后一个点与起始点连接)
+				
+				ctx.stroke();	//绘制边框
+				ctx.fill();		//填充形状
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>

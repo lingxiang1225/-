@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				height: 60px;
+				border: 2px solid red;
+			}
+			.box>div{
+				width: 30%;
+				height: 60px;
+				background-color: lightblue;
+				float: left;
+				float: right;
+			}
+			.box>div:first-child{
+				background-color: lightpink;
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			文档流:
+				块级元素从上往下排
+				行内元素从左往右排
+			
+			浮动: 使块级元素排成一排,当父级元素宽度不够时,会自动换行环绕
+			
+				float	[脱离文档流]
+					left	从左往右排
+					right	从右往左排
+					
+				浮动造成的问题: 父级元素高度塌陷(高度为0)
+				
+				怎么解决?
+					清除浮动
+				
+		-->
+		<div class="box">
+			<div>1</div>
+			<div>2</div>
+		</div>
+	</body>
+</html>
